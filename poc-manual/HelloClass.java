@@ -8,8 +8,8 @@ public class HelloClass{
     System.out.println(newsStation.broadCast());
 
     Properties properties = System.getProperties();
-        for (String propertyName : properties.stringPropertyNames()) {
-            System.out.println(propertyName + ": " + System.getProperty(propertyName));
-        }
+    for (String propertyName : properties.stringPropertyNames()) {
+      System.out.println(propertyName + ": " + System.getProperty(propertyName));
+    }
   }
 }
