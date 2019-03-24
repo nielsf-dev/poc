@@ -1,0 +1,23 @@
+Onze doelgerichtheid gebruiken om te leren. Vanaf het begin :)
+
+Groffe indeling
+#poc-manuel
+- command line compileren
+- properties goed leren gebruiken
+- overige tools in de jdk, debugger bekijken/gebruiken
+
+#poc-gradle
+- sourceCompatibility uitzoeken
+- ff beetje dik gaan met gradle, iets met plugins of met deployen maybe
+- logback
+ - prperties misschien als branch het spring gedeelte
+
+#poc-web
+- war/tomcat, the command line / jdk way, miss met netty of locaal tomcat installeren
+  misschien combineren met die embedded versie.
+
+#poc-jdbc
+- the jdbc/postgres transactional connection
+
+#poc-jpa
+- jpa hiberernate naar spring boot en naar spring transadcstion
