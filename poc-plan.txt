@@ -9,6 +9,8 @@ Groffe indeling
 #poc-gradle
 - sourceCompatibility uitzoeken
 - ff beetje dik gaan met gradle, iets met plugins of met deployen maybe
+  dependencies goed uitzoeken, via-via depencencies + javadoc
+  
 - logback
  - prperties misschien als branch het spring gedeelte
 
