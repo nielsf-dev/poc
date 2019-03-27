@@ -1,5 +1,6 @@
 # Compiled class file
 *.class
+HelloClass-bytecode.txt
 
 # Log file
 *.log

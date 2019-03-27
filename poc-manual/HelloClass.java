@@ -9,7 +9,12 @@ public class HelloClass{
 
     Properties properties = System.getProperties();
     for (String propertyName : properties.stringPropertyNames()) {
-      System.out.println(propertyName + ": " + System.getProperty(propertyName));
+      if(propertyName == "niels"){
+        System.out.println("KING");
+      }
+      else{
+        System.out.println(propertyName + ": " + System.getProperty(propertyName));
+      }
     }
 
     System.in.read();
