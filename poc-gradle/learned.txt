@@ -1,0 +1,2 @@
+gradle init
+alleen dat geef je al een keuze menu'tje
