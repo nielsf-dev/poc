@@ -1,2 +1,6 @@
-gradle init
+- gradle init
 alleen dat geef je al een keuze menu'tje
+- gradlew gebruikt gewoon de "java" die je ook intype op de command line
+wat doet sourceCompatibility dan?
+welke javac word gebruikt?
+  ook gewoon die van de command line?

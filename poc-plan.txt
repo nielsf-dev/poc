@@ -3,6 +3,10 @@
 - properties goed leren gebruiken
 - overige tools in de jdk, debugger bekijken/gebruiken` -> Java SE Doc
 
+#poc-collections
+- ff alle collections stuff goed doornemen
+- java.util collections. wat doet kotlin nou allemaal?
+
 #poc-gradle
 - sourceCompatibility uitzoeken
 - ff beetje dik gaan met gradle, iets met plugins of met deployen maybe
