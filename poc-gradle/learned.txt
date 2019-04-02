@@ -1,6 +1,13 @@
 - gradle init
 alleen dat geef je al een keuze menu'tje
+
 - gradlew gebruikt gewoon de "java" die je ook intype op de command line
 wat doet sourceCompatibility dan?
-welke javac word gebruikt?
-  ook gewoon die van de command line?
+  die mapt dus door naar de javac, neem aan ook die uit dezelfde hoek komt als waar java gevonden word(de commandline/path)
+  https://stackoverflow.com/questions/16654951/gradle-sourcecompatibility-vs-targetcompatibility
+
+  wel iets van getplatform() gevonden in de source van javacompile
+    je heb dus gewoon system properties daar haalt ie het path uit voor de jdk/javac
+
+- in gradle.properties kan je dit plaatsen:
+  org.gradle.java.home=/home/niels/programs/jdk-11.0.2 
