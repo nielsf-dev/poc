@@ -10,4 +10,7 @@ wat doet sourceCompatibility dan?
     je heb dus gewoon system properties daar haalt ie het path uit voor de jdk/javac
 
 - in gradle.properties kan je dit plaatsen:
-  org.gradle.java.home=/home/niels/programs/jdk-11.0.2 
+  org.gradle.java.home=/home/niels/programs/jdk-11.0.2
+
+- je heb dus properties die je mee kan geven met gradlew -Pmijnprop=whatever
+  diezelfde propertie kan je meegeven met /gradlew -Dorg.gradle.project.mijnprop=ingewikkeld printProps

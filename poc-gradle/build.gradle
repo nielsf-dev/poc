@@ -26,7 +26,8 @@ repositories {
 task printProps{
   doLast{
     println test
-    println System.properties['java.version']
+    println vCL // deze meegeven met -P met gradle zelf
+    println System.properties['java.version']    
   }
 }
 
