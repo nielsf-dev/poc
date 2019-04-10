@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-./gradlew printProps -PvCL=DezeMOETDus -Ptest=HetIsNietAardigJeMoerDusVerandert
+./gradlew printProps -PvCL=DezeMOETDus -Ptest=HetIsNietAardigJeMoerDusVerandert -DMijnMinD=KanDitDan

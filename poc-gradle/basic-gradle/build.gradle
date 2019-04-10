@@ -27,7 +27,8 @@ task printProps{
   doLast{
     println test
     println vCL // deze meegeven met -P met gradle zelf
-    println System.properties['java.version']    
+    println System.properties['java.version']
+    println System.properties['MijnMinD']
   }
 }
 
