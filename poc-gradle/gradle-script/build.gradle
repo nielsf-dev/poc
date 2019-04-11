@@ -1,0 +1,19 @@
+task hello {
+  println "even I get configured"
+  doLast {
+    println "Hello world!"
+  }
+}
+
+task wtf {
+  println "getting configured"
+  doLast{
+    println "Why this one"
+  }
+}
+
+task myCopy() {
+  doLast{
+    println "Dit is de MyCopy"
+  }
+}
