@@ -6,7 +6,7 @@ task hello {
 }
 
 task wtf {
-  println "getting configured"
+  println "wtf getting configured"
   doLast{
     println "Why this one"
   }
@@ -26,4 +26,13 @@ realCopy{
   from '.'
   into '../'
   exclude '**/*.gradle', 'leavemealone.txt'
+  println name
 }
+
+wtf {
+  println "wtf getting configured again"
+  doLast {
+    println "nog een keer"
+  }
+}
+wtf.dependsOn hello
