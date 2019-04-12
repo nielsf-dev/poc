@@ -19,3 +19,11 @@ task myCopy() {
     println "Dit is de MyCopy"
   }
 }
+
+task realCopy(type: Copy)
+
+realCopy{
+  from '.'
+  into '../'
+  exclude '**/*.gradle', 'leavemealone.txt'
+}
