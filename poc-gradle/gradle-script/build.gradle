@@ -36,3 +36,4 @@ wtf {
   }
 }
 wtf.dependsOn hello
+
