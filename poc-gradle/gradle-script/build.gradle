@@ -13,6 +13,8 @@ task wtf {
 }
 
 task myCopy() {
+  println tasks.wtf.name
+  println project.name
   doLast{
     println "Dit is de MyCopy"
   }
