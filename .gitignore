@@ -2,6 +2,7 @@
 *.class
 .gradle
 **/.idea
+**/build
 HelloClass-bytecode.txt
 
 # Log file
