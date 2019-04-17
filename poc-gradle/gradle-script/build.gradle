@@ -17,6 +17,9 @@ task hello {
 }
 
 task wtf {
+  ext{
+    zomaariets = "1.0"
+  }
   println "wtf getting configured"
   doLast{
     println "Why this one"
@@ -30,7 +33,7 @@ task myCopy() {
     println "Dit is de MyCopy"
   }
 }
-
+ 
 task realCopy(type: Copy)
 task myCystom(type: NielsTask)
 
@@ -44,7 +47,7 @@ realCopy{
 wtf {
   println "wtf getting configured again"
   doLast {
-    println "nog een keer"
+    println "nog een keer $zomaariets"
   }
 }
 wtf.dependsOn hello
