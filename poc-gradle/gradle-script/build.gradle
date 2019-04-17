@@ -1,3 +1,5 @@
+import org.nelis.NielsTask
+
 class GreetingTask extends DefaultTask {
   String greeting = 'hello from GreetingTask'
 
@@ -30,6 +32,7 @@ task myCopy() {
 }
 
 task realCopy(type: Copy)
+task myCystom(type: NielsTask)
 
 realCopy{
   from '.'
@@ -49,4 +52,3 @@ wtf.dependsOn hello
 task greeting(type: GreetingTask) {
   greeting = 'Het is zo simpel allemaal!'
 }
-
