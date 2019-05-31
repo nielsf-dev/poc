@@ -33,7 +33,7 @@ task myCopy() {
     println "Dit is de MyCopy"
   }
 }
- 
+
 task realCopy(type: Copy)
 task myCystom(type: NielsTask)
 
