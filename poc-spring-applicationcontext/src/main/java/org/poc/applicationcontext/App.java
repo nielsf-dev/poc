@@ -3,7 +3,9 @@
  */
 package org.poc.applicationcontext;
 
+import org.poc.applicationcontext.func.SuperService;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class App {
@@ -12,9 +14,9 @@ public class App {
     }
 
     public static void main(String[] args) {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("hierstaatie");
-        Object eenbeanindextx = ctx.getBean("eenbeanindextx");
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        SuperService bean = ctx.getBean(SuperService.class);
 
-        System.out.println(new App().getGreeting());
+        System.out.println(bean.doSomethingAwesome());
     }
 }
