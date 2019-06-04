@@ -11,6 +11,8 @@ public class SuperService {
 
     public String doSomethingAwesome(){
         int theTime = clock.getTheTime();
-        return "It is " + theTime + " o'clock!";
+        String text = "It is " + theTime + " o'clock!";
+        System.out.println(text);
+        return text;
     }
 }

@@ -7,8 +7,7 @@ import org.poc.applicationcontext.func.SuperService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.net.URL;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -19,14 +18,25 @@ public class App {
     }
 
     public static void main(String[] args) throws IOException {
+
+        InputStream stream = App.class.getClassLoader().getResourceAsStream("Test.txt");
+        InputStreamReader reader = new InputStreamReader(stream);
+        BufferedReader bufferedReader = new BufferedReader(reader);
+
+        String line;
+        while((line = bufferedReader.readLine()) != null){
+            System.out.println(line);
+        }
+
         ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
         SuperService bean = ctx.getBean(SuperService.class);
+        bean.doSomethingAwesome();
 
-        Locale aDefault = Locale.getDefault();
+       // Locale aDefault = Locale.getDefault();
         Locale.setDefault(new Locale("nl","NL"));
-        Locale aDefault2 = Locale.getDefault();
+      //  Locale aDefault2 = Locale.getDefault();
 
-        ResourceBundle messages = ResourceBundle.getBundle("messages");
+        ResourceBundle messages = ResourceBundle.getBundle("messages",new Locale("nl","NL"));
         System.out.println(messages.getString("who_text"));
     }
 }
