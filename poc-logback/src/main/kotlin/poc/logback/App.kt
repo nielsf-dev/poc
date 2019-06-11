@@ -5,6 +5,13 @@ package poc.logback
 
 import org.slf4j.LoggerFactory
 
+/**
+ * Een app.
+ *
+ * Dit doet dus niet veel.
+ *
+ * @author Niels Frerichs
+ */
 class App {
     val logger = LoggerFactory.getLogger(App::class.java)
     val greeting: String
