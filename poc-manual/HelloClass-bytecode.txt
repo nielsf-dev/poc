@@ -1,0 +1,61 @@
+Compiled from "HelloClass.java"
+public class HelloClass {
+  public HelloClass();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static void main(java.lang.String[]) throws java.lang.Exception;
+    Code:
+       0: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+       3: ldc           #3                  // String Hello
+       5: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+       8: new           #5                  // class NewsStation
+      11: dup
+      12: ldc           #6                  // String Georgia
+      14: invokespecial #7                  // Method NewsStation."<init>":(Ljava/lang/String;)V
+      17: astore_1
+      18: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+      21: aload_1
+      22: invokevirtual #8                  // Method NewsStation.broadCast:()Ljava/lang/String;
+      25: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      28: invokestatic  #9                  // Method java/lang/System.getProperties:()Ljava/util/Properties;
+      31: astore_2
+      32: aload_2
+      33: invokevirtual #10                 // Method java/util/Properties.stringPropertyNames:()Ljava/util/Set;
+      36: invokeinterface #11,  1           // InterfaceMethod java/util/Set.iterator:()Ljava/util/Iterator;
+      41: astore_3
+      42: aload_3
+      43: invokeinterface #12,  1           // InterfaceMethod java/util/Iterator.hasNext:()Z
+      48: ifeq          117
+      51: aload_3
+      52: invokeinterface #13,  1           // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      57: checkcast     #14                 // class java/lang/String
+      60: astore        4
+      62: aload         4
+      64: ldc           #15                 // String niels
+      66: if_acmpne     80
+      69: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+      72: ldc           #16                 // String KING
+      74: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+      77: goto          114
+      80: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+      83: new           #17                 // class java/lang/StringBuilder
+      86: dup
+      87: invokespecial #18                 // Method java/lang/StringBuilder."<init>":()V
+      90: aload         4
+      92: invokevirtual #19                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      95: ldc           #20                 // String :
+      97: invokevirtual #19                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     100: aload         4
+     102: invokestatic  #21                 // Method java/lang/System.getProperty:(Ljava/lang/String;)Ljava/lang/String;
+     105: invokevirtual #19                 // Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;
+     108: invokevirtual #22                 // Method java/lang/StringBuilder.toString:()Ljava/lang/String;
+     111: invokevirtual #4                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+     114: goto          42
+     117: getstatic     #23                 // Field java/lang/System.in:Ljava/io/InputStream;
+     120: invokevirtual #24                 // Method java/io/InputStream.read:()I
+     123: pop
+     124: return
+}
