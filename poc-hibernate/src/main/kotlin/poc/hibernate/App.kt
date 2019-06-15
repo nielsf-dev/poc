@@ -3,19 +3,29 @@
  */
 package poc.hibernate
 
+import org.slf4j.LoggerFactory
+
 class App {
     val greeting: String
         get() {
             return "Hello world."
         }
 }
+val logger = LoggerFactory.getLogger(App::class.java)
 
 fun main(args: Array<String>) {
     println(App().greeting)
 
     try {
+        logger.info("are we working")
+
         val jdbcer = Jdbcer()
         jdbcer.simpleQuery()
+        //jdbcer.transactionalInsert()
+        //jdbcer.simpleTxInsert()
+
+        //val hibernater = Hibernater()
+        //hibernater.doEntityManager()
     }
     catch(ex : Exception){
         println(ex.message)
