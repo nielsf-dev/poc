@@ -3,6 +3,8 @@ package poc.hibernate
 import bitronix.tm.BitronixTransactionManager
 import bitronix.tm.TransactionManagerServices
 import bitronix.tm.resource.jdbc.PoolingDataSource
+import com.zaxxer.hikari.HikariConfig
+import com.zaxxer.hikari.HikariDataSource
 import org.postgresql.xa.PGXADataSource
 import java.sql.Connection
 import java.sql.DriverManager
@@ -16,17 +18,21 @@ class Jdbcer{
         val connect = connect()
         println("Gelukt: " + connect.clientInfo.size)
 
+        printProjects(connect)
+        connect.close()
+    }
+
+    private fun printProjects(connect: Connection) {
         val statement = connect.createStatement()
         val resultSet = statement.executeQuery("select * from project")
 
-        while(resultSet.next()){
+        while (resultSet.next()) {
             val titel = resultSet.getString("titel_nl")
             println(titel)
         }
 
         resultSet.close()
         statement.close()
-        connect.close()
     }
 
     fun simpleTxInsert(){
@@ -35,9 +41,20 @@ class Jdbcer{
         connect.transactionIsolation = Connection.TRANSACTION_SERIALIZABLE
 
         val statement = connect.createStatement()
-        statement.execute("insert into project (id, \"order\", titel_nl ) values (188, 36, 'kut project')")
+        statement.execute("insert into project (id, \"order\", titel_nl ) values (456, 36, 'doe rollback')")
 
         connect.rollback()
+    }
+
+    fun doDataSource(){
+        val hikariConfig = HikariConfig()
+        hikariConfig.username = user
+        hikariConfig.password = password
+        hikariConfig.jdbcUrl = url
+
+        val hikariDataSource = HikariDataSource(hikariConfig)
+        val connection = hikariDataSource.connection
+        printProjects(connection)
     }
 
     fun transactionalInsert(){
@@ -53,13 +70,13 @@ class Jdbcer{
         poolingDatasource.maxPoolSize = 20
         poolingDatasource.init()
 
-
         //PGXADataSource
         val configuration = TransactionManagerServices.getConfiguration()
         val transactionManager = TransactionManagerServices.getTransactionManager()
         transactionManager.begin()
 
-        val statement = poolingDatasource.connection.createStatement()
+        val connection = poolingDatasource.connection
+        val statement = connection.createStatement()
         statement.execute("insert into project (id, \"order\", titel_nl ) values (189, 36, 'bitronix werkt wel')")
 
         transactionManager.commit()

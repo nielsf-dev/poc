@@ -22,8 +22,8 @@ fun main(args: Array<String>) {
         val jdbcer = Jdbcer()
         jdbcer.simpleQuery()
         //jdbcer.transactionalInsert()
-        //jdbcer.simpleTxInsert()
-
+       // jdbcer.simpleTxInsert()
+        //jdbcer.doDataSource()
         //val hibernater = Hibernater()
         //hibernater.doEntityManager()
     }
