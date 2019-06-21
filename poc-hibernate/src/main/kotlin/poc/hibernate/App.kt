@@ -23,7 +23,8 @@ fun main(args: Array<String>) {
        // jdbcer.simpleQuery()
 
         val hb = Hibernater()
-        hb.doBootstrap()
+                // hb.doBootstrap()
+        hb.jpaBootstrap()
 
         //jdbcer.transactionalInsert()
        // jdbcer.simpleTxInsert()

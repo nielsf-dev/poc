@@ -4,6 +4,10 @@ import org.hibernate.boot.model.naming.ImplicitNamingStrategyJpaCompliantImpl
 import org.hibernate.boot.MetadataSources
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder
 import org.hibernate.boot.registry.BootstrapServiceRegistryBuilder
+import javax.persistence.Persistence
+import javax.persistence.EntityManagerFactory
+
+
 
 class Hibernater{
     fun doBootstrap(){
@@ -35,5 +39,17 @@ class Hibernater{
 
         transaction.commit()
         session.close()
+    }
+
+    fun jpaBootstrap(){
+        // Create an EMF for our CRM persistence-unit.
+        val emf = Persistence.createEntityManagerFactory("MyJpaTest")
+        val entityManager = emf.createEntityManager()
+        val query = entityManager.createQuery("from Project", Project::class.java)
+        val projects = query.resultList
+        for (p in projects){
+            println(p.titel_nl)
+        }
+        entityManager.close()
     }
 }
