@@ -19,8 +19,12 @@ fun main(args: Array<String>) {
     try {
         logger.info("are we working")
 
-        val jdbcer = Jdbcer()
-        jdbcer.simpleQuery()
+      //  val jdbcer = Jdbcer()
+       // jdbcer.simpleQuery()
+
+        val hb = Hibernater()
+        hb.doBootstrap()
+
         //jdbcer.transactionalInsert()
        // jdbcer.simpleTxInsert()
         //jdbcer.doDataSource()

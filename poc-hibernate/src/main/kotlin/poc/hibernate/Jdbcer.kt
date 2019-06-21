@@ -1,13 +1,20 @@
 package poc.hibernate
 
-import bitronix.tm.BitronixTransactionManager
 import bitronix.tm.TransactionManagerServices
 import bitronix.tm.resource.jdbc.PoolingDataSource
 import com.zaxxer.hikari.HikariConfig
 import com.zaxxer.hikari.HikariDataSource
-import org.postgresql.xa.PGXADataSource
+import java.io.PrintWriter
 import java.sql.Connection
 import java.sql.DriverManager
+import net.ttddyy.dsproxy.support.ProxyDataSourceBuilder
+import net.ttddyy.dsproxy.listener.logging.SLF4JQueryLoggingListener
+import java.util.concurrent.TimeUnit
+import net.ttddyy.dsproxy.listener.logging.SystemOutQueryLoggingListener
+import javax.sql.DataSource
+import net.ttddyy.dsproxy.listener.logging.DefaultQueryLogEntryCreator
+import org.postgresql.ds.PGSimpleDataSource
+
 
 class Jdbcer{
     private val url = "jdbc:postgresql://localhost/mydb"
@@ -15,15 +22,18 @@ class Jdbcer{
     private val password = "toor"
 
     fun simpleQuery(){
-        val connect = connect()
-        println("Gelukt: " + connect.clientInfo.size)
+        //val connection = getConnectionFromDriverManager()
+        val dataSource = getDataSource()
+        val connection = dataSource.connection
+        connection.autoCommit = false
+        println("Gelukt: " + connection.clientInfo.size)
 
-        printProjects(connect)
-        connect.close()
+        printProjects(connection)
     }
 
-    private fun printProjects(connect: Connection) {
-        val statement = connect.createStatement()
+    private fun printProjects(connection: Connection) {
+        val statement = connection.createStatement()
+        connection.autoCommit = false
         val resultSet = statement.executeQuery("select * from project")
 
         while (resultSet.next()) {
@@ -33,16 +43,18 @@ class Jdbcer{
 
         resultSet.close()
         statement.close()
+
+        connection.commit()
+        connection.close()
     }
 
     fun simpleTxInsert(){
-        val connect = connect()
+        val connect = getConnectionFromDriverManager()
         connect.autoCommit = false
         connect.transactionIsolation = Connection.TRANSACTION_SERIALIZABLE
 
         val statement = connect.createStatement()
         statement.execute("insert into project (id, \"order\", titel_nl ) values (456, 36, 'doe rollback')")
-
         connect.rollback()
     }
 
@@ -51,10 +63,37 @@ class Jdbcer{
         hikariConfig.username = user
         hikariConfig.password = password
         hikariConfig.jdbcUrl = url
+        hikariConfig.minimumIdle = 10
+        hikariConfig.maximumPoolSize = 20
 
         val hikariDataSource = HikariDataSource(hikariConfig)
         val connection = hikariDataSource.connection
         printProjects(connection)
+    }
+
+    private fun getDataSource(): DataSource {
+        // use pretty formatted query with multiline enabled
+        val creator = PrettyQueryEntryCreator()
+        creator.setMultiline(true)
+        val listener = SystemOutQueryLoggingListener()
+        listener.queryLogEntryCreator = creator
+
+        // Create ProxyDataSource
+        return ProxyDataSourceBuilder.create(getH2DataSource())
+                .name("ProxyDataSource")
+                .countQuery()
+                .multiline()
+                .listener(listener)
+                .logSlowQueryToSysOut(1, TimeUnit.MINUTES)
+                .build()
+    }
+
+    private fun getH2DataSource(): DataSource {
+        val ds = PGSimpleDataSource()
+        ds.setURL(url)
+        ds.setUser(user)
+        ds.setPassword(password)
+        return ds
     }
 
     fun transactionalInsert(){
@@ -82,8 +121,15 @@ class Jdbcer{
         transactionManager.commit()
     }
 
-    fun connect(): Connection {
+    fun getConnectionFromDriverManager(): Connection {
+        DriverManager.setLogWriter(PrintWriter(System.out))
         val conn = DriverManager.getConnection(url, user, password)
         return conn
+    }
+}
+
+private class PrettyQueryEntryCreator : DefaultQueryLogEntryCreator() {
+    override fun formatQuery(query: String): String {
+        return query
     }
 }
