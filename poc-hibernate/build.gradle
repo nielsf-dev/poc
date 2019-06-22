@@ -54,14 +54,36 @@ dependencies {
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
 }
 
+distributions {
+    custom{
+        contents{
+            into 'kandit'
+            from 'build/scripts'
+        }
+    }
+}
+
+
+application {
+    executableDir = ''
+}
+
+startScripts{
+    println(outputDir.name)
+    println(executableDir)
+}
+
 installDist{
     destinationDir = file('dist')
 }
 
 jar {
     manifest {
-        attributes 'Main-Class' : 'Snake'
+        attributes 'Main-Class' : 'Appkt'
     }
 }
-// Define the main class for the application.
-mainClassName = 'Snake'
+
+application {
+    // Define the main class for the application.
+    mainClassName = 'poc.hibernate.AppKt'
+}
