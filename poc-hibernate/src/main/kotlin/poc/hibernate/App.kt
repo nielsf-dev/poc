@@ -19,6 +19,10 @@ fun main(args: Array<String>) {
     try {
         logger.info("are we working")
 
+        for(arg in args){
+            println(arg)
+        }
+
       //  val jdbcer = Jdbcer()
        // jdbcer.simpleQuery()
 
