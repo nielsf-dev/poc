@@ -45,6 +45,9 @@ class Hibernater{
         // Create an EMF for our CRM persistence-unit.
         val emf = Persistence.createEntityManagerFactory("MyJpaTest")
         val entityManager = emf.createEntityManager()
+        val project = entityManager.find(Project::class.java, 28)
+        println(project.titel_nl)
+
         val query = entityManager.createQuery("from Project", Project::class.java)
         val projects = query.resultList
         for (p in projects){

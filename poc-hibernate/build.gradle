@@ -54,28 +54,20 @@ dependencies {
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
 }
 
-distributions {
-    custom{
-        contents{
-            into 'kandit'
-            from 'build/scripts'
-        }
-    }
-}
-
-
 application {
-    executableDir = ''
+    executableDir = 'werktnietwordgefixedwilrootmaargaatniet'
 }
 
 startScripts{
     println(outputDir.name)
     println(executableDir)
+    def application = project.extensions.getByName("application")
+    println(application.executableDir)
 }
 
-installDist{
-    destinationDir = file('dist')
-}
+//installDist{
+//    destinationDir = file('dist')
+//}
 
 jar {
     manifest {
