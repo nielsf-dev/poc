@@ -2,6 +2,7 @@ package poc.boot.app.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import poc.boot.app.domain.Project;
 import poc.boot.app.repositories.ProjectRepository;
 
@@ -14,6 +15,7 @@ public class SuperService {
     @Autowired
     ProjectRepository projectRepository;
 
+    @Transactional
     public String doSomethingAwesome(){
         int theTime = clock.getTheTime();
         String text = "It is " + theTime + " o'clock!";

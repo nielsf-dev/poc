@@ -121,7 +121,7 @@ class Project(
             }
         }
 
-      throw Exception("Geen image in project met url: $imageUrl")
+        throw Exception("Geen image in project met url: $imageUrl")
     }
 
     fun addImage(image: Image) {
