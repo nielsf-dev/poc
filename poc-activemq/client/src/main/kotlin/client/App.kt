@@ -3,14 +3,18 @@
  */
 package client
 
+import org.apache.activemq.artemis.api.core.RoutingType
+import org.apache.activemq.artemis.api.core.client.ActiveMQClient
 import javax.jms.Connection
 import javax.jms.ConnectionFactory
-import javax.jms.MessageConsumer
-import javax.jms.MessageProducer
 import javax.jms.Queue
 import javax.jms.Session
 import javax.jms.TextMessage
 import javax.naming.InitialContext
+import org.apache.activemq.artemis.api.core.client.ClientMessage
+import org.apache.activemq.artemis.api.core.client.ClientProducer
+
+
 
 class App {
     val greeting: String
@@ -21,6 +25,28 @@ class App {
 
 fun main(args: Array<String>) {
     println(App().greeting)
+
+    val serverLocator = ActiveMQClient.createServerLocator("tcp://192.168.63.81:61616")
+    val clientSessionFactory = serverLocator.createSessionFactory()
+    val session = clientSessionFactory.createSession("root","toor",false,true, false,false,0)
+
+    val producer = session.createProducer("example2")
+    val message = session.createMessage(true)
+    message.getBodyBuffer().writeString("Hello")
+
+    //session.createQueue("example2",RoutingType.ANYCAST,"example2",true)
+
+    producer.send(message)
+
+    val consumer = session.createConsumer("example2")
+    session.start()
+
+    val receive = consumer.receive()
+    println(receive.bodyBuffer.readString())
+    session.close()
+}
+
+private fun connectJndi() {
     var connection: Connection? = null
     var initialContext: InitialContext? = null
     try {
@@ -59,16 +85,12 @@ fun main(args: Array<String>) {
         System.out.println("Sent message: " + message1.getText())
         System.out.println("Sent message: " + message2.getText())
 
-        // Step 11. Receive the message, it will return null as the transaction is not committed.
-        var receivedMessage: TextMessage? = messageConsumer.receive(5000) as TextMessage?
-
-        println("Message received before send commit: " + receivedMessage)
 
         // Step 12. Commit the session
         session.commit()
 
         // Step 13. Receive the messages again
-        receivedMessage = messageConsumer.receive(5000) as TextMessage
+        var receivedMessage = messageConsumer.receive(5000) as TextMessage?
 
         System.out.println("Message received after send commit: " + receivedMessage!!.getText())
 
