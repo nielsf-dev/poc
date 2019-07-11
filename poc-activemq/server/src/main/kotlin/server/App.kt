@@ -3,13 +3,13 @@
  */
 package server
 
-class App {
-    val greeting: String
-        get() {
-            return "Hello world."
-        }
-}
+import org.springframework.boot.SpringApplication
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.context.annotation.Bean
+
+@SpringBootApplication
+open class App
 
 fun main(args: Array<String>) {
-    println(App().greeting)
+    SpringApplication.run(App::class.java, *args)
 }

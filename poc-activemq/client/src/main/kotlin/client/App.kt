@@ -8,6 +8,8 @@ import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.annotation.Bean
 import org.springframework.jms.core.JmsTemplate
+import org.springframework.jms.core.MessageCreator
+import org.springframework.jms.support.destination.DynamicDestinationResolver
 import javax.jms.DeliveryMode
 import javax.jms.Destination
 import javax.jms.Session
@@ -23,9 +25,10 @@ open class App {
         return CommandLineRunner {
             logger.info("we here")
 
-            template.convertAndSend("example2","Hello world")
+            template.defaultDestinationName  = "example2"
+            template.send { session -> session.createTextMessage("Hans Kazan is heel wat van plan.") }
 
-            doOldSchoolSend()
+           // doOldSchoolSend()
             //run()
             logger.info("done")
         }
