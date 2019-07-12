@@ -32,6 +32,9 @@ dependencies {
 
     // Use the Kotlin JUnit integration.
     testImplementation 'org.jetbrains.kotlin:kotlin-test-junit'
+
+    // https://mvnrepository.com/artifact/org.apache.activemq/artemis-server
+    compile group: 'org.apache.activemq', name: 'artemis-server', version: '2.9.0'
 }
 
 // Define the main class for the application.

@@ -6,10 +6,59 @@ package server
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.annotation.Bean
+import java.util.*
+import javax.jms.ConnectionFactory
+import javax.jms.Queue
+import javax.jms.Session
+import javax.jms.TextMessage
+import javax.naming.InitialContext
 
 @SpringBootApplication
 open class App
 
 fun main(args: Array<String>) {
     SpringApplication.run(App::class.java, *args)
+}
+
+fun embeddedExample(){
+//    // Step 1. Configure security.
+//    val securityConfig = SecurityConfiguration()
+//    securityConfig.addUser("guest", "guest")
+//    securityConfig.addRole("guest", "guest")
+//    securityConfig.setDefaultUser("guest")
+//    val securityManager = ActiveMQJAASSecurityManager(InVMLoginModule::class.java!!.getName(), securityConfig)
+//
+//    // Step 2. Create and start embedded broker.
+//    val server = ActiveMQServers.newActiveMQServer("broker.xml", null, securityManager)
+//    server.start()
+//    println("Started Embedded Broker")
+//
+//    var initialContext: InitialContext? = null
+//    // Step 3. Create an initial context to perform the JNDI lookup.
+//    initialContext = InitialContext()
+//
+//    // Step 4. Look-up the JMS queue
+//    val queue = initialContext.lookup("queue/exampleQueue") as Queue
+//
+//    // Step 5. Look-up the JMS connection factory
+//    val cf = initialContext.lookup("ConnectionFactory") as ConnectionFactory
+//
+//    // Step 6. Send and receive a message using JMS API
+//    try {
+//        cf.createConnection().use { connection ->
+//            val session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE)
+//            val producer = session.createProducer(queue)
+//            val message = session.createTextMessage("Hello sent at " + Date())
+//            println("Sending message: " + message.text)
+//            producer.send(message)
+//            val messageConsumer = session.createConsumer(queue)
+//            connection.start()
+//            val messageReceived = messageConsumer.receive(1000) as TextMessage
+//            println("Received message:" + messageReceived.text)
+//        }
+//    } finally {
+//        // Step 7. Stop the embedded broker.
+//        server.stop()
+//        println("Stopped the Embedded Broker")
+//    }
 }
