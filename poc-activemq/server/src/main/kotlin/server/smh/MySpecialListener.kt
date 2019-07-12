@@ -28,12 +28,12 @@ open class MySpecialListener{
             // of dat de jms session ge-commit word
 
             // test: je doet 2 findCllas met zo een repository en checkt met de debugger
-            // of telkens dezelfde session gebruikt word
+            // of telkens dezelfde session gebruikt word, gaat goed met de currentSession etc?
         }
         catch(ex: Exception){
 
             // als hier moet de message in de db ge-update worden met de foutmelding
-            
+
             logger.error("Fout", ex)
             session.rollback()
         }
