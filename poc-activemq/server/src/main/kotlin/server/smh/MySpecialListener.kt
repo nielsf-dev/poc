@@ -34,7 +34,7 @@ open class MySpecialListener{
 
             // als hier moet de message in de db ge-update worden met de foutmelding
 
-            logger.error("Fout", ex)
+            logger.error("Fout bij verwerken bericht", ex)
             session.rollback()
         }
     }

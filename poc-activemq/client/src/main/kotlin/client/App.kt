@@ -12,6 +12,7 @@ import org.springframework.jms.core.MessageCreator
 import org.springframework.jms.support.destination.DynamicDestinationResolver
 import javax.jms.DeliveryMode
 import javax.jms.Destination
+import javax.jms.Message
 import javax.jms.Session
 
 
@@ -26,9 +27,15 @@ open class App {
             logger.info("we here")
 
             template.defaultDestinationName  = "example2"
-            template.send { session -> session.createTextMessage("Hans Kazan is heel wat van plan.") }
+            for(i in 1..50) {
+                val t = Thread{
+                    template.send { session -> session.createTextMessage("Hans Kazan is heel wat van plan.") }
+                }
+                t.start()
 
-           // doOldSchoolSend()
+                // doOldSchoolSend()
+            }
+
             //run()
             logger.info("done")
         }
@@ -36,7 +43,8 @@ open class App {
 }
 
 fun main(args: Array<String>) {
-    SpringApplication.run(App::class.java, *args).close()
+    //SpringApplication.run(App::class.java, *args).close()
+    doOldSchoolBrowse()
 }
 
 fun run() {
@@ -74,6 +82,27 @@ fun run() {
         e.printStackTrace()
     }
 
+}
+
+private fun doOldSchoolBrowse() {
+    val connectionFactory = ActiveMQConnectionFactory("tcp://192.168.63.81:61616")
+    val connection = connectionFactory.createConnection("root", "toor")
+
+    connection.use {
+        connection.start()
+        val session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE)
+
+        session.use {
+            val dlq = session.createQueue("DLQ")
+            val browser = session.createBrowser(dlq)
+            browser.use {
+                for (any in browser.enumeration) {
+                    val message = any as Message
+                    println(message.jmsMessageID)
+                }
+            }
+        }
+    }
 }
 
 private fun doOldSchoolSend() {
