@@ -3,12 +3,52 @@
  */
 package poc.json
 
+import com.fasterxml.jackson.core.type.TypeReference
+import com.fasterxml.jackson.databind.ObjectMapper
+import poc.json.domain.Car
+import poc.json.domain.KingFrerichs
 import kotlin.test.Test
 import kotlin.test.assertNotNull
 
 class AppTest {
-    @Test fun testAppHasAGreeting() {
+
+    @Test
+    fun testAppHasAGreeting() {
         val classUnderTest = App()
         assertNotNull(classUnderTest.greeting, "app should have a greeting")
+    }
+
+    @Test
+    fun basisJson(){
+        val objectMapper = ObjectMapper()
+        val car = Car("Ferrari","Pink")
+
+        val asString = objectMapper.writeValueAsString(car)
+        println(asString)
+
+        val jsonString = "{\"name\":\"Honda\",\"color\":\"Black\"}"
+        val car1 = objectMapper.readValue(jsonString, Car::class.java)
+        println(car1.name)
+    }
+
+    @Test
+    fun lists(){
+        val objectMapper = ObjectMapper()
+        val jsonCarArray = "[{ \"name\" : \"Fiat\", \"color\" : \"Geel\" }, { \"name\" : \"Range Rover\", \"color\" : \"rood\" }]"
+        val cars: List<Car> = objectMapper.readValue(jsonCarArray, object : TypeReference<List<Car>>(){})
+
+        for (car in cars){
+            println(car.name)
+        }
+
+        val king = KingFrerichs()
+        king.cars.add(Car("asdf","asdf"))
+        king.cars.add(Car("jemallemoer","oranje"))
+        val asString = objectMapper.writeValueAsString(king)
+        println(asString)
+
+        val kingString = "{\"adelijkeTitel\":\"De almachtige\",\"cars\":[{\"name\":\"asdf\",\"color\":\"asdf\"},{\"name\":\"jemallemoer\",\"color\":\"oranje\"}]}"
+        val kingSupreme = objectMapper.readValue(kingString, KingFrerichs::class.java)
+        println(kingSupreme.adelijkeTitel)
     }
 }
