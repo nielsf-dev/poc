@@ -9,8 +9,9 @@ import org.springframework.context.annotation.Bean;
 public class WebserviceApplication {
 
     @Bean
-    public CommandLineRunner commandLineRunner() {
+    public CommandLineRunner commandLineRunner(WebserviceClient webServiceClient) {
         return args -> {
+            webServiceClient.callParseMessage();
             System.out.println("werkt");
             System.out.println("werkt");
         };
