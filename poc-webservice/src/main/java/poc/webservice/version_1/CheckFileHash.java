@@ -6,11 +6,10 @@
 //
 
 
-package nl.visi.schemas.soap.version_1;
+package poc.webservice.version_1;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -25,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="TestLogResult" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="fileIdentification" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -36,36 +35,35 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "testLogResult"
+    "fileIdentification"
 })
-@XmlRootElement(name = "TestLogResponse")
-public class TestLogResponse {
+@XmlRootElement(name = "checkFileHash")
+public class CheckFileHash {
 
-    @XmlElement(name = "TestLogResult")
-    protected String testLogResult;
+    protected String fileIdentification;
 
     /**
-     * Gets the value of the testLogResult property.
+     * Gets the value of the fileIdentification property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getTestLogResult() {
-        return testLogResult;
+    public String getFileIdentification() {
+        return fileIdentification;
     }
 
     /**
-     * Sets the value of the testLogResult property.
+     * Sets the value of the fileIdentification property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setTestLogResult(String value) {
-        this.testLogResult = value;
+    public void setFileIdentification(String value) {
+        this.fileIdentification = value;
     }
 
 }

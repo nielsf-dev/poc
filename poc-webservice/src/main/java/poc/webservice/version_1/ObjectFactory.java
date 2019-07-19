@@ -6,7 +6,7 @@
 //
 
 
-package nl.visi.schemas.soap.version_1;
+package poc.webservice.version_1;
 
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;

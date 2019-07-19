@@ -6,7 +6,7 @@
 //
 
 
-package nl.visi.schemas.soap.version_1;
+package poc.webservice.version_1;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,17 +18,16 @@ import javax.xml.namespace.QName;
 
 
 /**
- * <p>Java class for SOAPServerURL complex type.
+ * <p>Java class for SOAPCentralServerURL complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="SOAPServerURL">
+ * &lt;complexType name="SOAPCentralServerURL">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="sender" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
- *         &lt;element name="receiver" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="server" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;anyAttribute/>
  *     &lt;/restriction>
@@ -39,63 +38,37 @@ import javax.xml.namespace.QName;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "SOAPServerURL", propOrder = {
-    "sender",
-    "receiver"
+@XmlType(name = "SOAPCentralServerURL", propOrder = {
+    "server"
 })
-public class SOAPServerURL {
+public class SOAPCentralServerURL {
 
-    protected String sender;
-    protected String receiver;
+    protected String server;
     @XmlAnyAttribute
     private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
     /**
-     * Gets the value of the sender property.
+     * Gets the value of the server property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getSender() {
-        return sender;
+    public String getServer() {
+        return server;
     }
 
     /**
-     * Sets the value of the sender property.
+     * Sets the value of the server property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setSender(String value) {
-        this.sender = value;
-    }
-
-    /**
-     * Gets the value of the receiver property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getReceiver() {
-        return receiver;
-    }
-
-    /**
-     * Sets the value of the receiver property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setReceiver(String value) {
-        this.receiver = value;
+    public void setServer(String value) {
+        this.server = value;
     }
 
     /**

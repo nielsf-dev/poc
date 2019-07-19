@@ -6,4 +6,4 @@
 //
 
 @javax.xml.bind.annotation.XmlSchema(namespace = "http://www.visi.nl/schemas/soap/version-1.0", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
-package nl.visi.schemas.soap.version_1;
+package poc.webservice.version_1;

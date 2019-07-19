@@ -6,7 +6,7 @@
 //
 
 
-package nl.visi.schemas.soap.version_1;
+package poc.webservice.version_1;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="logMessage" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="getMaxRequestLengthResult" type="{http://www.w3.org/2001/XMLSchema}long"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,35 +35,27 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "logMessage"
+    "getMaxRequestLengthResult"
 })
-@XmlRootElement(name = "TestLog")
-public class TestLog {
+@XmlRootElement(name = "getMaxRequestLengthResponse")
+public class GetMaxRequestLengthResponse {
 
-    protected String logMessage;
+    protected long getMaxRequestLengthResult;
 
     /**
-     * Gets the value of the logMessage property.
+     * Gets the value of the getMaxRequestLengthResult property.
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
      */
-    public String getLogMessage() {
-        return logMessage;
+    public long getGetMaxRequestLengthResult() {
+        return getMaxRequestLengthResult;
     }
 
     /**
-     * Sets the value of the logMessage property.
+     * Sets the value of the getMaxRequestLengthResult property.
      * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
      */
-    public void setLogMessage(String value) {
-        this.logMessage = value;
+    public void setGetMaxRequestLengthResult(long value) {
+        this.getMaxRequestLengthResult = value;
     }
 
 }

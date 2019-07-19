@@ -6,7 +6,7 @@
 //
 
 
-package nl.visi.schemas.soap.version_1;
+package poc.webservice.version_1;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="getMaxRequestLengthResult" type="{http://www.w3.org/2001/XMLSchema}long"/>
+ *         &lt;element name="parseMessageResult" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,27 +35,35 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "getMaxRequestLengthResult"
+    "parseMessageResult"
 })
-@XmlRootElement(name = "getMaxRequestLengthResponse")
-public class GetMaxRequestLengthResponse {
+@XmlRootElement(name = "parseMessageResponse")
+public class ParseMessageResponse {
 
-    protected long getMaxRequestLengthResult;
+    protected String parseMessageResult;
 
     /**
-     * Gets the value of the getMaxRequestLengthResult property.
+     * Gets the value of the parseMessageResult property.
      * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
      */
-    public long getGetMaxRequestLengthResult() {
-        return getMaxRequestLengthResult;
+    public String getParseMessageResult() {
+        return parseMessageResult;
     }
 
     /**
-     * Sets the value of the getMaxRequestLengthResult property.
+     * Sets the value of the parseMessageResult property.
      * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
      */
-    public void setGetMaxRequestLengthResult(long value) {
-        this.getMaxRequestLengthResult = value;
+    public void setParseMessageResult(String value) {
+        this.parseMessageResult = value;
     }
 
 }

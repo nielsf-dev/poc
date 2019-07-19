@@ -6,7 +6,7 @@
 //
 
 
-package nl.visi.schemas.soap.version_1;
+package poc.webservice.version_1;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="fileIdentification" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,35 +35,35 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "fileIdentification"
+    "message"
 })
-@XmlRootElement(name = "checkFileHash")
-public class CheckFileHash {
+@XmlRootElement(name = "parseMessage")
+public class ParseMessage {
 
-    protected String fileIdentification;
+    protected String message;
 
     /**
-     * Gets the value of the fileIdentification property.
+     * Gets the value of the message property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getFileIdentification() {
-        return fileIdentification;
+    public String getMessage() {
+        return message;
     }
 
     /**
-     * Sets the value of the fileIdentification property.
+     * Sets the value of the message property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setFileIdentification(String value) {
-        this.fileIdentification = value;
+    public void setMessage(String value) {
+        this.message = value;
     }
 
 }

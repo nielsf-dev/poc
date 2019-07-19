@@ -6,29 +6,29 @@
 //
 
 
-package nl.visi.schemas.soap.version_1;
+package poc.webservice.version_1;
 
 import java.util.HashMap;
 import java.util.Map;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAnyAttribute;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.namespace.QName;
 
 
 /**
- * <p>Java class for UniqueID complex type.
+ * <p>Java class for SOAPServerURL complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="UniqueID">
+ * &lt;complexType name="SOAPServerURL">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="ID" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="sender" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="receiver" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;anyAttribute/>
  *     &lt;/restriction>
@@ -39,38 +39,63 @@ import javax.xml.namespace.QName;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "UniqueID", propOrder = {
-    "id"
+@XmlType(name = "SOAPServerURL", propOrder = {
+    "sender",
+    "receiver"
 })
-public class UniqueID {
+public class SOAPServerURL {
 
-    @XmlElement(name = "ID")
-    protected String id;
+    protected String sender;
+    protected String receiver;
     @XmlAnyAttribute
     private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
     /**
-     * Gets the value of the id property.
+     * Gets the value of the sender property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getID() {
-        return id;
+    public String getSender() {
+        return sender;
     }
 
     /**
-     * Sets the value of the id property.
+     * Sets the value of the sender property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setID(String value) {
-        this.id = value;
+    public void setSender(String value) {
+        this.sender = value;
+    }
+
+    /**
+     * Gets the value of the receiver property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getReceiver() {
+        return receiver;
+    }
+
+    /**
+     * Sets the value of the receiver property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setReceiver(String value) {
+        this.receiver = value;
     }
 
     /**

@@ -6,7 +6,7 @@
 //
 
 
-package nl.visi.schemas.soap.version_1;
+package poc.webservice.version_1;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="parseMessageConfirmationResult" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="logMessage" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,35 +35,35 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "parseMessageConfirmationResult"
+    "logMessage"
 })
-@XmlRootElement(name = "parseMessageConfirmationResponse")
-public class ParseMessageConfirmationResponse {
+@XmlRootElement(name = "TestLog")
+public class TestLog {
 
-    protected String parseMessageConfirmationResult;
+    protected String logMessage;
 
     /**
-     * Gets the value of the parseMessageConfirmationResult property.
+     * Gets the value of the logMessage property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getParseMessageConfirmationResult() {
-        return parseMessageConfirmationResult;
+    public String getLogMessage() {
+        return logMessage;
     }
 
     /**
-     * Sets the value of the parseMessageConfirmationResult property.
+     * Sets the value of the logMessage property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setParseMessageConfirmationResult(String value) {
-        this.parseMessageConfirmationResult = value;
+    public void setLogMessage(String value) {
+        this.logMessage = value;
     }
 
 }

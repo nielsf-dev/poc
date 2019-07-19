@@ -6,7 +6,7 @@
 //
 
 
-package nl.visi.schemas.soap.version_1;
+package poc.webservice.version_1;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="checkFileHashResult" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,35 +35,35 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "checkFileHashResult"
+    "message"
 })
-@XmlRootElement(name = "checkFileHashResponse")
-public class CheckFileHashResponse {
+@XmlRootElement(name = "parseMessageConfirmation")
+public class ParseMessageConfirmation {
 
-    protected String checkFileHashResult;
+    protected String message;
 
     /**
-     * Gets the value of the checkFileHashResult property.
+     * Gets the value of the message property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getCheckFileHashResult() {
-        return checkFileHashResult;
+    public String getMessage() {
+        return message;
     }
 
     /**
-     * Sets the value of the checkFileHashResult property.
+     * Sets the value of the message property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCheckFileHashResult(String value) {
-        this.checkFileHashResult = value;
+    public void setMessage(String value) {
+        this.message = value;
     }
 
 }

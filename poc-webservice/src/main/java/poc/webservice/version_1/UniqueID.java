@@ -6,28 +6,29 @@
 //
 
 
-package nl.visi.schemas.soap.version_1;
+package poc.webservice.version_1;
 
 import java.util.HashMap;
 import java.util.Map;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAnyAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.namespace.QName;
 
 
 /**
- * <p>Java class for Attachments complex type.
+ * <p>Java class for UniqueID complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="Attachments">
+ * &lt;complexType name="UniqueID">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="count" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="ID" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *       &lt;anyAttribute/>
  *     &lt;/restriction>
@@ -38,37 +39,38 @@ import javax.xml.namespace.QName;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "Attachments", propOrder = {
-    "count"
+@XmlType(name = "UniqueID", propOrder = {
+    "id"
 })
-public class Attachments {
+public class UniqueID {
 
-    protected String count;
+    @XmlElement(name = "ID")
+    protected String id;
     @XmlAnyAttribute
     private Map<QName, String> otherAttributes = new HashMap<QName, String>();
 
     /**
-     * Gets the value of the count property.
+     * Gets the value of the id property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getCount() {
-        return count;
+    public String getID() {
+        return id;
     }
 
     /**
-     * Sets the value of the count property.
+     * Sets the value of the id property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setCount(String value) {
-        this.count = value;
+    public void setID(String value) {
+        this.id = value;
     }
 
     /**

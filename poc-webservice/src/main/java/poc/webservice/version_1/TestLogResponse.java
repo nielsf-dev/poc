@@ -6,10 +6,11 @@
 //
 
 
-package nl.visi.schemas.soap.version_1;
+package poc.webservice.version_1;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
@@ -24,7 +25,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="message" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *         &lt;element name="TestLogResult" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -35,35 +36,36 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "message"
+    "testLogResult"
 })
-@XmlRootElement(name = "parseMessage")
-public class ParseMessage {
+@XmlRootElement(name = "TestLogResponse")
+public class TestLogResponse {
 
-    protected String message;
+    @XmlElement(name = "TestLogResult")
+    protected String testLogResult;
 
     /**
-     * Gets the value of the message property.
+     * Gets the value of the testLogResult property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getMessage() {
-        return message;
+    public String getTestLogResult() {
+        return testLogResult;
     }
 
     /**
-     * Sets the value of the message property.
+     * Sets the value of the testLogResult property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setMessage(String value) {
-        this.message = value;
+    public void setTestLogResult(String value) {
+        this.testLogResult = value;
     }
 
 }
