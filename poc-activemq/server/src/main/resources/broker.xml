@@ -30,6 +30,7 @@ under the License.
 
 
         <persistence-enabled>true</persistence-enabled>
+        <security-enabled>false</security-enabled>
 
         <!-- this could be ASYNCIO, MAPPED, NIO
              ASYNCIO: Linux Libaio

@@ -24,8 +24,14 @@ fun main(args: Array<String>) {
 }
 
 fun embeddedExample(){
+    val securityConfig = SecurityConfiguration()
+//    securityConfig.addUser("guest", "guest")
+//    securityConfig.addRole("guest", "guest")
+//    securityConfig.defaultUser = "guest"
+    val securityManager = ActiveMQJAASSecurityManager(InVMLoginModule::class.java.name, securityConfig)
+
     // Step 2. Create and start embedded broker.
-    val server = ActiveMQServers.newActiveMQServer("broker.xml", null, null)
+    val server = ActiveMQServers.newActiveMQServer("broker.xml", null, securityManager)
     server.start()
     println("Started Embedded Broker")
 
