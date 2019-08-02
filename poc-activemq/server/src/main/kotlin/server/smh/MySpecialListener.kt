@@ -1,20 +1,20 @@
 package server.smh
 
-import org.slf4j.LoggerFactory
-import org.springframework.jms.annotation.JmsListener
-import org.springframework.stereotype.Component
+//import org.slf4j.LoggerFactory
+//import org.springframework.jms.annotation.JmsListener
+//import org.springframework.stereotype.Component
 import java.lang.Exception
 import javax.jms.Session
 import javax.jms.TextMessage
 
-@Component
+//@Component
 open class MySpecialListener{
 
-    private val logger = LoggerFactory.getLogger(MySpecialListener::class.java)
+  //  private val logger = LoggerFactory.getLogger(MySpecialListener::class.java)
 
-    @JmsListener(destination="example2")
+  //  @JmsListener(destination="example2")
     fun processMessage(message: TextMessage, session: Session){
-        logger.info(message.text)
+      //  logger.info(message.text)
 
         try {
             // message opslaan in de database met repository injected here
@@ -34,7 +34,7 @@ open class MySpecialListener{
 
             // als hier moet de message in de db ge-update worden met de foutmelding
 
-            logger.error("Fout bij verwerken bericht", ex)
+          //  logger.error("Fout bij verwerken bericht", ex)
             session.rollback()
         }
     }

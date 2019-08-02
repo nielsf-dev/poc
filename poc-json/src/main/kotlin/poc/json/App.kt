@@ -11,5 +11,8 @@ class App {
 }
 
 fun main(args: Array<String>) {
+    System.getenv().forEach { t, u ->
+        println("$t=$u")
+    }
     println(App().greeting)
 }

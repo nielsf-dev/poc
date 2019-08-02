@@ -21,7 +21,7 @@ class AppTest {
     @Test
     fun basisJson(){
         val objectMapper = ObjectMapper()
-        val car = Car("Ferrari","Pink")
+        val car = Car("Ferrari","Pink",234234234.234)
 
         val asString = objectMapper.writeValueAsString(car)
         println(asString)
@@ -42,8 +42,8 @@ class AppTest {
         }
 
         val king = KingFrerichs()
-        king.cars.add(Car("asdf","asdf"))
-        king.cars.add(Car("jemallemoer","oranje"))
+        king.cars.add(Car("asdf","asdf", 8.0))
+        king.cars.add(Car("jemallemoer","oranje",345.345))
         val asString = objectMapper.writeValueAsString(king)
         println(asString)
 
