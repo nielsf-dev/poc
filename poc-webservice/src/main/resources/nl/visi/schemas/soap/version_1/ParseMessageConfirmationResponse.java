@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -30,12 +30,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "parseMessageConfirmationResult"
+        "parseMessageConfirmationResult"
 })
 @XmlRootElement(name = "parseMessageConfirmationResponse")
 public class ParseMessageConfirmationResponse {
@@ -44,11 +42,9 @@ public class ParseMessageConfirmationResponse {
 
     /**
      * Gets the value of the parseMessageConfirmationResult property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getParseMessageConfirmationResult() {
         return parseMessageConfirmationResult;
@@ -56,11 +52,9 @@ public class ParseMessageConfirmationResponse {
 
     /**
      * Sets the value of the parseMessageConfirmationResult property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setParseMessageConfirmationResult(String value) {
         this.parseMessageConfirmationResult = value;

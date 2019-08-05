@@ -20,9 +20,9 @@ import javax.xml.namespace.QName;
 
 /**
  * <p>Java class for UniqueID complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="UniqueID">
  *   &lt;complexContent>
@@ -35,12 +35,10 @@ import javax.xml.namespace.QName;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "UniqueID", propOrder = {
-    "id"
+        "id"
 })
 public class UniqueID {
 
@@ -51,11 +49,9 @@ public class UniqueID {
 
     /**
      * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getID() {
         return id;
@@ -63,11 +59,9 @@ public class UniqueID {
 
     /**
      * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setID(String value) {
         this.id = value;
@@ -75,17 +69,15 @@ public class UniqueID {
 
     /**
      * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
+     *
      * <p>
-     * the map is keyed by the name of the attribute and 
+     * the map is keyed by the name of the attribute and
      * the value is the string value of the attribute.
-     * 
+     * <p>
      * the map returned by this method is live, and you can add new attribute
      * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
+     *
+     * @return always non-null
      */
     public Map<QName, String> getOtherAttributes() {
         return otherAttributes;

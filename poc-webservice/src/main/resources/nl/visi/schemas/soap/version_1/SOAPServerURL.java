@@ -19,9 +19,9 @@ import javax.xml.namespace.QName;
 
 /**
  * <p>Java class for SOAPServerURL complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType name="SOAPServerURL">
  *   &lt;complexContent>
@@ -35,13 +35,11 @@ import javax.xml.namespace.QName;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "SOAPServerURL", propOrder = {
-    "sender",
-    "receiver"
+        "sender",
+        "receiver"
 })
 public class SOAPServerURL {
 
@@ -52,11 +50,9 @@ public class SOAPServerURL {
 
     /**
      * Gets the value of the sender property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getSender() {
         return sender;
@@ -64,11 +60,9 @@ public class SOAPServerURL {
 
     /**
      * Sets the value of the sender property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setSender(String value) {
         this.sender = value;
@@ -76,11 +70,9 @@ public class SOAPServerURL {
 
     /**
      * Gets the value of the receiver property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getReceiver() {
         return receiver;
@@ -88,11 +80,9 @@ public class SOAPServerURL {
 
     /**
      * Sets the value of the receiver property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setReceiver(String value) {
         this.receiver = value;
@@ -100,17 +90,15 @@ public class SOAPServerURL {
 
     /**
      * Gets a map that contains attributes that aren't bound to any typed property on this class.
-     * 
+     *
      * <p>
-     * the map is keyed by the name of the attribute and 
+     * the map is keyed by the name of the attribute and
      * the value is the string value of the attribute.
-     * 
+     * <p>
      * the map returned by this method is live, and you can add new attribute
      * by updating the map directly. Because of this design, there's no setter.
-     * 
-     * 
-     * @return
-     *     always non-null
+     *
+     * @return always non-null
      */
     public Map<QName, String> getOtherAttributes() {
         return otherAttributes;

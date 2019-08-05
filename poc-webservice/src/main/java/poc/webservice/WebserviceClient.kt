@@ -9,7 +9,7 @@ import org.springframework.ws.client.core.support.WebServiceGatewaySupport
 class WebserviceClient : WebServiceGatewaySupport {
     constructor()
 
-    fun callParseMessage(){
+    fun callParseMessage() {
         val parseMessage = ParseMessage()
         parseMessage.message = "HET bericht"
 

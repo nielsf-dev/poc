@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -32,14 +32,12 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "fileIdentification",
-    "buffer",
-    "offset"
+        "fileIdentification",
+        "buffer",
+        "offset"
 })
 @XmlRootElement(name = "uploadChunk")
 public class UploadChunk {
@@ -50,11 +48,9 @@ public class UploadChunk {
 
     /**
      * Gets the value of the fileIdentification property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getFileIdentification() {
         return fileIdentification;
@@ -62,11 +58,9 @@ public class UploadChunk {
 
     /**
      * Sets the value of the fileIdentification property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setFileIdentification(String value) {
         this.fileIdentification = value;
@@ -74,10 +68,9 @@ public class UploadChunk {
 
     /**
      * Gets the value of the buffer property.
-     * 
-     * @return
-     *     possible object is
-     *     byte[]
+     *
+     * @return possible object is
+     * byte[]
      */
     public byte[] getBuffer() {
         return buffer;
@@ -85,10 +78,9 @@ public class UploadChunk {
 
     /**
      * Sets the value of the buffer property.
-     * 
-     * @param value
-     *     allowed object is
-     *     byte[]
+     *
+     * @param value allowed object is
+     *              byte[]
      */
     public void setBuffer(byte[] value) {
         this.buffer = value;
@@ -96,7 +88,6 @@ public class UploadChunk {
 
     /**
      * Gets the value of the offset property.
-     * 
      */
     public long getOffset() {
         return offset;
@@ -104,7 +95,6 @@ public class UploadChunk {
 
     /**
      * Sets the value of the offset property.
-     * 
      */
     public void setOffset(long value) {
         this.offset = value;

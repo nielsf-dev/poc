@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for anonymous complex type.
- * 
+ *
  * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
  * <pre>
  * &lt;complexType>
  *   &lt;complexContent>
@@ -30,12 +30,10 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "checkFileHashResult"
+        "checkFileHashResult"
 })
 @XmlRootElement(name = "checkFileHashResponse")
 public class CheckFileHashResponse {
@@ -44,11 +42,9 @@ public class CheckFileHashResponse {
 
     /**
      * Gets the value of the checkFileHashResult property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
+     *
+     * @return possible object is
+     * {@link String }
      */
     public String getCheckFileHashResult() {
         return checkFileHashResult;
@@ -56,11 +52,9 @@ public class CheckFileHashResponse {
 
     /**
      * Sets the value of the checkFileHashResult property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *
+     * @param value allowed object is
+     *              {@link String }
      */
     public void setCheckFileHashResult(String value) {
         this.checkFileHashResult = value;
