@@ -15,7 +15,7 @@ class WebserviceClient : WebServiceGatewaySupport {
         val parseMessage = ParseMessageRequest()
         parseMessage.message = "HET bericht"
 
-        val jaxb2Marshaller : Jaxb2Marshaller = Jaxb2Marshaller()
+        val jaxb2Marshaller = Jaxb2Marshaller()
         jaxb2Marshaller.setPackagesToScan(ClassUtils.getPackageName(ParseMessageRequest::class.java))
         jaxb2Marshaller.setPackagesToScan(ClassUtils.getPackageName(ParseMessageResponse::class.java))
 
