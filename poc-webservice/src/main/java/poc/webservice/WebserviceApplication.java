@@ -10,6 +10,7 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.ws.config.annotation.EnableWs;
 import org.springframework.ws.transport.http.MessageDispatcherServlet;
 import org.springframework.ws.wsdl.wsdl11.DefaultWsdl11Definition;
+import org.springframework.ws.wsdl.wsdl11.SimpleWsdl11Definition;
 import org.springframework.xml.xsd.SimpleXsdSchema;
 import org.springframework.xml.xsd.XsdSchema;
 
@@ -20,7 +21,7 @@ public class WebserviceApplication {
     @Bean
     public CommandLineRunner commandLineRunner(WebserviceClient webServiceClient) {
         return args -> {
-          //  webServiceClient.callParseMessage();
+            webServiceClient.callParseMessage();
             System.out.println("werkt");
             System.out.println("werkt");
         };
@@ -34,19 +35,21 @@ public class WebserviceApplication {
         return new ServletRegistrationBean(servlet, "/ws/*");
     }
 
-    @Bean(name = "countries")
-    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema parseMessage) {
+    @Bean(name = "parseMessage")
+    public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema parseMessageSchema) {
         DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
         wsdl11Definition.setPortTypeName("ParseMessagePort");
         wsdl11Definition.setLocationUri("/ws");
         wsdl11Definition.setTargetNamespace("http://www.visi.nl/schemas/soap/version-1.0");
-        wsdl11Definition.setSchema(parseMessage);
+        wsdl11Definition.setSchema(parseMessageSchema);
 
         return wsdl11Definition;
+
+       // return new SimpleWsdl11Definition(new ClassPathResource("visi.wsdl"));
     }
 
     @Bean
-    public XsdSchema parseMessage() {
+    public XsdSchema parseMessageSchema() {
         return new SimpleXsdSchema(new ClassPathResource("parseMessage.xsd"));
     }
 
