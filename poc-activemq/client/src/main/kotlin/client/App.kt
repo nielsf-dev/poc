@@ -1,59 +1,61 @@
 package client
 
-import org.apache.activemq.ActiveMQConnectionFactory
+//import org.apache.activemq.ActiveMQConnectionFactory
+import org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.context.annotation.Bean
-import org.springframework.jms.core.JmsTemplate
-import org.springframework.jms.core.MessageCreator
-import org.springframework.jms.support.destination.DynamicDestinationResolver
+//import org.springframework.jms.core.JmsTemplate
+//import org.springframework.jms.core.MessageCreator
+//import org.springframework.jms.support.destination.DynamicDestinationResolver
 import javax.jms.DeliveryMode
 import javax.jms.Destination
 import javax.jms.Message
 import javax.jms.Session
 
-
-@SpringBootApplication
-open class App {
-
-    private val logger: Logger = LoggerFactory.getLogger(App::class.java)
-
-    @Bean
-    open fun commandLineRunner(template: JmsTemplate) : CommandLineRunner{
-        return CommandLineRunner {
-            logger.info("we here")
-
-            template.defaultDestinationName  = "example2"
-            for(i in 1..50) {
-                val t = Thread{
-                    template.send { session -> session.createTextMessage("Hans Kazan is heel wat van plan.") }
-                }
-                t.start()
-
-                // doOldSchoolSend()
-            }
-
-            //run()
-            logger.info("done")
-        }
-    }
-}
+//
+//@SpringBootApplication
+//open class App {
+//
+//    private val logger: Logger = LoggerFactory.getLogger(App::class.java)
+//
+//    @Bean
+//    open fun commandLineRunner(template: JmsTemplate) : CommandLineRunner{
+//        return CommandLineRunner {
+//            logger.info("we here")
+//
+//            template.defaultDestinationName  = "example2"
+//            for(i in 1..50) {
+//                val t = Thread{
+//                    template.send { session -> session.createTextMessage("Hans Kazan is heel wat van plan.") }
+//                }
+//                t.start()
+//
+//                // doOldSchoolSend()
+//            }
+//
+//            //run()
+//            logger.info("done")
+//        }
+//    }
+//}
 
 fun main(args: Array<String>) {
     //SpringApplication.run(App::class.java, *args).close()
-    doOldSchoolBrowse()
+   // doOldSchoolBrowse()
+    run()
 }
 
 fun run() {
     try {
         // Create a ConnectionFactory
-        val connectionFactory = ActiveMQConnectionFactory("tcp://192.168.63.81:61616")
+        val connectionFactory = ActiveMQConnectionFactory("tcp://localhost:61616")
 
         // Create a Connection
-        val connection = connectionFactory.createConnection("root","toor")
+        val connection = connectionFactory.createConnection()
         connection.start()
 
         // Create a Session

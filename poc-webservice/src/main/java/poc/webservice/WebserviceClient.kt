@@ -1,45 +1,40 @@
 package poc.webservice
 
+import nl.visi.schemas.soap.version_1.ParseMessageConfirmationRequest
+import nl.visi.schemas.soap.version_1.ParseMessageConfirmationResponse
+import nl.visi.schemas.soap.version_1.ParseMessageRequest
+import nl.visi.schemas.soap.version_1.ParseMessageResponse
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.oxm.jaxb.Jaxb2Marshaller
+import org.springframework.stereotype.Component
+import org.springframework.util.ClassUtils
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport
-import org.springframework.ws.soap.SoapMessage
-import poc.webservice.version_1.ObjectFactory
-import poc.webservice.version_1.ParseMessage
-import poc.webservice.version_1.SOAPServerURL
-import poc.webservice.version_1.UniqueID
-import javax.xml.bind.JAXBContext
 
-class WebserviceClient : WebServiceGatewaySupport {
-    constructor()
+@Component
+class WebserviceClient @Autowired constructor(marshaller: Jaxb2Marshaller) : WebServiceGatewaySupport() {
 
-    fun callParseMessage(){
-        val parseMessage = ParseMessage()
+    init{
+        webServiceTemplate.marshaller = marshaller
+        webServiceTemplate.unmarshaller = marshaller
+    }
+
+    fun callParseMessage() {
+        val parseMessage = ParseMessageRequest()
         parseMessage.message = "HET bericht"
 
-        webServiceTemplate.marshalSendAndReceive("http://localhost:5000/soap.asmx", parseMessage) {
-            val soapMessage : SoapMessage = it as SoapMessage
+//        val jaxb2Marshaller = Jaxb2Marshaller()
+//        jaxb2Marshaller.setPackagesToScan(ClassUtils.getPackageName(ParseMessageRequest::class.java))
+//        jaxb2Marshaller.setPackagesToScan(ClassUtils.getPackageName(ParseMessageResponse::class.java))
+//
+//        webServiceTemplate.marshaller = jaxb2Marshaller
+//        webServiceTemplate.unmarshaller = jaxb2Marshaller
 
-            // Unique ID
-            val objectFactory = ObjectFactory()
-            val uniqueID = UniqueID()
-            uniqueID.id = "somethingunique"
-            val createUniqueID = objectFactory.createUniqueID(uniqueID)
+        val marshalSendAndReceive = webServiceTemplate.marshalSendAndReceive("http://localhost:8080/ws", parseMessage) as ParseMessageResponse
+        println(marshalSendAndReceive.message)
 
-            val uniqueIdContext = JAXBContext.newInstance(UniqueID::class.java)
-            val uniqueIdMarshaller = uniqueIdContext.createMarshaller()
-            uniqueIdMarshaller.marshal(createUniqueID, soapMessage.soapHeader.result)
-
-            // SoapServer URL
-            val soapServerUrl = SOAPServerURL()
-            soapServerUrl.sender = "mysender"
-            soapServerUrl.receiver = "myreceiver"
-            val createSOAPServerURL = objectFactory.createSOAPServerURL(soapServerUrl)
-
-            val soapServerUrlContext = JAXBContext.newInstance(SOAPServerURL::class.java)
-            val soapServerUrlMarshaller = soapServerUrlContext.createMarshaller()
-            soapServerUrlMarshaller.marshal(createSOAPServerURL, soapMessage.soapHeader.result)
-
-            // SoapAction
-            soapMessage.soapAction = "http://www.visi.nl/schemas/soap/version-1.0/parseMessage"
-        }
+        val conf = ParseMessageConfirmationRequest()
+        conf.message = "hele kleine lettertjes"
+        val receive = webServiceTemplate.marshalSendAndReceive("http://localhost:8080/ws", conf) as ParseMessageConfirmationResponse
+        println(receive.message)
     }
 }

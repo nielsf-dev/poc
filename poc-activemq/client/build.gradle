@@ -25,7 +25,7 @@ repositories {
 dependencies {
 
     implementation "org.springframework.boot:spring-boot-starter"
-    implementation "org.springframework.boot:spring-boot-starter-activemq"
+   // implementation "org.springframework.boot:spring-boot-starter-activemq"
 
     // Use the Kotlin JDK 8 standard library.
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8'

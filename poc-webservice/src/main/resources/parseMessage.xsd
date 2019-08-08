@@ -1,0 +1,34 @@
+<s:schema xmlns:s="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.visi.nl/schemas/soap/version-1.0" elementFormDefault="qualified">
+
+    <s:element name="parseMessageRequest">
+        <s:complexType>
+            <s:sequence>
+                <s:element name="message" type="s:string"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+
+    <s:element name="parseMessageResponse">
+        <s:complexType>
+            <s:sequence>
+                <s:element name="message" type="s:string"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+
+    <s:element name="parseMessageConfirmationRequest">
+        <s:complexType>
+            <s:sequence>
+                <s:element name="message" type="s:string"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+
+    <s:element name="parseMessageConfirmationResponse">
+        <s:complexType>
+            <s:sequence>
+                <s:element name="message" type="s:string"/>
+            </s:sequence>
+        </s:complexType>
+    </s:element>
+</s:schema>
