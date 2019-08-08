@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <wsdl:definitions
-                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
-                  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
-                  xmlns:tns="http://www.visi.nl/schemas/soap/version-1.0"
-                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema"
-                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
-                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
-                  targetNamespace="http://www.visi.nl/schemas/soap/version-1.0"
-                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:visi="http://www.visi.nl/schemas/soap/version1.0"
+        xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+        xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+        xmlns:s="http://www.w3.org/2001/XMLSchema">
     <wsdl:types>
-        <s:schema elementFormDefault="qualified" targetNamespace="http://www.visi.nl/schemas/soap/version-1.0">
+
+        <s:schema targetNamespace="http://www.visi.nl/schemas/soap/version1.0" elementFormDefault="qualified">
             <s:element name="parseMessageConfirmation">
                 <s:complexType>
                     <s:sequence>
@@ -24,7 +23,7 @@
                     </s:sequence>
                 </s:complexType>
             </s:element>
-            <s:element name="Attachments" type="tns:Attachments"/>
+            <s:element name="Attachments" type="visi:Attachments"/>
             <s:complexType name="Attachments">
                 <s:sequence>
                     <s:element minOccurs="0" maxOccurs="1" name="count" type="s:string"/>
@@ -346,8 +345,7 @@
             <wsdl:input>
                 <soap12:body use="literal"/>
                 <soap12:header message="tns:parseMessageConfirmationAttachments" part="Attachments" use="literal"/>
-                <soap12:header message="tns:parseMessageConfirmationSOAPCentralServerURL" part="SOAPCentralServerURL"
-                               use="literal"/>
+                <soap12:header message="tns:parseMessageConfirmationSOAPCentralServerURL" part="SOAPCentralServerURL" use="literal"/>
                 <soap12:header message="tns:parseMessageConfirmationSOAPServerURL" part="SOAPServerURL" use="literal"/>
                 <soap12:header message="tns:parseMessageConfirmationUniqueID" part="UniqueID" use="literal"/>
             </wsdl:input>
@@ -360,8 +358,7 @@
             <wsdl:input>
                 <soap12:body use="literal"/>
                 <soap12:header message="tns:parseMessageAttachments" part="Attachments" use="literal"/>
-                <soap12:header message="tns:parseMessageSOAPCentralServerURL" part="SOAPCentralServerURL"
-                               use="literal"/>
+                <soap12:header message="tns:parseMessageSOAPCentralServerURL" part="SOAPCentralServerURL" use="literal"/>
                 <soap12:header message="tns:parseMessageSOAPServerURL" part="SOAPServerURL" use="literal"/>
                 <soap12:header message="tns:parseMessageUniqueID" part="UniqueID" use="literal"/>
             </wsdl:input>
@@ -387,8 +384,7 @@
             <wsdl:input>
                 <soap12:body use="literal"/>
                 <soap12:header message="tns:checkFileHashAttachments" part="Attachments" use="literal"/>
-                <soap12:header message="tns:checkFileHashSOAPCentralServerURL" part="SOAPCentralServerURL"
-                               use="literal"/>
+                <soap12:header message="tns:checkFileHashSOAPCentralServerURL" part="SOAPCentralServerURL" use="literal"/>
                 <soap12:header message="tns:checkFileHashSOAPServerURL" part="SOAPServerURL" use="literal"/>
                 <soap12:header message="tns:checkFileHashUniqueID" part="UniqueID" use="literal"/>
             </wsdl:input>
