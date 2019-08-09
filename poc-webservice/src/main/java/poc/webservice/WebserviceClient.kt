@@ -47,7 +47,7 @@ class myRequestCallBack : WebServiceMessageCallback {
     override fun doWithMessage(message: WebServiceMessage?) {
         val soapMessage = message as SoapMessage
         val headerElement = soapMessage.soapHeader.addHeaderElement(QName("http://www.visi.nl/schemas/soap/version-1.0","testheader"))
-        headerElement.result.text = "the value of the header"
+        println(headerElement.text)
     }
 
 }

@@ -27,7 +27,6 @@ public class ParseMessageEndpoint {
     @PayloadRoot(namespace = NAMESPACE_URI, localPart = "parseMessageRequest")
     @ResponsePayload
     public ParseMessageResponse parseMessage(@RequestPayload ParseMessageRequest request, SoapMessage soapMessage) {
-
         SoapHeader soapHeader = soapMessage.getSoapHeader();
         Iterator<SoapHeaderElement> testheader = soapHeader.examineHeaderElements(new QName("http://www.visi.nl/schemas/soap/version-1.0","testheader"));
         SoapHeaderElement next = testheader.next();
