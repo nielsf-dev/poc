@@ -1,272 +1,256 @@
 <?xml version="1.0" encoding="utf-8"?>
-<wsdl:definitions
-        xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-        xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-        xmlns:tns="http://www.visi.nl/schemas/soap/version1.0"
-        xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
-        xmlns:s="http://www.w3.org/2001/XMLSchema">
-    <wsdl:types>
-        <s:schema targetNamespace="http://www.visi.nl/schemas/soap/version1.0" elementFormDefault="qualified">
-            <s:element name="parseMessageConfirmation">
-                <s:complexType>
-                    <s:sequence>
-                        <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string"/>
-                    </s:sequence>
-                </s:complexType>
-            </s:element>
-            <s:element name="parseMessageConfirmationResponse">
-                <s:complexType>
-                    <s:sequence>
-                        <s:element minOccurs="0" maxOccurs="1" name="parseMessageConfirmationResult" type="s:string"/>
-                    </s:sequence>
-                </s:complexType>
-            </s:element>
-            <s:element name="Attachments">
-                <s:complexType>
-                    <s:sequence>
-                        <s:element minOccurs="0" maxOccurs="1" name="count" type="s:string"/>
-                    </s:sequence>
-                    <s:anyAttribute/>
-                </s:complexType>
-            </s:element>
-            <s:element name="SOAPCentralServerURL">
-                <s:complexType>
-                    <s:sequence>
-                        <s:element minOccurs="0" maxOccurs="1" name="server" type="s:string"/>
-                    </s:sequence>
-                    <s:anyAttribute/>
-                </s:complexType>
-            </s:element>
-            <s:element name="SOAPServerURL">
-                <s:complexType>
-                    <s:sequence>
-                        <s:element minOccurs="0" maxOccurs="1" name="sender" type="s:string"/>
-                        <s:element minOccurs="0" maxOccurs="1" name="receiver" type="s:string"/>
-                    </s:sequence>
-                    <s:anyAttribute/>
-                </s:complexType>
-            </s:element>
-            <s:element name="UniqueID">
-                <s:complexType>
-                    <s:sequence>
-                        <s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string"/>
-                    </s:sequence>
-                    <s:anyAttribute/>
-                </s:complexType>
-            </s:element>
-            <s:element name="parseMessage">
-                <s:complexType>
-                    <s:sequence>
-                        <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string"/>
-                    </s:sequence>
-                </s:complexType>
-            </s:element>
-            <s:element name="parseMessageResponse">
-                <s:complexType>
-                    <s:sequence>
-                        <s:element minOccurs="0" maxOccurs="1" name="parseMessageResult" type="s:string"/>
-                    </s:sequence>
-                </s:complexType>
-            </s:element>
-            <s:element name="uploadChunk">
-                <s:complexType>
-                    <s:sequence>
-                        <s:element minOccurs="0" maxOccurs="1" name="fileIdentification" type="s:string"/>
-                        <s:element minOccurs="0" maxOccurs="1" name="buffer" type="s:base64Binary"/>
-                        <s:element minOccurs="1" maxOccurs="1" name="offset" type="s:long"/>
-                    </s:sequence>
-                </s:complexType>
-            </s:element>
-            <s:element name="uploadChunkResponse">
-                <s:complexType/>
-            </s:element>
-            <s:element name="checkFileHash">
-                <s:complexType>
-                    <s:sequence>
-                        <s:element minOccurs="0" maxOccurs="1" name="fileIdentification" type="s:string"/>
-                    </s:sequence>
-                </s:complexType>
-            </s:element>
-            <s:element name="checkFileHashResponse">
-                <s:complexType>
-                    <s:sequence>
-                        <s:element minOccurs="0" maxOccurs="1" name="checkFileHashResult" type="s:string"/>
-                    </s:sequence>
-                </s:complexType>
-            </s:element>
-            <s:element name="TestLog">
-                <s:complexType>
-                    <s:sequence>
-                        <s:element minOccurs="0" maxOccurs="1" name="logMessage" type="s:string"/>
-                    </s:sequence>
-                </s:complexType>
-            </s:element>
-            <s:element name="TestLogResponse">
-                <s:complexType>
-                    <s:sequence>
-                        <s:element minOccurs="0" maxOccurs="1" name="TestLogResult" type="s:string"/>
-                    </s:sequence>
-                </s:complexType>
-            </s:element>
-            <s:element name="getMaxRequestLength">
-                <s:complexType/>
-            </s:element>
-            <s:element name="getMaxRequestLengthResponse">
-                <s:complexType>
-                    <s:sequence>
-                        <s:element minOccurs="1" maxOccurs="1" name="getMaxRequestLengthResult" type="s:long"/>
-                    </s:sequence>
-                </s:complexType>
-            </s:element>
-        </s:schema>
-    </wsdl:types>
-    <wsdl:message name="AttachmentsHeader">
-        <wsdl:part name="content" element="tns:Attachments"/>
-    </wsdl:message>
-    <wsdl:message name="SOAPCentralServerURLHeader">
-        <wsdl:part name="content" element="tns:SOAPCentralServerURL"/>
-    </wsdl:message>
-    <wsdl:message name="SOAPServerURLHeader">
-        <wsdl:part name="content" element="tns:SOAPServerURL"/>
-    </wsdl:message>
-    <wsdl:message name="UniqueIDHeader">
-        <wsdl:part name="content" element="tns:UniqueID"/>
-    </wsdl:message>
-    <wsdl:message name="parseMessageConfirmationSoapIn">
-        <wsdl:part name="content" element="tns:parseMessageConfirmation"/>
-    </wsdl:message>
-    <wsdl:message name="parseMessageConfirmationSoapOut">
-        <wsdl:part name="content" element="tns:parseMessageConfirmationResponse"/>
-    </wsdl:message>
-    <wsdl:message name="parseMessageSoapIn">
-        <wsdl:part name="content" element="tns:parseMessage"/>
-    </wsdl:message>
-    <wsdl:message name="parseMessageSoapOut">
-        <wsdl:part name="content" element="tns:parseMessageResponse"/>
-    </wsdl:message>
-    <wsdl:message name="uploadChunkSoapIn">
-        <wsdl:part name="content" element="tns:uploadChunk"/>
-    </wsdl:message>
-    <wsdl:message name="uploadChunkSoapOut">
-        <wsdl:part name="content" element="tns:uploadChunkResponse"/>
-    </wsdl:message>
-    <wsdl:message name="checkFileHashSoapIn">
-        <wsdl:part name="content" element="tns:checkFileHash"/>
-    </wsdl:message>
-    <wsdl:message name="checkFileHashSoapOut">
-        <wsdl:part name="content" element="tns:checkFileHashResponse"/>
-    </wsdl:message>
-    <wsdl:message name="TestLogSoapIn">
-        <wsdl:part name="content" element="tns:TestLog"/>
-    </wsdl:message>
-    <wsdl:message name="TestLogSoapOut">
-        <wsdl:part name="content" element="tns:TestLogResponse"/>
-    </wsdl:message>
-    <wsdl:message name="getMaxRequestLengthSoapIn">
-        <wsdl:part name="content" element="tns:getMaxRequestLength"/>
-    </wsdl:message>
-    <wsdl:message name="getMaxRequestLengthSoapOut">
-        <wsdl:part name="content" element="tns:getMaxRequestLengthResponse"/>
-    </wsdl:message>
-    <wsdl:portType name="SoapExporterSoap">
-        <wsdl:operation name="parseMessageConfirmation">
-            <wsdl:input message="tns:parseMessageConfirmationSoapIn"/>
-            <wsdl:output message="tns:parseMessageConfirmationSoapOut"/>
-        </wsdl:operation>
-        <wsdl:operation name="parseMessage">
-            <wsdl:input message="tns:parseMessageSoapIn"/>
-            <wsdl:output message="tns:parseMessageSoapOut"/>
-        </wsdl:operation>
-        <wsdl:operation name="uploadChunk">
-            <wsdl:input message="tns:uploadChunkSoapIn"/>
-            <wsdl:output message="tns:uploadChunkSoapOut"/>
-        </wsdl:operation>
-        <wsdl:operation name="checkFileHash">
-            <wsdl:input message="tns:checkFileHashSoapIn"/>
-            <wsdl:output message="tns:checkFileHashSoapOut"/>
-        </wsdl:operation>
-        <wsdl:operation name="TestLog">
-            <wsdl:input message="tns:TestLogSoapIn"/>
-            <wsdl:output message="tns:TestLogSoapOut"/>
-        </wsdl:operation>
-        <wsdl:operation name="getMaxRequestLength">
-            <wsdl:input message="tns:getMaxRequestLengthSoapIn"/>
-            <wsdl:output message="tns:getMaxRequestLengthSoapOut"/>
-        </wsdl:operation>
-    </wsdl:portType>
-    <wsdl:binding name="SoapExporterSoap" type="tns:SoapExporterSoap">
-        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
-        <wsdl:operation name="parseMessageConfirmation">
-            <soap:operation soapAction="http://www.visi.nl/schemas/soap/version-1.0/parseMessageConfirmation"
-                            style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-                <soap:header message="tns:AttachmentsHeader" part="content" use="literal"/>
-                <soap:header message="tns:SOAPCentralServerURLHeader" part="content" use="literal"/>
-                <soap:header message="tns:SOAPServerURLHeader" part="content" use="literal"/>
-                <soap:header message="tns:UniqueIDHeader" part="content" use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="parseMessage">
-            <soap:operation soapAction="http://www.visi.nl/schemas/soap/version-1.0/parseMessage" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-                <soap:header message="tns:AttachmentsHeader" part="content" use="literal"/>
-                <soap:header message="tns:SOAPCentralServerURLHeader" part="content" use="literal"/>
-                <soap:header message="tns:SOAPServerURLHeader" part="content" use="literal"/>
-                <soap:header message="tns:UniqueIDHeader" part="content" use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="uploadChunk">
-            <soap:operation soapAction="http://www.visi.nl/schemas/soap/version-1.0/uploadChunk" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-                <soap:header message="tns:AttachmentsHeader" part="content" use="literal"/>
-                <soap:header message="tns:SOAPCentralServerURLHeader" part="content" use="literal"/>
-                <soap:header message="tns:SOAPServerURLHeader" part="content" use="literal"/>
-                <soap:header message="tns:UniqueIDHeader" part="content" use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="checkFileHash">
-            <soap:operation soapAction="http://www.visi.nl/schemas/soap/version-1.0/checkFileHash" style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-                <soap:header message="tns:AttachmentsHeader" part="content" use="literal"/>
-                <soap:header message="tns:SOAPCentralServerURLHeader" part="content" use="literal"/>
-                <soap:header message="tns:SOAPServerURLHeader" part="content" use="literal"/>
-                <soap:header message="tns:UniqueIDHeader" part="content" use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-        </wsdl:operation>
-        <wsdl:operation name="getMaxRequestLength">
-            <soap:operation soapAction="http://www.visi.nl/schemas/soap/version-1.0/getMaxRequestLength"
-                            style="document"/>
-            <wsdl:input>
-                <soap:body use="literal"/>
-                <soap:header message="tns:AttachmentsHeader" part="content" use="literal"/>
-                <soap:header message="tns:SOAPCentralServerURLHeader" part="content" use="literal"/>
-                <soap:header message="tns:SOAPServerURLHeader" part="content" use="literal"/>
-                <soap:header message="tns:UniqueIDHeader" part="content" use="literal"/>
-            </wsdl:input>
-            <wsdl:output>
-                <soap:body use="literal"/>
-            </wsdl:output>
-        </wsdl:operation>
-    </wsdl:binding>
-    <wsdl:service name="SoapExporter">
-        <wsdl:port name="SoapExporterSoap" binding="tns:SoapExporterSoap">
-            <soap:address location="http://localhost:5000/soap.asmx"/>
-        </wsdl:port>
-    </wsdl:service>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+				  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+				  xmlns:tns="http://www.visi.nl/schemas/soap/version-1.0"
+				  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+				  xmlns:s="http://www.w3.org/2001/XMLSchema"
+				  targetNamespace="http://www.visi.nl/schemas/soap/version-1.0">
+	<wsdl:types>
+		<s:schema targetNamespace="http://www.visi.nl/schemas/soap/version-1.0" elementFormDefault="qualified">
+			<s:element name="parseMessageConfirmation">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="message" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="parseMessageConfirmationResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="parseMessageConfirmationResult" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="Attachments" type="tns:Attachments"/>
+			<s:complexType name="Attachments">
+				<s:sequence>
+					<s:element minOccurs="0" maxOccurs="1" name="count" type="s:string"/>
+				</s:sequence>
+				<s:anyAttribute/>
+			</s:complexType>
+			<s:element name="SOAPCentralServerURL" type="tns:SOAPCentralServerURL"/>
+			<s:complexType name="SOAPCentralServerURL">
+				<s:sequence>
+					<s:element minOccurs="0" maxOccurs="1" name="server" type="s:string"/>
+				</s:sequence>
+				<s:anyAttribute/>
+			</s:complexType>
+			<s:element name="SOAPServerURL" type="tns:SOAPServerURL"/>
+			<s:complexType name="SOAPServerURL">
+				<s:sequence>
+					<s:element minOccurs="0" maxOccurs="1" name="sender" type="s:string"/>
+					<s:element minOccurs="0" maxOccurs="1" name="receiver" type="s:string"/>
+				</s:sequence>
+				<s:anyAttribute/>
+			</s:complexType>
+			<s:element name="UniqueID" type="tns:UniqueID"/>
+			<s:complexType name="UniqueID">
+				<s:sequence>
+					<s:element minOccurs="0" maxOccurs="1" name="ID" type="s:string"/>
+				</s:sequence>
+				<s:anyAttribute/>
+			</s:complexType>
+			<s:element name="parseMessage">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="message" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="parseMessageResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="parseMessageResult" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="uploadChunk">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="fileIdentification" type="s:string"/>
+						<s:element minOccurs="0" maxOccurs="1" name="buffer" type="s:base64Binary"/>
+						<s:element minOccurs="1" maxOccurs="1" name="offset" type="s:long"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="uploadChunkResponse">
+				<s:complexType/>
+			</s:element>
+			<s:element name="checkFileHash">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="fileIdentification" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="checkFileHashResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="checkFileHashResult" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="TestLog">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="logMessage" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="TestLogResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="0" maxOccurs="1" name="TestLogResult" type="s:string"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+			<s:element name="getMaxRequestLength">
+				<s:complexType/>
+			</s:element>
+			<s:element name="getMaxRequestLengthResponse">
+				<s:complexType>
+					<s:sequence>
+						<s:element minOccurs="1" maxOccurs="1" name="getMaxRequestLengthResult" type="s:long"/>
+					</s:sequence>
+				</s:complexType>
+			</s:element>
+		</s:schema>
+	</wsdl:types>
+	<wsdl:message name="AttachmentsHeader">
+		<wsdl:part name="content" element="tns:Attachments"/>
+	</wsdl:message>
+	<wsdl:message name="SOAPCentralServerURLHeader">
+		<wsdl:part name="content" element="tns:SOAPCentralServerURL"/>
+	</wsdl:message>
+	<wsdl:message name="SOAPServerURLHeader">
+		<wsdl:part name="content" element="tns:SOAPServerURL"/>
+	</wsdl:message>
+	<wsdl:message name="UniqueIDHeader">
+		<wsdl:part name="content" element="tns:UniqueID"/>
+	</wsdl:message>
+	<wsdl:message name="parseMessageConfirmationSoapIn">
+		<wsdl:part name="content" element="tns:parseMessageConfirmation"/>
+	</wsdl:message>
+	<wsdl:message name="parseMessageConfirmationSoapOut">
+		<wsdl:part name="content" element="tns:parseMessageConfirmationResponse"/>
+	</wsdl:message>
+	<wsdl:message name="parseMessageSoapIn">
+		<wsdl:part name="content" element="tns:parseMessage"/>
+	</wsdl:message>
+	<wsdl:message name="parseMessageSoapOut">
+		<wsdl:part name="content" element="tns:parseMessageResponse"/>
+	</wsdl:message>
+	<wsdl:message name="uploadChunkSoapIn">
+		<wsdl:part name="content" element="tns:uploadChunk"/>
+	</wsdl:message>
+	<wsdl:message name="uploadChunkSoapOut">
+		<wsdl:part name="content" element="tns:uploadChunkResponse"/>
+	</wsdl:message>
+	<wsdl:message name="checkFileHashSoapIn">
+		<wsdl:part name="content" element="tns:checkFileHash"/>
+	</wsdl:message>
+	<wsdl:message name="checkFileHashSoapOut">
+		<wsdl:part name="content" element="tns:checkFileHashResponse"/>
+	</wsdl:message>
+	<wsdl:message name="getMaxRequestLengthSoapIn">
+		<wsdl:part name="content" element="tns:getMaxRequestLength"/>
+	</wsdl:message>
+	<wsdl:message name="getMaxRequestLengthSoapOut">
+		<wsdl:part name="content" element="tns:getMaxRequestLengthResponse"/>
+	</wsdl:message>
+	<wsdl:portType name="VisiSoapPort">
+		<wsdl:operation name="parseMessageConfirmation">
+			<wsdl:input message="tns:parseMessageConfirmationSoapIn"/>
+			<wsdl:output message="tns:parseMessageConfirmationSoapOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="parseMessage">
+			<wsdl:input message="tns:parseMessageSoapIn"/>
+			<wsdl:output message="tns:parseMessageSoapOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="uploadChunk">
+			<wsdl:input message="tns:uploadChunkSoapIn"/>
+			<wsdl:output message="tns:uploadChunkSoapOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="checkFileHash">
+			<wsdl:input message="tns:checkFileHashSoapIn"/>
+			<wsdl:output message="tns:checkFileHashSoapOut"/>
+		</wsdl:operation>
+		<wsdl:operation name="getMaxRequestLength">
+			<wsdl:input message="tns:getMaxRequestLengthSoapIn"/>
+			<wsdl:output message="tns:getMaxRequestLengthSoapOut"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="VisiSoapBinding" type="tns:VisiSoapPort">
+		<soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="parseMessageConfirmation">
+			<soap:operation soapAction="http://www.visi.nl/schemas/soap/version-1.0/parseMessageConfirmation" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:AttachmentsHeader" part="content" use="literal"/>
+				<soap:header message="tns:SOAPCentralServerURLHeader" part="content" use="literal"/>
+				<soap:header message="tns:SOAPServerURLHeader" part="content" use="literal"/>
+				<soap:header message="tns:UniqueIDHeader" part="content" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="parseMessage">
+			<soap:operation soapAction="http://www.visi.nl/schemas/soap/version-1.0/parseMessage" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:AttachmentsHeader" part="content" use="literal"/>
+				<soap:header message="tns:SOAPCentralServerURLHeader" part="content" use="literal"/>
+				<soap:header message="tns:SOAPServerURLHeader" part="content" use="literal"/>
+				<soap:header message="tns:UniqueIDHeader" part="content" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="uploadChunk">
+			<soap:operation soapAction="http://www.visi.nl/schemas/soap/version-1.0/uploadChunk" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:AttachmentsHeader" part="content" use="literal"/>
+				<soap:header message="tns:SOAPCentralServerURLHeader" part="content" use="literal"/>
+				<soap:header message="tns:SOAPServerURLHeader" part="content" use="literal"/>
+				<soap:header message="tns:UniqueIDHeader" part="content" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="checkFileHash">
+			<soap:operation soapAction="http://www.visi.nl/schemas/soap/version-1.0/checkFileHash" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:AttachmentsHeader" part="content" use="literal"/>
+				<soap:header message="tns:SOAPCentralServerURLHeader" part="content" use="literal"/>
+				<soap:header message="tns:SOAPServerURLHeader" part="content" use="literal"/>
+				<soap:header message="tns:UniqueIDHeader" part="content" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getMaxRequestLength">
+			<soap:operation soapAction="http://www.visi.nl/schemas/soap/version-1.0/getMaxRequestLength" style="document"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+				<soap:header message="tns:AttachmentsHeader" part="content" use="literal"/>
+				<soap:header message="tns:SOAPCentralServerURLHeader" part="content" use="literal"/>
+				<soap:header message="tns:SOAPServerURLHeader" part="content" use="literal"/>
+				<soap:header message="tns:UniqueIDHeader" part="content" use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="VisiSoap">
+		<wsdl:port name="VisiSoapPort" binding="tns:VisiSoapBinding">
+			<soap:address location="http://localhost:5000/soap.asmx"/>
+		</wsdl:port>
+	</wsdl:service>
 </wsdl:definitions>
