@@ -90,20 +90,6 @@
 					</s:sequence>
 				</s:complexType>
 			</s:element>
-			<s:element name="TestLog">
-				<s:complexType>
-					<s:sequence>
-						<s:element minOccurs="0" maxOccurs="1" name="logMessage" type="s:string"/>
-					</s:sequence>
-				</s:complexType>
-			</s:element>
-			<s:element name="TestLogResponse">
-				<s:complexType>
-					<s:sequence>
-						<s:element minOccurs="0" maxOccurs="1" name="TestLogResult" type="s:string"/>
-					</s:sequence>
-				</s:complexType>
-			</s:element>
 			<s:element name="getMaxRequestLength">
 				<s:complexType/>
 			</s:element>
