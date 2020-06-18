@@ -19,8 +19,24 @@ class App {
             logger.info("In the greeting property")
             return "Hello world."
         }
+
+    fun doSomeStuff(){
+        val sysProp = System.getProperty("user.dir")
+        logger.trace(sysProp)
+
+        try{
+            val property = System.getProperty("bestaat niet")
+            if(property.isNullOrEmpty())
+                throw Exception("Noel spoort niet")
+        }
+        catch(ex: java.lang.Exception){
+            logger.error("wist dat dit zou gebeuren", ex)
+        }
+    }
 }
 
 fun main(args: Array<String>) {
-    println(App().greeting)
+    val app = App()
+    println(app.greeting)
+    app.doSomeStuff()
 }
