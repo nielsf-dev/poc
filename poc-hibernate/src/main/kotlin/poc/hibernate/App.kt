@@ -23,11 +23,12 @@ fun main(args: Array<String>) {
             println(arg)
         }
 
-      //  val jdbcer = Jdbcer()
+        val jdbcer = Jdbcer()
        // jdbcer.simpleQuery()
+        jdbcer.simpleTxInsert()
 
-        val hb = Hibernater()
-                 hb.doBootstrap()
+//        val hb = Hibernater()
+//                 hb.doBootstrap()
         //hb.jpaBootstrap()
 
         //jdbcer.transactionalInsert()

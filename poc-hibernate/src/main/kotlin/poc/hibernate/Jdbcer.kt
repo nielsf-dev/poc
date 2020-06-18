@@ -14,6 +14,7 @@ import net.ttddyy.dsproxy.listener.logging.SystemOutQueryLoggingListener
 import javax.sql.DataSource
 import net.ttddyy.dsproxy.listener.logging.DefaultQueryLogEntryCreator
 import org.postgresql.ds.PGSimpleDataSource
+import java.sql.SQLData
 
 
 class Jdbcer{
@@ -37,7 +38,7 @@ class Jdbcer{
         val resultSet = statement.executeQuery("select * from project")
 
         while (resultSet.next()) {
-            val titel = resultSet.getString("titel_nl")
+            val titel = resultSet.getString("titel")
             println(titel)
         }
 
@@ -49,13 +50,15 @@ class Jdbcer{
     }
 
     fun simpleTxInsert(){
-        val connect = getConnectionFromDriverManager()
+        //val connect = getConnectionFromDriverManager()
+        val connect = getDataSource().connection
         connect.autoCommit = false
         connect.transactionIsolation = Connection.TRANSACTION_SERIALIZABLE
 
         val statement = connect.createStatement()
-        statement.execute("insert into project (id, \"order\", titel_nl ) values (456, 36, 'doe rollback')")
-        connect.rollback()
+        statement.execute("insert into project (id, \"order\", titel ) values (45336, 3336, 'commit moet samen met close? NOPE')")
+        connect.commit()
+       // connect.close()
     }
 
     fun doDataSource(){
@@ -72,6 +75,14 @@ class Jdbcer{
     }
 
     private fun getDataSource(): DataSource {
+        val dataSource = PGSimpleDataSource()
+        dataSource.user = "postgres"
+        dataSource.password = "toor"
+        dataSource.databaseName = "mydb"
+        return dataSource;
+    }
+
+    private fun getDataSourceProxy(): DataSource {
         // use pretty formatted query with multiline enabled
         val creator = PrettyQueryEntryCreator()
         creator.setMultiline(true)
