@@ -1,0 +1,3 @@
+rootProject.name = 'poc-socket'
+include 'client'
+
