@@ -1,0 +1,4 @@
+- node.js downloaden, hier zit npm en npx in.
+- npx create-react-app my-app om een app aan te maken
+- vervolgens npm run build om production-ready te compileren
+- in package.json moet je bij "homepage" de virtual directory neerzetten indien via IIS
