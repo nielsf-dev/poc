@@ -2,3 +2,8 @@
 - npx create-react-app my-app om een app aan te maken
 - vervolgens npm run build om production-ready te compileren
 - in package.json moet je bij "homepage" de virtual directory neerzetten indien via IIS
+
+Vragen:
+Wat is babel?
+Wat is JSX?
+Hoe combineer ik dat met MVC en iets als thymeleaf
