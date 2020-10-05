@@ -5,5 +5,10 @@
 
 Vragen:
 Wat is babel?
+Een transcompiler
+
 Wat is JSX?
+Een soort xml voor in javascript
+
 Hoe combineer ik dat met MVC en iets als thymeleaf
+you dont, react is je view
