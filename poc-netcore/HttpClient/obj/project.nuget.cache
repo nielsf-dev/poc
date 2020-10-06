@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "VyDwmEKLua8bEK5/kFiY1Yji6spySZxSsc+o8iYvA62Tm2jVEgjosxm0ZYv2BjdZZXypl7Lp4faWhSmSmla+gg==",
+  "success": true,
+  "projectFilePath": "c:\\work\\poc\\poc-netcore\\HttpClient\\HttpClient.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Niels\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

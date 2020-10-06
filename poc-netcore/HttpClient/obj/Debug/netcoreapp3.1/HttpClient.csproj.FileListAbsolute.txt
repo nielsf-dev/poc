@@ -1,0 +1,15 @@
+c:\work\poc\poc-netcore\HttpClient\bin\Debug\netcoreapp3.1\HttpClient.exe
+c:\work\poc\poc-netcore\HttpClient\obj\Debug\netcoreapp3.1\HttpClient.csprojAssemblyReference.cache
+c:\work\poc\poc-netcore\HttpClient\obj\Debug\netcoreapp3.1\HttpClient.AssemblyInfoInputs.cache
+c:\work\poc\poc-netcore\HttpClient\obj\Debug\netcoreapp3.1\HttpClient.AssemblyInfo.cs
+c:\work\poc\poc-netcore\HttpClient\bin\Debug\netcoreapp3.1\HttpClient.deps.json
+c:\work\poc\poc-netcore\HttpClient\bin\Debug\netcoreapp3.1\HttpClient.runtimeconfig.json
+c:\work\poc\poc-netcore\HttpClient\bin\Debug\netcoreapp3.1\HttpClient.runtimeconfig.dev.json
+c:\work\poc\poc-netcore\HttpClient\bin\Debug\netcoreapp3.1\HttpClient.dll
+c:\work\poc\poc-netcore\HttpClient\bin\Debug\netcoreapp3.1\HttpClient.pdb
+c:\work\poc\poc-netcore\HttpClient\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+c:\work\poc\poc-netcore\HttpClient\obj\Debug\netcoreapp3.1\HttpClient.csproj.CoreCompileInputs.cache
+c:\work\poc\poc-netcore\HttpClient\obj\Debug\netcoreapp3.1\HttpClient.csproj.CopyComplete
+c:\work\poc\poc-netcore\HttpClient\obj\Debug\netcoreapp3.1\HttpClient.dll
+c:\work\poc\poc-netcore\HttpClient\obj\Debug\netcoreapp3.1\HttpClient.pdb
+c:\work\poc\poc-netcore\HttpClient\obj\Debug\netcoreapp3.1\HttpClient.genruntimeconfig.cache
