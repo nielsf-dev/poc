@@ -1,0 +1,23 @@
+https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/web-reactive.html
+
+Goeie link die reactive streams uitlegt in general:
+https://www.reactiveprogramming.be/project-reactor-backpressure/
+
+Reactive types:
+https://spring.io/blog/2016/04/19/understanding-reactive-types
+
+Webflux in general:
+https://dzone.com/articles/spring-webflux-eventloop-vs-thread-per-request-mod
+
+Mooi diagrom hoe webflux verhoud tot de rest + geburik van subscriber in webflux:
+https://medium.com/faun/reactive-programming-using-spring-webflux-ad3cfc6f0471
+
+Kill die helemaal dik gaat en ze eigen http shizzel maakt:
+https://medium.com/@unmeshvjoshi/understanding-reactive-io-and-back-pressure-with-your-own-akka-http-server-d4b64921059a
+
+TUDelft studie:
+"C:\work\Docs\Essence of reactive programming.pdf"
+
+Vervolg vragen:
+- Volitale 
+- Signal

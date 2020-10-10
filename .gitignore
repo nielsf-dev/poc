@@ -5,6 +5,13 @@
 *.jar
 *.iml
 *.class
+**/build
+**/out
+**/bin
+**/obj
+**/.vs
+*.swp
+**/Debug
 
 # Ignore Gradle build output directory
 build
