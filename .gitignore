@@ -6,7 +6,6 @@
 *.iml
 *.class
 **/build
-**/out
 **/bin
 **/obj
 **/.vs
