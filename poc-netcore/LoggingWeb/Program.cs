@@ -30,7 +30,7 @@ namespace LoggingWeb
                        logging.ClearProviders();
                        logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
                    })
-
+            
                    .UseNLog()  // NLog: Setup NLog for Dependency injection
 
                    .ConfigureWebHostDefaults(webBuilder =>

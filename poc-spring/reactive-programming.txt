@@ -2,6 +2,9 @@ https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/
 
 https://medium.com/tokopedia-engineering/backpressure-in-reactive-streams-in-ios-d1618df9ecaf
 
+Java:
+https://eng.uber.com/rxjava-backpressure/
+
 Goeie link die reactive streams uitlegt in general:
 https://www.reactiveprogramming.be/project-reactor-backpressure/
 
