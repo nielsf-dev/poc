@@ -32,15 +32,14 @@ class MvcApplicationTests {
         try {
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create("http://localhost:5188/api/file/binary"))
-                    .setHeader("Content-Type","application/json")
+                    .setHeader("Content-Type", "application/json")
                     .POST(HttpRequest.BodyPublishers.ofByteArray(bytes))
                     .build();
 
             HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
             String body = response.body();
             System.out.println(body);
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
             logger.error(ex.getMessage());
         }
     }

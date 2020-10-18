@@ -28,7 +28,7 @@ public class MainTest {
     }
 
     @Test
-    public void basic(){
+    public void basic() {
 
     }
 }

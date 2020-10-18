@@ -1,0 +1,5 @@
+17:35:55.520 [main] TRACE state.ThreadState - runnable
+17:35:55.790 [Thread-0] TRACE state.ThreadState - before request
+17:35:58.992 [main] TRACE state.ThreadState - Hijs waiting
+17:36:00.387 [main] TRACE state.ThreadState - Hijs waiting
+22:01:59.153 [main] TRACE state.ThreadState - Hijs waiting

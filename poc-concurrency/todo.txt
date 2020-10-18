@@ -1,0 +1,4 @@
+* Java Master worden *
+
+- CompleteableFutures
+- Interface static function als body?

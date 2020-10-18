@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -9,6 +10,9 @@ namespace AsyncAwaitApp
     {
         static void Main(string[] args)
         {
+            WebClient client = new WebClient();
+            byte[] downloadData = client.DownloadData("https://speed.hetzner.de/100MB.bin");
+
             Task manageCalls = CallManager.ManageCalls();
 
             for (int i = 0; i < 5; i++)
