@@ -1,4 +1,9 @@
 * Java Master worden *
 
 - CompleteableFutures
-- Interface static function als body?
+
+Iets hebben om te showen
+- Contributor ergens
+- HTTP Server
+- Thread pool
+- Connection pool
