@@ -17,6 +17,7 @@ public class SyncSubsriberHandler implements HttpResponse.BodyHandler<Void> {
             protected boolean whenNext(List<ByteBuffer> element) {
                 ByteBuffer byteBuffer = element.get(0);
 
+
                 CharBuffer decode = StandardCharsets.UTF_8.decode(byteBuffer);
                 String s2 = decode.toString();
 

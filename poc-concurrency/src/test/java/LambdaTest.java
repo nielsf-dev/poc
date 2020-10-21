@@ -12,12 +12,18 @@ public class LambdaTest {
     public void testMethodReference(){
         String result = add("KING NIELS", String::toLowerCase);
         logger.trace("added " + result);
+
+        String result2 = add("king niels", s -> s.toUpperCase());
+        logger.trace("added " + result2);
     }
 
     @Test
     public void testFunctionClass(){
         // https://www.baeldung.com/java-8-lambda-expressions-tips
-        String result = addWithFunctionClass("Doe nou maar normaal", String::toLowerCase);
+        String result = addWithFunctionClass("Doe nou maar normaal", s -> {
+            s = s.toLowerCase();
+            return s;
+        });
         logger.trace("added " + result);
     }
 

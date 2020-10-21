@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Extensions.Logging;
-using NLog;
 using Serilog;
 
 namespace LoggingWeb.Data
@@ -17,7 +16,7 @@ namespace LoggingWeb.Data
         public List<string> GetData()
         {
             logger.LogInformation("Getting data");
-            Log.Information("Getting SERIdata");
+          //  Log.Information("Getting SERIdata");
 
             var data = new List<string>()
             {
@@ -26,7 +25,7 @@ namespace LoggingWeb.Data
                 "Three"
             };
             logger.LogTrace($"Returning {data.Count} strings");
-            Log.Verbose($"Returning serserer{data.Count} strings");
+        //    Log.Verbose($"Returning serserer{data.Count} strings");
 
             return data;
         }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
@@ -8,7 +9,6 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 using Microsoft.Extensions.Logging.Debug;
-using NLog.Web;
 using Serilog;
 using Serilog.Filters;
 
@@ -19,32 +19,42 @@ namespace LoggingWeb
         public static void Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Verbose()
-                .Enrich.FromLogContext()
-                .WriteTo.Console(outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Properties:j} {Message:lj}{NewLine}{Exception}")
-                .WriteTo.Logger(lc => lc
-                    .Filter.ByIncludingOnly(Matching.FromSource("LoggingWeb.Data"))
-                    .WriteTo.File("data-log.txt"))
-                .CreateLogger();
+                    .WriteTo.Console()
+                    .WriteTo.Logger(lc => lc
+                        .Filter.ByIncludingOnly(Matching.FromSource("LoggingWeb.Data"))
+                        .WriteTo.File("data-log.txt"))
+                    .CreateLogger();
 
-            Log.Information("Hello, Serilog!");
-
-            CreateHostBuilder(args).Build().Run();
+            try
+            {
+                CreateHostBuilder(args).Build().Run();
+                return;
+            }
+            catch (Exception ex)
+            {
+                Log.Fatal(ex, "Host terminated unexpectedly");
+                return;
+            }
+            finally
+            {
+                Log.CloseAndFlush();
+            }
         }
+
+        //
+        // public static IConfiguration Configuration { get; } = new ConfigurationBuilder()
+        //     .SetBasePath(Directory.GetCurrentDirectory())
+        //     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+        //     .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", optional: true)
+        //     .AddEnvironmentVariables()
+        //     .Build();
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                 // .ConfigureLogging(logging =>
-                 //    {
-                 //        logging.ClearProviders();
-                 //        logging.AddConsole(LogLevel.Trace);
-                 //    })
-
-                   //.UseNLog()  // NLog: Setup NLog for Dependency injection
-
-                   .ConfigureWebHostDefaults(webBuilder =>
-                   {
-                       webBuilder.UseStartup<Startup>();
-                   });
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>()
+                    .UseSerilog();
+                });
     }
 }

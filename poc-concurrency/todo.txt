@@ -1,6 +1,7 @@
 * Java Master worden *
 
 - CompleteableFutures
+- Zou nog kunnen kijken naar wat van die httpclient internals en hoe die buffer size te beinvloderen bij die pub/sub
 
 Iets hebben om te showen
 - Contributor ergens
