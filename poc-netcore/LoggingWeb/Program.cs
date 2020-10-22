@@ -4,13 +4,17 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 using Microsoft.Extensions.Logging.Debug;
 using Serilog;
+using Serilog.Core;
+using Serilog.Events;
 using Serilog.Filters;
+using ILogger = Serilog.ILogger;
 
 namespace LoggingWeb
 {
@@ -19,7 +23,11 @@ namespace LoggingWeb
         public static void Main(string[] args)
         {
             Log.Logger = new LoggerConfiguration()
-                    .WriteTo.Console()
+                    
+                    // en dit met die :
+                    .WriteTo.Console(outputTemplate: "{Timestamp:HH:mm:ss} [{Level}] {RequestPath} {SourceContext} {Message}{NewLine}{Exception}") //[{SourceContext}{Properties:j}]
+
+                    //wasdit
                     .WriteTo.Logger(lc => lc
                         .Filter.ByIncludingOnly(Matching.FromSource("LoggingWeb.Data"))
                         .WriteTo.File("data-log.txt"))
@@ -27,7 +35,9 @@ namespace LoggingWeb
 
             try
             {
-                CreateHostBuilder(args).Build().Run();
+                var host = CreateHostBuilder(args).Build();
+                Log.Information("Host aangemaakt");
+                host.Run();
                 return;
             }
             catch (Exception ex)
