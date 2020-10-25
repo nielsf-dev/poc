@@ -1,0 +1,3 @@
+﻿- services.AddHttpContextAccessor();
+- Tasks/actions functions
+- en zie projects

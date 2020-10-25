@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LoggingWeb.Data;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Serilog;
@@ -24,6 +25,8 @@ namespace LoggingWeb
         [Route("/")]
         public string Test()
         {
+            SessionOptions httpContextItem = HttpContext.Items["SessionID"] as SessionOptions;
+
             logger.LogInformation("GO Johny GO");
           //  Log.Information("SERIGO Johny GO");
 

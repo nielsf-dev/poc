@@ -18,6 +18,7 @@ public class HeavyLoad {
         final Socket[] sockets = new Socket[30000]; // Create 3000 connections
         for (int x = 0; x < sockets.length; x++) {
             try {
+
                 Socket socket = new Socket("localhost", 8080);
                 sockets[x] = socket;
 
@@ -32,12 +33,14 @@ public class HeavyLoad {
 
     private void handleSocket(Socket socket)  {
         long l = connections.incrementAndGet();
+        System.out.println("Connected " + l);
         while(true){
             try {
                 socket.getOutputStream().write("a".getBytes());
                 byte read = (byte)socket.getInputStream().read();
                 String s = String.valueOf(read);
-                System.out.println(s + " from thread " + l);
+                s.toUpperCase();
+              //  System.out.println(s + " from thread " + l);
             }
             catch(Exception ex){
                 System.out.println(ex);
