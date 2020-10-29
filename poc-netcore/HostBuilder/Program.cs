@@ -19,11 +19,6 @@ namespace HostBuilder
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<Worker>();
-                })
-                .ConfigureAppConfiguration(cf =>
-                {
-                    cf.
-
                 });
     }
 

@@ -50,7 +50,7 @@ public class NIONonBlockingSelectorServer {
                         }
                     }
                 } catch (final IOException e) {
-                    throw new UncheckedIOException(e);
+               //     throw new UncheckedIOException(e);
                 }
             }
 
