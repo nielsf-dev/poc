@@ -41,15 +41,19 @@ namespace LoggingWeb
 
             try
             {
-                var host = CreateHostBuilder(args).Build();
-                Log.Information("Host aangemaakt");
+                IHostBuilder hostBuilder = Host.CreateDefaultBuilder(args);
+                hostBuilder.ConfigureWebHostDefaults(webHostBuilder =>
+                {
+                    webHostBuilder.UseStartup<Startup>()
+                        .UseSerilog();
+                });
+
+                var host = hostBuilder.Build();
                 host.Run();
-                return;
             }
             catch (Exception ex)
             {
                 Log.Fatal(ex, "Host terminated unexpectedly");
-                return;
             }
             finally
             {

@@ -1,0 +1,51 @@
+- IWebHost
+	- ServiceProvider
+	- StartAsync
+	- StopAsync
+
+- IWebHostBuilder
+	*same*
+
+- IHost
+	- ServiceProvider
+	- StartAsync
+	- StopAsync
+	- Run() Toegevoegd door een aparte extenstion aan die interface :S roept uiteindleijk gewoon start async aan
+	
+- static Host (bevat alleen helper methods)
+	- CreateDefaultBuilder
+	
+- Internal.Host (bevat de daadwerkleijk host, gebouwd door HostBuilder en toegevoegd aan de service collection)
+    - IEnumerable<IHostedService> _hostedServices;	Hier zit kestrel in?
+
+- IHostBuilder
+	- ConfigureHostConfiguration (additive)
+	- ConfigureAppConfiguration (additive)
+	- ConfigureServices (additive)
+	
+	Bevat configuratie?
+	Services kunnen worden toegevoegd
+
+- HostBuilder (default?)
+	    IConfiguration _hostConfiguration;
+        IConfiguration _appConfiguration;
+        HostBuilderContext _hostBuilderContext;
+        HostingEnvironment _hostingEnvironment;
+        IServiceProvider _appServices;
+		deze worden dan aan die ServiceCollection toegevoegd
+		
+	Implementeert de build() method
+			BuildHostConfiguration();
+            CreateHostingEnvironment();
+            CreateHostBuilderContext();
+            BuildAppConfiguration();
+            CreateServiceProvider();							
+				services.AddSingleton<IHostingEnvironment>(_hostingEnvironment); etc etc voor die private variables
+				services.AddSingleton<IHost, Internal.Host>(); (???)				
+		
+	Voor die andere methods van IHostBUilder gewoon een soort null check
+	
+	
+	
+KIJK WAT IN DIE HOSTBUILDER GEBEURD + IN DIE CREATE DEFAULT
+ZOEK DAARNA WAAR DIE WEBHOSTBUILDER ZIT doe s nuttig
