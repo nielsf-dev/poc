@@ -37,8 +37,6 @@ public class Runner implements CommandLineRunner {
         final Socket[] sockets = new Socket[nConnections]; // Create n connections
         for (int x = 0; x < sockets.length; x++) {
             try {
-
-
                 long start = System.nanoTime();
                 Socket socket = new Socket(args[1], Integer.parseInt(args[2]));
                 long elapsed = System.nanoTime() - start;
