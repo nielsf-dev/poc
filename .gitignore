@@ -11,6 +11,7 @@
 **/.vs
 *.swp
 **/Debug
+*.log
 
 # Ignore Gradle build output directory
 build

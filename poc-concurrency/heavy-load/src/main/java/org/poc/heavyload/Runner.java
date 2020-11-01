@@ -94,8 +94,6 @@ public class Runner implements CommandLineRunner {
                     String readFromSocket = new String(readBytes);
                     logger.info("Read from socket on connection " + connection + ": " + readFromSocket);
                 }
-
-                Thread.sleep(50);
             }
             catch(Exception ex){
                 if(ex instanceof InterruptedException) {
