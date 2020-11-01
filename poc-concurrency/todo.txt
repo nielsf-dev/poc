@@ -1,5 +1,7 @@
 * Java Master worden *
 
+- STreams in general BufferedREader DataOutputStream
+- Sockets
 - CompleteableFutures
 - Zou nog kunnen kijken naar wat van die httpclient internals en hoe die buffer size te beinvloderen bij die pub/sub
 

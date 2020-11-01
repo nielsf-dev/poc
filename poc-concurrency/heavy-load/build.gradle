@@ -1,6 +1,7 @@
 plugins {
     id 'org.springframework.boot' version '2.3.4.RELEASE'
     id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'org.hidetake.ssh' version '2.10.1'
     id 'java'
 }
 
@@ -16,6 +17,26 @@ dependencies {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
 }
+
+remotes {
+    webServer {
+        host = '192.168.63.81'
+        user = 'niels'
+        identity = file('C:\\Users\\Niels\\.ssh\\id_rsa')
+    }
+}
+
+task deployToPercy{
+    doLast {
+        ssh.run {
+            session(remotes.webServer) {
+                put from: "$buildDir\\libs\\heavy-load.jar", into: '.'
+            //    execute 'java -jar heavy-load.jar 300 178.84.250.165 8080'
+            }
+        }
+    }
+}
+deployToPercy.dependsOn bootJar
 
 test {
     useJUnitPlatform()

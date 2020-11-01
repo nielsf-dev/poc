@@ -20,7 +20,9 @@
         </encoder>
     </appender>
 
-    <root level="trace">
+    <logger name="org.poc.heavyload" level="INFO"/>
+
+    <root level="ERROR">
 <!--        <appender-ref ref="STDOUT" />-->
         <appender-ref ref="FILE" />
     </root>
