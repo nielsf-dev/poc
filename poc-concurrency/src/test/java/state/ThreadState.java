@@ -36,6 +36,7 @@ public class ThreadState {
             completableFuture.get();
         }
         catch(Exception ex) {
+
             System.out.println("Fout in thread: " + ex);
         }
     }

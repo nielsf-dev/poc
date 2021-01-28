@@ -1,13 +1,14 @@
 package nio;
 
 import java.io.IOException;
-import java.io.UncheckedIOException;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -50,7 +51,7 @@ public class NIONonBlockingSelectorServer {
                         }
                     }
                 } catch (final IOException e) {
-               //     throw new UncheckedIOException(e);
+                    System.out.println(e);
                 }
             }
 
@@ -73,7 +74,8 @@ public class NIONonBlockingSelectorServer {
         socket.register(key.selector(), SelectionKey.OP_READ); // Interested only in Reading from the socket.
 
         // Every socket will have its own byte buffer
-        sockets.put(socket, ByteBuffer.allocateDirect(80));
+        ByteBuffer byteBuffer = ByteBuffer.allocateDirect(360);
+        sockets.put(socket, byteBuffer);
     }
 
     // Once the Read event is received, perform the operation on the input, and then write back once the
@@ -89,7 +91,7 @@ public class NIONonBlockingSelectorServer {
         }
 
         byteBuffer.flip();
-        invertCase(byteBuffer);
+        processMd5(byteBuffer);
 
         socket.configureBlocking(false); // Required, socket should also be NonBlocking
 
@@ -116,13 +118,32 @@ public class NIONonBlockingSelectorServer {
         }
     }
 
-    private static void invertCase(final ByteBuffer byteBuffer) {
-        for (int x = 0; x < byteBuffer.limit(); x++) { // read every byte in it.
-            byteBuffer.put(x, (byte) invertCase(byteBuffer.get(x)));
+    private static void processMd5(final ByteBuffer byteBuffer) {
+        int bufferSize = byteBuffer.limit();
+        byte[] buffer = new byte[bufferSize];
+        for (int x = 0; x < bufferSize; x++) { // read every byte in it.
+            buffer[x] = byteBuffer.get(x);
+            //byteBuffer.put(x, (byte) invertCase(byteBuffer.get(x)));
+        }
+
+        try {
+            MessageDigest digest = MessageDigest.getInstance("MD5");
+            byte[] md5 = digest.digest(buffer);
+            String md5Text = ThreadedBlockingServer.toHexString(md5);
+
+            String result = new String(buffer) + " " + md5Text;
+            byte[] resultBytes = result.getBytes();
+
+            for (int i = 0; i < resultBytes.length; i++) {
+                byteBuffer.put(i, resultBytes[i]);
+            }
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
         }
     }
 
-    private static int invertCase(final int data) {
+    private static int processMd5(final int data) {
         return Character.isLetter(data) ?
 
                 Character.isUpperCase(data)

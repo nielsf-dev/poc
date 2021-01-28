@@ -8,7 +8,8 @@ namespace LoggingWeb
     {
         public void Enrich(LogEvent logEvent, ILogEventPropertyFactory propertyFactory)
         {
-            var typeName = logEvent.Properties.GetValueOrDefault("SourceContext")?.ToString();
+            var logEventPropertyValue = logEvent.Properties.GetValueOrDefault("SourceContext");
+            var typeName = logEventPropertyValue?.ToString();
             if (string.IsNullOrEmpty(typeName))
                 return;
 
