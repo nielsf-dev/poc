@@ -1,7 +1,12 @@
 - node.js downloaden, hier zit npm en npx in.
+	hier zit ook node.exe in, daarmee kan je gewoon doen 'node test.js'
+	
 - npx create-react-app my-app om een app aan te maken
 - vervolgens npm run build om production-ready te compileren
+- krijg je een build directory, die kan gewoon regelrecht naar apache
 - in package.json moet je bij "homepage" de virtual directory neerzetten indien via IIS
+
+
 
 Vragen:
 Wat is babel?
