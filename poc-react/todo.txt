@@ -1,0 +1,2 @@
+- hoe zitten die modules inelkaar, hoe werken die bin folders. aka create/ webpack
+- 
