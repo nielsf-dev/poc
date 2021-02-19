@@ -2,6 +2,7 @@ package org.nelis.mvcpoc;
 
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import org.postgresql.ds.PGSimpleDataSource;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -19,12 +20,12 @@ public class MvcPocApplication {
 
     @Bean
     public DataSource dataSource() {
-        HikariConfig hikariConfig = new HikariConfig();
-        hikariConfig.setUsername("postgres");
-        hikariConfig.setPassword("toor");
-        hikariConfig.setJdbcUrl("jdbc:postgresql://192.168.63.81/mvc-poc");
-
-        return new HikariDataSource(hikariConfig);
+        PGSimpleDataSource dataSource = new PGSimpleDataSource();
+        dataSource.setUser("postgres");
+        dataSource.setPassword("toor");
+        //dataSource.setDatabaseName("mvc-poc");
+        dataSource.setUrl("jdbc:postgresql://192.168.63.81/mvc-poc");
+        return dataSource;
     }
 
     @Bean

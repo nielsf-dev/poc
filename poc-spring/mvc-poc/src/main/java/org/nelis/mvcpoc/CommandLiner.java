@@ -20,6 +20,15 @@ public class CommandLiner implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        getAll();
+        getAll();
+        getAll();
+        getAll();
+        getAll();
+        getAll();
+    }
+
+    private void getAll() {
         List<Persoon> all = persoonRepository.findAll();
         logger.info("Aantal personen = " + all.size());
     }
