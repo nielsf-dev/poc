@@ -13,9 +13,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HttpClient", "HttpClient\Ht
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebSockets", "WebSockets\WebSockets.csproj", "{8338A8DA-C84F-43C5-9CAB-639C26F0028C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Middleware", "Middleware\Middleware.csproj", "{D4A470E5-D216-4F0A-8382-BD476D985C37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Middleware", "Middleware\Middleware.csproj", "{D4A470E5-D216-4F0A-8382-BD476D985C37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostBuilder", "HostBuilder\HostBuilder.csproj", "{CB314A52-7A0D-44BD-8B38-1943DEFE14D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HostBuilder", "HostBuilder\HostBuilder.csproj", "{CB314A52-7A0D-44BD-8B38-1943DEFE14D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework", "EntityFramework\EntityFramework.csproj", "{CF938DF4-1E8A-4D7A-A55D-4986E49FB791}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{CB314A52-7A0D-44BD-8B38-1943DEFE14D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB314A52-7A0D-44BD-8B38-1943DEFE14D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB314A52-7A0D-44BD-8B38-1943DEFE14D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF938DF4-1E8A-4D7A-A55D-4986E49FB791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF938DF4-1E8A-4D7A-A55D-4986E49FB791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF938DF4-1E8A-4D7A-A55D-4986E49FB791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF938DF4-1E8A-4D7A-A55D-4986E49FB791}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

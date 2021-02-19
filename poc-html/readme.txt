@@ -1,0 +1,4 @@
+- Iets van basis css layouts maken
+- Hoe kunnen we snel html bekijken?
+	- IIS Express
+	- tomcat

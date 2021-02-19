@@ -9,7 +9,6 @@ def vet_dik_gaan():
     print("durven")
     print("yooooolo")
 
-
 vet_dik_gaan()
 useless_cat_call = subprocess.run(["java", "--version"])
 print(useless_cat_call.stdout)

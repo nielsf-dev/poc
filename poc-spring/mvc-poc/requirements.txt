@@ -1,0 +1,8 @@
+- Een crud applicatie
+- Toevoegen/bijwerken in apart schem
+- Main scherm een sorteerbare lijst met naam/acheternaam en leeftijd
+	deze gecentreerd in het midden
+	mooi header over de gehele balk
+	de toevoeg knop linksboven, naast de sorteer kolommen
+
+- Maken zonder react maar met thymeleaf
