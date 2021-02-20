@@ -12,7 +12,7 @@ namespace EntityFramework
             var context = new flywayDev45aContext();
             
             var list = context.Transactions
-                .Where(t => t.Id % 2 == 0)
+                .Where(t => myTest(t))
                 .ToList();
 
             foreach (var transaction in list)
@@ -22,6 +22,12 @@ namespace EntityFramework
             }
 
             Console.WriteLine("Hello World!");
+        }
+
+        private static bool myTest(Transaction t)
+        {
+            var test = t.Id % 2 == 0;
+            return test;
         }
     }
 }

@@ -24,6 +24,7 @@ public class MvcPocApplication {
         dataSource.setUser("postgres");
         dataSource.setPassword("toor");
         //dataSource.setDatabaseName("mvc-poc");
+     //   dataSource.setUrl("jdbc:postgresql://192.168.63.81/mvc-poc?loggerLevel=TRACE");
         dataSource.setUrl("jdbc:postgresql://192.168.63.81/mvc-poc");
         return dataSource;
     }

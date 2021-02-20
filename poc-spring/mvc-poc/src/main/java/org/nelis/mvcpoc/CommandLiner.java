@@ -28,6 +28,10 @@ public class CommandLiner implements CommandLineRunner {
         getAll();
     }
 
+    public void testing(){
+        logger.info("hier wel goed");
+    }
+
     private void getAll() {
         List<Persoon> all = persoonRepository.findAll();
         logger.info("Aantal personen = " + all.size());
