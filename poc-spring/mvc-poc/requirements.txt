@@ -3,6 +3,8 @@
 - Main scherm een sorteerbare lijst met naam/acheternaam en leeftijd
 	deze gecentreerd in het midden
 	mooi header over de gehele balk
-	de toevoeg knop linksboven, naast de sorteer kolommen
+	- de toevoeg knop links onderin, zogauw je erop klikt, spring je in een textbox op de volgende regel, om de naam in te voeren etc
+	- zogauw je klikt in een cel kan je hem aanpassen
+
 
 - Maken zonder react maar met thymeleaf
