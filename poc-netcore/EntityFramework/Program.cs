@@ -26,8 +26,7 @@ namespace EntityFramework
 
         private static bool myTest(Transaction t)
         {
-            var test = t.Id % 2 == 0;
-            return test;
+            return t.Id % 2 == 0;
         }
     }
 }
