@@ -24,7 +24,7 @@
 
             /* dit op absolute, margin = fucked, niet meer gecentreerd why? hoe? BELANGRIJK */
             /* absolute gaat met left, right etc, dus 0,0 dus linksboven */
-            /* flex overschrijf em dan kennelijk, dus links ipv linksboven*/
+            /* flex overschrijf em dan kennelijk, dus links ipv linksboven */
             /* position: absolute; */
         }
         .squareHolder{
@@ -51,8 +51,16 @@
 
             /* display: flex zorgt niet dat die text hier verticaal gecentreerd word, why? Is dat met een block en line element? was dat precies? tekst is ook in een h1*/
             /* NOPE, zowel div als h1 zijn block-level elements https://www.w3schools.com/css/css_display_visibility.asp */
-            /*display: flex*/
 
+            /* wat er dus gebeurt als je flex doet maar zonder align-items, maakt hij van h1 een dik vullend vierkant,
+            maar met align-items word hij netjes, dan nog ff margin: auto toevoegen voor de horizontal en de tekst staat mooi gecnetrajhdsfkahsdfasdf */
+
+            /* wel goeie ff te researchen flex nog */
+            display: flex;
+            align-items: center;
+        }
+        h1{
+            margin: auto;
         }
     </style>
 </head>

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -11,15 +13,159 @@ namespace HostBuilder
     {
         public static void Main(string[] args)
         {
-            simpleHostedWorker(args).Build().Run();
+            //noIHostedServiceAdded();
+            IHostBuilder hostedWorker = simpleHostedWorker(args);
+            IHost host = hostedWorker.Build();
+            host.Run();
         }
 
-        public static IHostBuilder simpleHostedWorker(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureServices((hostContext, services) =>
+        private static void noIHostedServiceAdded()
+        {
+            IHostBuilder hostBuilder = new Microsoft.Extensions.Hosting.HostBuilder();
+
+            // Vage interface, de implementatie(HostBuilder) roept al die configure stuff aan
+
+            //hostBuilder.ConfigureAppConfiguration((context, builder) =>
+            //{
+            //    Console.WriteLine("yolo");
+            //});
+
+            //hostBuilder.ConfigureHostConfiguration();
+            //hostBuilder.ConfigureContainer()
+            //hostBuilder.ConfigureServices()
+
+            // Op deze manieer in Build()
+            /*
+             *     BuildHostConfiguration();
+                   CreateHostingEnvironment();
+                   CreateHostBuilderContext();
+                   BuildAppConfiguration();
+
+                    // Hier word de hosting environment + Host toegevoegd aan de services              }
+                 CreateServiceProvider();
+            /*
+             
+            public interface IHostingEnvironment
+              {
+                /// <summary>
+                /// Gets or sets the name of the application. This property is automatically set by the host to the assembly containing
+                /// the application entry point.
+                /// </summary>
+                string ApplicationName { get; set; }
+
+                /// <summary>
+                /// Gets or sets an <see cref="T:Microsoft.Extensions.FileProviders.IFileProvider" /> pointing at <see cref="P:Microsoft.Extensions.Hosting.IHostingEnvironment.ContentRootPath" />.
+                /// </summary>
+                IFileProvider ContentRootFileProvider { get; set; }
+
+                /// <summary>
+                /// Gets or sets the absolute path to the directory that contains the application content files.
+                /// </summary>
+                string ContentRootPath { get; set; }
+
+                /// <summary>
+                /// Gets or sets the name of the environment. The host automatically sets this property to the value of the
+                /// of the "environment" key as specified in configuration.
+                /// </summary>
+                string EnvironmentName { get; set; }
+             */
+
+            IHost build = hostBuilder.Build();
+
+            //neeueuuhhh. dus die Run() zit niet eens in de IHost
+            // Het zit in de HostingAbstractionsHostExtensions (dus)
+            /*
+                public static void Run(this IHost host)
                 {
-                    services.AddHostedService<Worker>();
-                });
+                    host.RunAsync().GetAwaiter().GetResult();
+                }
+             */
+
+            // de default host is dus Microsoft.Extensions.Hosting.Internal.Host
+            // je heb 2 Host.cs dus meh die andere is Microsoft.Extenstion.Hosting.Host DUS
+
+            // enfin wat het doet is 
+            /*
+             *  _hostedServices = Services.GetService<IEnumerable<IHostedService>>();
+
+                foreach (var hostedService in _hostedServices)
+                {
+                    // Fire IHostedService.Start
+                    await hostedService.StartAsync(combinedCancellationToken).ConfigureAwait(false);
+                }
+             */
+
+            build.Run();
+
+            // en dat zijn er normaal gesproken op deze manier dus geen (hosted services)
+        }
+
+        public static IHostBuilder simpleHostedWorker(string[] args)
+        {
+            var defaultBuilder = Host.CreateDefaultBuilder(args);
+            defaultBuilder = defaultBuilder.ConfigureServices((hostContext, services) => { services.AddHostedService<Worker>(); });
+            return defaultBuilder;
+        }
+    }
+
+    class MyBuilder : IHostBuilder
+    {
+        public IHostBuilder ConfigureHostConfiguration(Action<IConfigurationBuilder> configureDelegate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IHostBuilder ConfigureAppConfiguration(Action<HostBuilderContext, IConfigurationBuilder> configureDelegate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IHostBuilder ConfigureServices(Action<HostBuilderContext, IServiceCollection> configureDelegate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IHostBuilder UseServiceProviderFactory<TContainerBuilder>(IServiceProviderFactory<TContainerBuilder> factory)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IHostBuilder UseServiceProviderFactory<TContainerBuilder>(Func<HostBuilderContext, IServiceProviderFactory<TContainerBuilder>> factory)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IHostBuilder ConfigureContainer<TContainerBuilder>(Action<HostBuilderContext, TContainerBuilder> configureDelegate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IHost Build()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IDictionary<object, object> Properties { get; }
+    }
+
+    class MyHost : IHost
+    {
+        public void Dispose()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task StartAsync(CancellationToken cancellationToken = new CancellationToken())
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task StopAsync(CancellationToken cancellationToken = new CancellationToken())
+        {
+            throw new NotImplementedException();
+        }
+
+        public IServiceProvider Services { get; }
     }
 
     class Worker : IHostedService
