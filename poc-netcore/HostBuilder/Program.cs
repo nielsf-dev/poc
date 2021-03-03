@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -14,9 +16,50 @@ namespace HostBuilder
         public static void Main(string[] args)
         {
             //noIHostedServiceAdded();
-            IHostBuilder hostedWorker = simpleHostedWorker(args);
-            IHost host = hostedWorker.Build();
+            startWeb();
+
+            //IHostBuilder hostedWorker = simpleHostedWorker(args);
+            //IHost host = hostedWorker.Build();
+            //host.Run();
+        }
+
+        private static void startWeb()
+        {
+            IHostBuilder defaultBuilder = Host.CreateDefaultBuilder();
+            defaultBuilder.ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<MyStartup>();
+            });
+
+            // ConfigureWebHostDefaults is dus niet een echte hostbuilder methode surprise surprise
+            // maar een extension voor:
+            /*
+             *    var webhostBuilder = new GenericWebHostBuilder(builder);
+                  configure(webhostBuilder); // hier word alle user configuratie aangeroepen, hierboven dus UseStartup
+
+                  builder.ConfigureServices((context, services) => services.AddHostedService<GenericWebHostService>());
+                  return builder;
+             */
+
+            IHost host = defaultBuilder.Build();
             host.Run();
+
+            // uiteindelijk word hier ook die internal host aangeroepen, die een asp.net IHostedService start 
+
+        }
+        public class MyStartup
+        {
+            public void ConfigureServices(IServiceCollection services)
+            {
+            }
+
+            public void Configure(IApplicationBuilder app)
+            {
+                app.UseDefaultFiles();
+                app.UseStaticFiles();
+                app.UseFileServer(enableDirectoryBrowsing: true);
+                app.UseWebSockets(); // Only for Kestrel
+            }
         }
 
         private static void noIHostedServiceAdded()
@@ -70,7 +113,7 @@ namespace HostBuilder
                 string EnvironmentName { get; set; }
              */
 
-            IHost build = hostBuilder.Build();
+            IHost host = hostBuilder.Build();
 
             //neeueuuhhh. dus die Run() zit niet eens in de IHost
             // Het zit in de HostingAbstractionsHostExtensions (dus)
@@ -95,7 +138,7 @@ namespace HostBuilder
                 }
              */
 
-            build.Run();
+            host.Run();
 
             // en dat zijn er normaal gesproken op deze manier dus geen (hosted services)
         }
@@ -107,6 +150,40 @@ namespace HostBuilder
             return defaultBuilder;
         }
     }
+
+    class MyWebBuilder : IWebHostBuilder
+    {
+        public IWebHost Build()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IWebHostBuilder ConfigureAppConfiguration(Action<WebHostBuilderContext, IConfigurationBuilder> configureDelegate)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IWebHostBuilder ConfigureServices(Action<WebHostBuilderContext, IServiceCollection> configureServices)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IWebHostBuilder ConfigureServices(Action<IServiceCollection> configureServices)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetSetting(string key)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IWebHostBuilder UseSetting(string key, string value)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
 
     class MyBuilder : IHostBuilder
     {
@@ -165,6 +242,7 @@ namespace HostBuilder
             throw new NotImplementedException();
         }
 
+        // hier zit dus gewoon alles in van logging tot configuratie tot de hostedservices
         public IServiceProvider Services { get; }
     }
 

@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.Socket;
 import java.util.List;
 
 @Component
@@ -20,12 +23,21 @@ public class CommandLiner implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
+        makeSocketConnection();
         getAll();
-        getAll();
-        getAll();
-        getAll();
-        getAll();
-        getAll();
+    }
+
+    public void makeSocketConnection(){
+        try {
+            Socket socket = new Socket("localhost",5188);
+            InputStream inputStream = socket.getInputStream();
+
+            byte[] bytes = inputStream.readAllBytes();
+            logger.info(bytes.toString());
+
+        } catch (IOException e) {
+            logger.error(e.toString());
+        }
     }
 
     public void testing(){
