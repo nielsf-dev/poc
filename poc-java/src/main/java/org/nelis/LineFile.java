@@ -14,29 +14,25 @@ public class LineFile {
 
     private static final Logger logger = LoggerFactory.getLogger(LineFile.class);
 
-    private final Path path;
-    private final Pattern classNamePattern;
-    private final List<String> lines;
+    protected final Path path;
+    protected final List<String> lines;
 
     public LineFile(Path path) throws IOException {
         this.path = path;
         this.lines = Files.readAllLines(path);
-        classNamePattern = Pattern.compile("public\\sclass\\s([^\\s]*)\\s:");
     }
 
     public void write() throws IOException {
         Files.write(path,lines);
     }
 
-    public void insertName() {
+    public void magNiet() throws IOException {
+        if(1 == (2-1))
+            throw new IOException("balen");
+    }
 
-        for(int i=0; i<lines.size(); i++){
-            String line = lines.get(i).trim();
-            Matcher matcher = classNamePattern.matcher(line);
-            if(matcher.find()){
-                String className = matcher.group(1);
-                logger.info(className);
-            }
-        }
+    public void magWel() {
+        if(1 == (2-1))
+            throw new RuntimeException("balen");
     }
 }

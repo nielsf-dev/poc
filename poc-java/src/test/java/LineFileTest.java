@@ -10,6 +10,5 @@ class LineFileTest {
     void test() throws IOException {
         String filePath = "C:\\work\\visi-backend\\core\\Service\\Raamwerken\\AuxSystem\\Functions\\OnMessageSave\\MailSubject.cs";
         LineFile lineFile = new LineFile(Paths.get(filePath));
-        lineFile.insertName();
     }
 }

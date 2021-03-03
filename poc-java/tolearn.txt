@@ -1,0 +1,9 @@
+- waarom kan een jar niet uitvoeren gemaakt door gradle, wat is die fat jar precies.
+hoe gradle etc
+- wat doet jconsole, wat is een jmx url, hoe verbind ik daar mee
+- runtime exceptions mogen wel? zonder methode defenitie aan te passen
+	: yeppp
+
+Todo:
+Chat applicatie maken
+vervolgens reactive ;)
