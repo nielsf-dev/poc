@@ -1,15 +1,9 @@
-package org.hibernate.example.reactive;
+package org.nelis.hibernate;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
-
 import java.time.LocalDate;
 
 import static javax.persistence.FetchType.LAZY;

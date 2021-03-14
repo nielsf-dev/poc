@@ -5,5 +5,10 @@ hoe gradle etc
 	: yeppp
 
 Todo:
-Chat applicatie maken
-vervolgens reactive ;)
+
+Epoll, linux c++, vim
+
+Chat applicatie:
+- Command line client maken om te beginnen, multi-module
+- Dan desktop(check electron). Je komt  binnen en kan zien wie er online is, op iemand klikken en chatten
+- Je kan je registeren, je ook kan inloggen via facebook
