@@ -12,13 +12,13 @@ class GreetingTask extends DefaultTask {
 plugins{
     id "java"
     id "groovy"
+
+    // in settings.gradle staat de lokale repo
+    id "md5.plugin.greeting" version '1.0'
 }
 
 apply plugin: GreetingPlugin
 
-sourceSets{
-
-}
 
 task hello {
     println "even I get configured"
@@ -66,6 +66,6 @@ wtf {
 }
 wtf.dependsOn hello
 
-task greeting(type: GreetingTask) {
+task greetingfromtheinside(type: GreetingTask) {
     greeting = 'Het is zo simpel allemaal!'
 }

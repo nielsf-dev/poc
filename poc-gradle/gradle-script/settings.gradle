@@ -1,0 +1,8 @@
+pluginManagement {
+    repositories {
+        maven {
+            url = file('C:\\work\\poc\\poc-gradle\\md5-plugin\\plugin\\build\\repo',PathValidation.EXISTS)
+        }
+    }
+}
+
