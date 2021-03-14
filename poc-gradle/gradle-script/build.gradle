@@ -1,57 +1,71 @@
-import org.nelis.NielsTask
+import org.nelis.*
 
 class GreetingTask extends DefaultTask {
-  String greeting = 'hello from GreetingTask'
+    String greeting = 'hello from GreetingTask'
 
-  @TaskAction
-  def greet() {
-    println greeting
-  }
+    @TaskAction
+    def greet() {
+        println greeting
+    }
+}
+
+plugins{
+    id "java"
+    id "groovy"
+}
+
+apply plugin: GreetingPlugin
+
+sourceSets{
+
 }
 
 task hello {
-  println "even I get configured"
-  doLast {
-    println "Hello world!"
-  }
+    println "even I get configured"
+    doLast {
+        println "Hello world!"
+    }
 }
 
 task wtf {
-  ext{
-    zomaariets = "1.0"
-  }
-  println "wtf getting configured"
-  doLast{
-    println "Why this one"
-  }
+    ext{
+        zomaariets = "1.0"
+    }
+    println "wtf getting configured"
+    doLast{
+        println "Why this one"
+    }
 }
 
 task myCopy() {
-  println tasks.wtf.name
-  println project.name
-  doLast{
-    println "Dit is de MyCopy"
-  }
+    println tasks.wtf.name
+    println project.name
+
+    doLast{
+        println "Dit is de MyCopy"
+    }
 }
 
 task realCopy(type: Copy)
-task myCystom(type: NielsTask)
+task myCystom(type: GreetingTask)
+task myCystom2(type: NielsTask)
 
 realCopy{
-  from '.'
-  into '../'
-  exclude '**/*.gradle', 'leavemealone.txt'
-  println name
+    from '.'
+    into '../'
+    exclude '**/*.gradle', 'leavemealone.txt'
+    println name
 }
 
 wtf {
-  println "wtf getting configured again"
-  doLast {
-    println "nog een keer $zomaariets"
-  }
+    println "wtf getting configured again"
+    zomaariets = "honderd"
+    doLast {
+        println "nog een keer $zomaariets"
+    }
 }
 wtf.dependsOn hello
 
 task greeting(type: GreetingTask) {
-  greeting = 'Het is zo simpel allemaal!'
+    greeting = 'Het is zo simpel allemaal!'
 }
