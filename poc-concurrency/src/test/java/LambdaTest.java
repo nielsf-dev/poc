@@ -13,7 +13,7 @@ public class LambdaTest {
         String result = add("KING NIELS", String::toLowerCase);
         logger.trace("added " + result);
 
-        String result2 = add("king niels", s -> s.toUpperCase());
+        String result2 = add("king niels",string -> string.toUpperCase());
         logger.trace("added " + result2);
     }
 

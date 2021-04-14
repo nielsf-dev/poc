@@ -19,7 +19,6 @@ plugins{
 
 apply plugin: GreetingPlugin
 
-
 task hello {
     println "even I get configured"
     doLast {
@@ -35,6 +34,10 @@ task wtf {
     doLast{
         println "Why this one"
     }
+}
+
+dagoemang {
+    test = "zomaar"
 }
 
 task myCopy() {
@@ -65,6 +68,17 @@ wtf {
     }
 }
 wtf.dependsOn hello
+
+// kennelijk word de extensions van project doorzoch naar dit soort shit
+dagoemang { // dit is gewoon zomaar een object
+    test = "gewoondoen"
+}
+
+copy { // maar dit is een fucntie die echt word uitgevoerd, ook al doe je alleen build
+    into "$buildDir/tmp2"
+    from "$buildDir/tmp"
+}
+
 
 task greetingfromtheinside(type: GreetingTask) {
     greeting = 'Het is zo simpel allemaal!'

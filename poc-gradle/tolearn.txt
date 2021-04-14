@@ -1,5 +1,22 @@
 - Dat DSL script, kennelijk als ik bv een maven-publish plugin toevoeg, mag ik een publications{ ding toevoegen.
   Het is geen task, hoe zit dat?
-  volgens mij wel gewoon een task.
+  volgens mij wel gewoon een task. 
 
-  Default heb je ook sourceSets, maar dat zou eigenlijk allleen door die java plugin toegevoegd moeten worden.
+  Hij checkt bij vet veel dingen
+  zie https://docs.gradle.org/current/dsl/org.gradle.api.Project.html
+
+- Wat voor verschillende dingen kan je nou allemaal toevoegen op hoofd niveau van een script.
+
+	Uitendelijk word alles functies op Project met als parameter een closure
+	(Tasks, conventions, extensions, project en de build file zelf)
+	https://docs.gradle.org/current/dsl/org.gradle.api.Project.html#N150CA
+
+	zelfde geld voor zoeken naar proprties
+	https://docs.gradle.org/current/userguide/groovy_build_script_primer.html#groovy:properties
+
+- Wat houd die delegation in 
+	gewoon een bepaalde type van die action/slash closure
+	bij copy heb je bv
+	https://docs.gradle.org/current/javadoc/org/gradle/api/file/CopySpec.html
+
+	daar zit from en into in

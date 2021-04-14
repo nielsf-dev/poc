@@ -13,6 +13,10 @@ public class GreetingPlugin implements Plugin<Project> {
         JavaPluginConvention plugin = project.getConvention().getPlugin(JavaPluginConvention.class);
         SourceSetContainer sourceSets = plugin.getSourceSets();
 
+//        Object publishing = project.getExtensions().getByName("publishing");
+
+        project.getExtensions().add("dagoemang", new MyConfig());
+
         // MAAR ook zo
         SourceSetContainer sourceSetsendere = (SourceSetContainer) project.getExtensions().getByName("sourceSets");
 
@@ -20,3 +24,4 @@ public class GreetingPlugin implements Plugin<Project> {
                 .doLast(task -> System.out.println("Hello Gradle!"));
     }
 }
+

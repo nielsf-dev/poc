@@ -8,37 +8,35 @@ import java.io.PrintWriter
 import java.sql.Connection
 import java.sql.DriverManager
 import net.ttddyy.dsproxy.support.ProxyDataSourceBuilder
-import net.ttddyy.dsproxy.listener.logging.SLF4JQueryLoggingListener
 import java.util.concurrent.TimeUnit
 import net.ttddyy.dsproxy.listener.logging.SystemOutQueryLoggingListener
 import javax.sql.DataSource
 import net.ttddyy.dsproxy.listener.logging.DefaultQueryLogEntryCreator
 import org.postgresql.ds.PGSimpleDataSource
-import java.sql.SQLData
 
 
 class Jdbcer{
-    private val url = "jdbc:postgresql://localhost/mydb"
+    private val url = "jdbc:postgresql://localhost/chat"
     private val user = "postgres"
     private val password = "toor"
 
     fun simpleQuery(){
-        //val connection = getConnectionFromDriverManager()
-        val dataSource = getDataSource()
-        val connection = dataSource.connection
+        val connection = getConnectionFromDriverManager()
+        //val dataSource = getDataSource()
+        //val connection = dataSource.connection
         connection.autoCommit = false
         println("Gelukt: " + connection.clientInfo.size)
 
-        printProjects(connection)
+        printChatRooms(connection)
     }
 
-    private fun printProjects(connection: Connection) {
+    private fun printChatRooms(connection: Connection) {
         val statement = connection.createStatement()
         connection.autoCommit = false
-        val resultSet = statement.executeQuery("select * from project")
+        val resultSet = statement.executeQuery("select * from Chatroommessage")
 
         while (resultSet.next()) {
-            val titel = resultSet.getString("titel")
+            val titel = resultSet.getString("chatroomid")
             println(titel)
         }
 
@@ -71,7 +69,7 @@ class Jdbcer{
 
         val hikariDataSource = HikariDataSource(hikariConfig)
         val connection = hikariDataSource.connection
-        printProjects(connection)
+        printChatRooms(connection)
     }
 
     private fun getDataSource(): DataSource {

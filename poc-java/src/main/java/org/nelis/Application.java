@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.Future;
 import java.util.stream.Stream;
 
@@ -36,7 +37,6 @@ public class Application {
 
     private static void asyncFileRead() throws IOException {
         Path path = Paths.get("C:\\work\\poc\\poc-java\\src\\main\\resources\\META-INF\\persistence.xml");
-
         AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.READ);
 
         ByteBuffer buffer = ByteBuffer.allocate(1024);

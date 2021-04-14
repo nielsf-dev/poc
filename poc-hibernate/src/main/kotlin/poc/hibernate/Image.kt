@@ -9,7 +9,7 @@ import java.util.Objects
 @Entity
 class Image(val url: String) {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator="CUST_SEQ")
     val id: Int = 0
 
     override fun equals(other: Any?): Boolean {
