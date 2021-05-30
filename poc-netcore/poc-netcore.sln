@@ -23,6 +23,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EF6", "EF6\EF6.csproj", "{F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF6NETFramework", "EF6NETFramework\EF6NETFramework.csproj", "{7EB34E36-7E82-47CE-ABA6-F1DDAD26D98E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "todo", "todo", "{92C828A0-1904-4A12-B490-3F3CC85AFD91}"
+	ProjectSection(SolutionItems) = preProject
+		todo-tolearn.txt = todo-tolearn.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "net5aspcore", "net5aspcore\net5aspcore.csproj", "{393713D9-C551-4828-AB71-2FE4A69E880D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +76,10 @@ Global
 		{7EB34E36-7E82-47CE-ABA6-F1DDAD26D98E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EB34E36-7E82-47CE-ABA6-F1DDAD26D98E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7EB34E36-7E82-47CE-ABA6-F1DDAD26D98E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{393713D9-C551-4828-AB71-2FE4A69E880D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{393713D9-C551-4828-AB71-2FE4A69E880D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{393713D9-C551-4828-AB71-2FE4A69E880D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{393713D9-C551-4828-AB71-2FE4A69E880D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

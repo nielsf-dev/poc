@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/spark-md5/2.0.2/spark-md5.min.js"></script>
+</head>
+
+<body>
+
+    <input type="file" id="filechoice" />
+    <button id="mybutton" value="test">Uploaden</button>
+    <pre id="contents"></pre>
+
+    <script>
+        document
+            .getElementById('mybutton')
+            .addEventListener(
+                'click',
+                function () {
+                    let fileChoiceElement = document.getElementById("filechoice");
+                    let myFile = fileChoiceElement.files[0];
+                    uploadFile(myFile)
+                }
+            );
+
+        function uploadFile(file) {
+            // roept de startupload aan
+            calculateMD5Hash(file, 1024 * 1024 * 100);
+        }
+
+        function startUpload(file, md5){
+            let startPost = createPost("startupload");
+            startPost.send(JSON.stringify({ "MD5Checksum": md5 }));
+
+            startPost.onreadystatechange = function () {
+                if (this.readyState === XMLHttpRequest.DONE) {
+                    if (this.status === 200) {
+                        let startWrite = JSON.parse(startPost.responseText);
+                        uploadChunks(file, startWrite);
+                    }
+                    else
+                        console.error("fout bij startupload " + this.status + " " + startPost.responseText);
+                }
+            }
+        }
+
+        function uploadChunks(file, startWrite) {
+            let chunkSize = 1024 * 1024 * 10;
+            let chunks = file.size / chunkSize;
+
+            if (!startWrite.AlreadyExists) {
+
+                let offset = startWrite.Offset;
+                let uploadChunkPost = createPost("uploadchunk");
+                uploadChunkPost.setRequestHeader("UploadID", startWrite.ID);
+
+                let nchunk = 1;
+                uploadChunkPost.onreadystatechange = function () {
+                    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+                        console.log("klaar met upload chunk " + nchunk);
+                        nchunk += 1;
+
+                        openRequest(uploadChunkPost, "uploadchunk");
+                        uploadChunkPost.setRequestHeader("UploadID", startWrite.ID);
+                        uploadNextChunk();
+                    }
+                }
+
+                function uploadNextChunk() {
+                    let endOffset = offset + chunkSize;
+                    if (endOffset > file.size)
+                        endOffset = file.size;
+
+                    let fileSlice = file.slice(offset, endOffset);
+                    if (fileSlice.size === 0 || fileSlice === null) {
+                        finalizeUpload(startWrite.ID);
+                    }
+                    else {
+                        uploadChunkPost.send(fileSlice);
+                        offset += fileSlice.size;
+                    }
+                }
+
+                uploadNextChunk();
+            }
+            else{
+                console.log("bestand bestaat al")
+            }
+        }
+
+        function finalizeUpload(writeID) {
+            let finalizePost = createPost("finalizeupload");
+            finalizePost.send(JSON.stringify({ "UploadId": writeID }))
+            finalizePost.onreadystatechange = function () {
+                if (this.readyState === XMLHttpRequest.DONE) {
+                    if (this.status === 200)
+                        console.log("Gelukt!");
+                    else
+                        console.error("Finalize mislukt");
+                }
+            }
+        }
+
+        function createPost(endpoint) {
+            let httpRequest = new XMLHttpRequest();
+            openRequest(httpRequest, endpoint)
+            return httpRequest;
+        }
+
+        function openRequest(request, endpoint) {
+            request.open("POST", "http://localhost:5188/api/v1/file/" + endpoint);
+            request.setRequestHeader("Content-Type", "application/json");
+            request.setRequestHeader("SessionID", "0e3430a2-337c-4507-b7ad-5aae28960113");
+            request.setRequestHeader("TokenID", "6c473d2c-1e79-4634-81a9-07ce52261947");
+        }
+
+        function calculateMD5Hash(file, bufferSize) {
+
+            var fileReader = new FileReader();
+            var fileSlicer = File.prototype.slice || File.prototype.mozSlice || File.prototype.webkitSlice;
+            var hashAlgorithm = new SparkMD5();
+            var totalParts = Math.ceil(file.size / bufferSize);
+            var currentPart = 0;
+            var startTime = new Date().getTime();
+            console.log("berekenen van md5 hash, total parts = " + totalParts);
+
+            var done = false;
+            fileReader.onload = function (e) {
+                currentPart += 1;
+
+                var buffer = e.target.result;
+                hashAlgorithm.appendBinary(buffer);
+
+                if (currentPart < totalParts) {
+                    processNextPart();
+                    return;
+                }
+                else{
+                    let md5 = hashAlgorithm.end();
+                    console.log("md5 = " + md5 + ", beginnen aan upload..")
+                    startUpload(file, md5);
+                }
+            };
+
+            fileReader.onerror = function (e) {
+                console.error("fout bij berekenen md5")
+            };
+
+            function processNextPart() {
+                console.log("beginnen aan md5 hash part index " + currentPart);
+                var start = currentPart * bufferSize;
+                var end = Math.min(start + bufferSize, file.size);
+                fileReader.readAsBinaryString(fileSlicer.call(file, start, end));
+            }
+
+            processNextPart();
+        }
+
+    </script>
+</body>
+
+</html>

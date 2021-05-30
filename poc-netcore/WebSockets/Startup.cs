@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace WebSocketExample
 {
@@ -17,8 +18,9 @@ namespace WebSocketExample
         {
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILogger<Startup> logger)
         {
+            logger.LogInformation("Starting up");
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -35,6 +37,7 @@ namespace WebSocketExample
                 {
                     if (context.WebSockets.IsWebSocketRequest)
                     {
+                        logger.LogInformation("Request komt binnen");
                         var webSocket = await context.WebSockets.AcceptWebSocketAsync();
                         await Echo(webSocket);
                         return;
@@ -47,7 +50,8 @@ namespace WebSocketExample
         private async Task Echo(WebSocket webSocket)
         {
             byte[] buffer = new byte[1024 * 4];
-            var result = await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
+            var arraySegment = new ArraySegment<byte>(buffer);
+            var result = await webSocket.ReceiveAsync(arraySegment, CancellationToken.None);
             while (!result.CloseStatus.HasValue)
             {
                 await webSocket.SendAsync(new ArraySegment<byte>(buffer, 0, result.Count), result.MessageType, result.EndOfMessage, CancellationToken.None);

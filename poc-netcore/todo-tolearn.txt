@@ -1,0 +1,12 @@
+- verschil leren tussen host en webhost
+	https://stackoverflow.com/questions/59745401/what-is-the-difference-between-host-and-webhost-class-in-asp-net-core
+	host is dus nieuwer, meer generic, de toekomst
+
+- installeren als windows service, liefts met powershell, ook checken hoe dan te draaien zonder windows service
+	hoeft dus alleen die extenstions.hosting.windowsservice nuget toe te voegen
+	dan UseWindowsService in de builder en done, gaat dus ook gewoon goed lokaal
+	New-Service -Name KingNelis -BinaryPathName "C:\work\poc\poc-netcore\WebSockets\bin\Debug\net5.0\WebSockets.exe"
+	
+	als je niet publish self-contained doet krijg je 404's
+
+- basic entity framework opzetten

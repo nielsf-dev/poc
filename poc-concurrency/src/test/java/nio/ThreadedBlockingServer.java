@@ -1,6 +1,5 @@
 package nio;
-
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -48,21 +47,12 @@ public class ThreadedBlockingServer {
     private static void handle(final Socket socket) {
         long l = connections.incrementAndGet();
         System.out.println("Handling connection " + l);
-        InputStream inputStream = null;
-        try {
-            inputStream = socket.getInputStream();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        OutputStream outputStream = null;
-        try {
-            outputStream = socket.getOutputStream();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         while(true) {
             try  {
+                InputStream inputStream = socket.getInputStream();
+                OutputStream outputStream = socket.getOutputStream();
+
                 String input = readString(inputStream);
                 if(!input.isEmpty() && !input.isBlank()) {
                     MessageDigest messageDigest = MessageDigest.getInstance("MD5");
@@ -75,17 +65,6 @@ public class ThreadedBlockingServer {
                 else
                     logger.error("Ongeldige string gelezen: " + input);
 
-
-//            int data;
-//            while ((data = inputStream.read()) != -1) { // -1 -> end of stream
-//                // Data read from socket
-//
-//                // Operation performed
-//                data = Character.isLetter(data) ? invertCase(data) : data;
-//
-//                // Changed output written back to socket
-//                outputStream.write(data);
-//            }
             } catch (Exception e) {
                 logger.error("Error in handlen van socket", e);
             }

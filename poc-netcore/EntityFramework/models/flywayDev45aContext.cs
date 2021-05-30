@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -93,8 +94,10 @@ namespace EntityFramework.models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseNpgsql("user id=postgres;Password=toor;server=192.168.63.81;database=flywayDev45a;port=5432");
+                optionsBuilder.UseNpgsql("user id=postgres;Password=toor;server=127.0.0.1;database=dev45a;port=5432");
             }
+
+            optionsBuilder.LogTo(Console.WriteLine);
 
             optionsBuilder
                 .UseLazyLoadingProxies();
