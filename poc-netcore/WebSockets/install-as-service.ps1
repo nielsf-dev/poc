@@ -1,0 +1,1 @@
+New-Service -name kingnelisde2de -BinaryPathName "C:\work\websockets-publish\WebSockets2.exe"

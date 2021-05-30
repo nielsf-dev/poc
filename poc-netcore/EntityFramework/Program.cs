@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using EntityFramework.models;
+using Microsoft.EntityFrameworkCore;
 
 namespace EntityFramework
 {
@@ -11,15 +12,28 @@ namespace EntityFramework
         {
             var context = new flywayDev45aContext();
             
-            var list = context.Transactions
-                .Where(t => myTest(t))
-                .ToList();
+            // var list = context.Transactions
+            //     //.Where(t => myTest(t))
+            //     .ToList();
 
-            foreach (var transaction in list)
-            {
-                int messagesCount = transaction.Messages.Count;
-                Console.WriteLine(messagesCount);
-            }
+            var find = context.Transactions.Find(12);
+
+            var transactiontypeNameBefore = find.Transactiontype.Name;
+            find.Transactiontypeid = 17;
+            var entityEntry = context.Entry(find);
+            entityEntry.State = EntityState.Modified;
+            context.SaveChanges();
+
+            var transactiontypeName = find.Transactiontype.Name;
+
+            // foreach (var transaction in list)
+            // {
+            //     var transactiontypeNameBefore = transaction.Transactiontype.Name;
+            //     transaction.Transactiontypeid = 17;
+            //     var transactiontypeName = transaction.Transactiontype.Name;
+            //     int messagesCount = transaction.Messages.Count;
+            //     Console.WriteLine(messagesCount);
+            // }
 
             Console.WriteLine("Hello World!");
         }

@@ -1,4 +1,4 @@
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,6 +15,8 @@ public class LambdaTest {
 
         String result2 = add("king niels",string -> string.toUpperCase());
         logger.trace("added " + result2);
+
+        add("kingf", string -> string.toUpperCase());
     }
 
     @Test

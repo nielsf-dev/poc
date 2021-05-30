@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -29,11 +30,14 @@ namespace LoggingWeb
 
                     //wasdit
                     .WriteTo.Logger(lc => lc
-                        .Filter.ByIncludingOnly(Matching.FromSource("LoggingWeb.Data"))
+                       // .Filter.ByIncludingOnly(Matching.FromSource("LoggingWeb.Data"))
                         .WriteTo.File("data-log.txt"))
                     .CreateLogger();
 
             Log.Information("Whutever");
+
+            Task<byte[]> readAsync = ReadAsync(new FileInfo(@"C:\Users\Niels\Downloads\adwcleaner_8.0.5.exe"));
+            readAsync.Wait();
 
             SerilogLoggerFactory factory = new SerilogLoggerFactory(Log.Logger);
             ILogger<Program> logger = factory.CreateLogger<Program>();
@@ -59,6 +63,14 @@ namespace LoggingWeb
             {
                 Log.CloseAndFlush();
             }
+        }
+
+        public static async Task<byte[]> ReadAsync(FileInfo fileInfo)
+        {
+            var fileStream = fileInfo.OpenRead();
+            var buffer = new byte[fileInfo.Length];
+            await fileStream.ReadAsync(buffer, 0, buffer.Length);
+            return buffer;
         }
 
         //

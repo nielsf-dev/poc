@@ -1,0 +1,22 @@
+kennelijk heb je dus shortcuts
+get-content = gc
+add-content = ac
+new-item = ni
+
+C:\Users\Niels> gc testme.txt
+super dik gaan
+C:\Users\Niels> ac testme.txt "nog meer shit"
+C:\Users\Niels> gc testme.txt
+super dik gaan
+nog meer shit
+C:\Users\Niels> ni tochweldope.txt
+
+    Directory: C:\Users\Niels
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a---          22/05/2021    02:42              0 tochweldope.txt
+
+C:\Users\Niels> ac .\tochweldope.txt "best vet"
+C:\Users\Niels> gc .\tochweldope.txt
+best vet
