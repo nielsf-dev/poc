@@ -14,12 +14,12 @@ namespace net5aspcore
     {
         public static void Main(string[] args)
         {
-            var myBuilder = new MyBuilder();
-            myBuilder.DoInterfaceStuff(interf =>
+            var myBuilder = new MyBuilder()
+            .DoInterfaceStuff(interf =>
                 {
                     interf.AddStuff("stuff");
                 })
-                .DoOtherStuff();
+            .DoOtherStuff();
 
             CreateHostBuilder(args).Build().Run();
         }
