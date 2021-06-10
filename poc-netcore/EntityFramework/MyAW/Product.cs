@@ -1,19 +1,32 @@
 ﻿namespace EntityFramework.MyAW
 {
+    /// <summary>
+    /// Het product uit de adventure works
+    /// </summary>
     public class Product
     {
         public int Id { get; set; }
+
+        /// <summary>
+        /// Naam van het product
+        /// </summary>
         public string Name { get; set; }
         
+        /// <summary>
+        /// De <see cref="ProductSubCategory">Sub-category</see>
+        /// </summary>
         public virtual ProductSubCategory SubCategory { get; set; }
         public int? SubCategoryId { get; set; }
 
-        //
-        // public Product(int id, string name, int subCategoryId)
-        // {
-        //     Id = id;
-        //     Name = name;
-        //     SubCategoryId = subCategoryId;
-        // }
+        public bool CategoryWorth(int worthyNumber)
+        {
+            return SubCategory.Id > worthyNumber;
+        }
+
+        //public Product(string name, int ProductSubcategoryID)
+        //{
+        //    Name = name;
+        //    SubCategoryId = ProductSubcategoryID;
+        //}
     }
 }

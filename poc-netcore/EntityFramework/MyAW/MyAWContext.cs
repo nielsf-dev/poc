@@ -1,4 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
+using Serilog;
+using Serilog.Extensions.Logging;
 
 namespace EntityFramework.MyAW
 {
@@ -11,6 +15,9 @@ namespace EntityFramework.MyAW
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            var serilogLoggerFactory = new SerilogLoggerFactory(Log.Logger);
+            optionsBuilder.UseLoggerFactory(serilogLoggerFactory);
+
             optionsBuilder
                 .UseLazyLoadingProxies();
 
@@ -28,8 +35,12 @@ namespace EntityFramework.MyAW
 
             modelBuilder.Entity<ProductSubCategory>().ToTable("ProductSubCategory", "Production")
                .Property("Id").HasColumnName("ProductSubCategoryId");
+        }
 
-
+        private static void MyLogWriteLine(string toLog)
+        {
+            Console.Out.WriteLine(toLog);
+            Debug.WriteLine(toLog);
         }
     }
 }
