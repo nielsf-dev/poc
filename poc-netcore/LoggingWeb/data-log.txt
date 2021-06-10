@@ -81,3 +81,38 @@
 2021-05-20 21:40:30.200 +02:00 [INF] Request finished in 63.3976ms 200 image/x-icon
 2021-05-21 10:12:20.529 +02:00 [INF] Whutever
 2021-05-21 10:13:12.722 +02:00 [INF] Whutever
+2021-06-10 14:28:54.204 +02:00 [INF] Whutever
+2021-06-10 14:29:11.245 +02:00 [INF] Whutever
+2021-06-10 14:29:11.275 +02:00 [INF] Zo kan het dus ook
+2021-06-10 14:29:12.436 +02:00 [INF] User profile is available. Using 'C:\Users\niels\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-06-10 14:29:12.784 +02:00 [INF] Now listening on: http://localhost:5000
+2021-06-10 14:29:12.785 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-10 14:29:12.786 +02:00 [INF] Hosting environment: Development
+2021-06-10 14:29:12.787 +02:00 [INF] Content root path: C:\Work\poc\poc-netcore\LoggingWeb
+2021-06-10 14:29:13.682 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/  
+2021-06-10 14:29:13.815 +02:00 [INF] Route matched with {action = "Test", controller = "Test"}. Executing controller action with signature System.String Test() on controller LoggingWeb.TestController (LoggingWeb).
+2021-06-10 14:29:16.606 +02:00 [INF] GO Johny GO
+2021-06-10 14:29:16.609 +02:00 [INF] Getting data
+2021-06-10 14:29:16.614 +02:00 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2021-06-10 14:29:16.635 +02:00 [INF] Executed action LoggingWeb.TestController.Test (LoggingWeb) in 2813.383ms
+2021-06-10 14:29:16.639 +02:00 [INF] Request finished in 2958.4356ms 200 text/plain; charset=utf-8
+2021-06-10 14:29:16.712 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/favicon.ico  
+2021-06-10 14:29:16.730 +02:00 [INF] Connection id "0HM9C1DDG0IFV", Request id "0HM9C1DDG0IFV:00000002": the application aborted the connection.
+2021-06-10 14:29:16.732 +02:00 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\Work\poc\poc-netcore\LoggingWeb\wwwroot\favicon.ico'
+2021-06-10 14:29:16.733 +02:00 [INF] Request finished in 21.2997ms 0 image/x-icon
+2021-06-10 14:29:19.339 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/  
+2021-06-10 14:29:19.342 +02:00 [INF] Route matched with {action = "Test", controller = "Test"}. Executing controller action with signature System.String Test() on controller LoggingWeb.TestController (LoggingWeb).
+2021-06-10 14:29:25.014 +02:00 [INF] GO Johny GO
+2021-06-10 14:29:25.017 +02:00 [INF] Getting data
+2021-06-10 14:29:25.020 +02:00 [INF] Executing ObjectResult, writing value of type 'System.String'.
+2021-06-10 14:29:25.022 +02:00 [INF] Executed action LoggingWeb.TestController.Test (LoggingWeb) in 5677.5897ms
+2021-06-10 14:29:25.026 +02:00 [INF] Request finished in 5687.3813ms 200 text/plain; charset=utf-8
+2021-06-10 14:34:21.935 +02:00 [INF] Whutever
+2021-06-10 14:34:21.962 +02:00 [INF] Zo kan het dus ook
+2021-06-10 14:34:22.726 +02:00 [INF] User profile is available. Using 'C:\Users\niels\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2021-06-10 14:34:23.054 +02:00 [INF] Now listening on: http://localhost:5000
+2021-06-10 14:34:23.056 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2021-06-10 14:34:23.057 +02:00 [INF] Hosting environment: Development
+2021-06-10 14:34:23.059 +02:00 [INF] Content root path: C:\Work\poc\poc-netcore\LoggingWeb
+2021-06-10 14:34:23.848 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5000/  
+2021-06-10 14:34:24.003 +02:00 [INF] Route matched with {action = "Test", controller = "Test"}. Executing controller action with signature System.String Test() on controller LoggingWeb.TestController (LoggingWeb).
