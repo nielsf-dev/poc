@@ -36,8 +36,8 @@ namespace LoggingWeb
 
             Log.Information("Whutever");
 
-            Task<byte[]> readAsync = ReadAsync(new FileInfo(@"C:\Users\Niels\Downloads\adwcleaner_8.0.5.exe"));
-            readAsync.Wait();
+        //   Task<byte[]> readAsync = ReadAsync(new FileInfo(@"C:\Users\Niels\Downloads\adwcleaner_8.0.5.exe"));
+        //    readAsync.Wait();
 
             SerilogLoggerFactory factory = new SerilogLoggerFactory(Log.Logger);
             ILogger<Program> logger = factory.CreateLogger<Program>();

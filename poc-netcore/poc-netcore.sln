@@ -28,7 +28,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "todo", "todo", "{92C828A0-1
 		todo-tolearn.txt = todo-tolearn.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "net5aspcore", "net5aspcore\net5aspcore.csproj", "{393713D9-C551-4828-AB71-2FE4A69E880D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "net5aspcore", "net5aspcore\net5aspcore.csproj", "{393713D9-C551-4828-AB71-2FE4A69E880D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Razorblades", "Razorblades\Razorblades.csproj", "{00CF0853-CBAD-4ACC-BE78-9325E8614FDF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,6 +82,10 @@ Global
 		{393713D9-C551-4828-AB71-2FE4A69E880D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{393713D9-C551-4828-AB71-2FE4A69E880D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{393713D9-C551-4828-AB71-2FE4A69E880D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00CF0853-CBAD-4ACC-BE78-9325E8614FDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00CF0853-CBAD-4ACC-BE78-9325E8614FDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00CF0853-CBAD-4ACC-BE78-9325E8614FDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00CF0853-CBAD-4ACC-BE78-9325E8614FDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

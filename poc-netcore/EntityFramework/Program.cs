@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using EntityFramework.models;
+using EntityFramework.MyAW;
 using Microsoft.EntityFrameworkCore;
 
 namespace EntityFramework
@@ -10,8 +12,20 @@ namespace EntityFramework
         // Scaffold-DbContext "user id=niels;pwd=S08J1298UHJSD1;server=192.168.63.69;port=5432;database=visi4_test_test46a.bakkerspees.nl;timeout=0" Npgsql.EntityFrameworkCore.PostgreSQL
         static void Main(string[] args)
         {
+            var ctx = new MyAWContext();
+            var products = ctx.Products.ToList();
+            Console.WriteLine($"Total products = {products.Count}");
+            foreach (var product in products)
+            {
+                Console.Out.WriteLine(product.SubCategory.Category);
+            }
+            Console.ReadLine();
+        }
+
+        private static void dev45stuff()
+        {
             var context = new flywayDev45aContext();
-            
+
             // var list = context.Transactions
             //     //.Where(t => myTest(t))
             //     .ToList();

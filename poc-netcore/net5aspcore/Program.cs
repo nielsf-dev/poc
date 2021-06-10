@@ -62,7 +62,7 @@ namespace net5aspcore
             Debug.WriteLine("Doing stuffff!");
         }
     }
-
+    
     public interface MyInterface
     {
         void AddStuff(string stuff);
