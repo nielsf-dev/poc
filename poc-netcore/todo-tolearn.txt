@@ -11,4 +11,6 @@
 	om de publish te doen vanaf de command-line:
 	dotnet build WebApplication.csproj /p:DeployOnBuild=true /p:PublishProfile=VisiProfile -o c:\outputfolder
 
+-
+
 - basic entity framework opzetten

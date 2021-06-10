@@ -41,7 +41,7 @@ namespace WebSocketExample
                 .ConfigureWebHostDefaults(builder =>
                     {
                         builder.UseStartup<Startup>();
-                        builder.UseUrls("http://localhost:1877");
+                        builder.UseUrls("http://localhost:1887");
                     }
                 );
     }
