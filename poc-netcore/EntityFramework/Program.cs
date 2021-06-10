@@ -13,13 +13,27 @@ namespace EntityFramework
         static void Main(string[] args)
         {
             var ctx = new MyAWContext();
-            var products = ctx.Products.ToList();
-            Console.WriteLine($"Total products = {products.Count}");
-            foreach (var product in products)
+            var product = ctx.Products.ToList().First(p => p.ProductId == 707);
+
+            if(product.ProductSubCategory == null)
+                Console.Out.WriteLine("mislukt");
+            else
             {
-                Console.Out.WriteLine(product.SubCategory.Category);
+                Console.Out.WriteLine("Gelukt");
             }
-            Console.ReadLine();
+
+            // Console.WriteLine($"Total products = {products.Count}");
+            // foreach (var product in products)
+            // {
+            //     Console.Out.WriteLine(product.Name);
+            //
+            //     Console.Out.WriteLine(product.ProductSubCategory != null
+            //         ? product.ProductSubCategory.Name
+            //         : "Is er niet");
+            //
+            //     Console.Out.WriteLine(" ");
+            // }
+            Console.ReadKey();
         }
 
         private static void dev45stuff()
