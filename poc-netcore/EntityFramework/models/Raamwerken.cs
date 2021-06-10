@@ -20,7 +20,6 @@ namespace EntityFramework.models
         }
 
         public int Id { get; set; }
-        public int Projectid { get; set; }
         public string Name { get; set; }
         public string Xmlns { get; set; }
         public int Counternr { get; set; }
@@ -30,6 +29,7 @@ namespace EntityFramework.models
         public string Sid { get; set; }
         public bool Isbasisraamwerk { get; set; }
 
+        public int Projectid { get; set; }
         public virtual Project Project { get; set; }
         public virtual ICollection<Appendix> Appendices { get; set; }
         public virtual ICollection<Element1> Element1s { get; set; }

@@ -40,6 +40,9 @@ namespace LoggingWeb
             readAsync.Wait();
 
             SerilogLoggerFactory factory = new SerilogLoggerFactory(Log.Logger);
+            ILoggerFactory fck = factory;
+            ILogger<Program> nother = fck.CreateLogger<Program>();
+
             ILogger<Program> logger = factory.CreateLogger<Program>();
             logger.LogInformation("Zo kan het dus ook");
 
