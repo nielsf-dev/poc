@@ -13,9 +13,9 @@ namespace EntityFramework
         static void Main(string[] args)
         {
             var ctx = new MyAWContext();
-            var product = ctx.Products.ToList().First(p => p.ProductId == 707);
+            var product = ctx.Products.Find(707);
 
-            if(product.ProductSubCategory == null)
+            if(product.SubCategory == null)
                 Console.Out.WriteLine("mislukt");
             else
             {
