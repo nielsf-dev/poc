@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using EntityFramework.MyAW;
+using EntityFramework.MyModel;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
@@ -19,7 +20,53 @@ namespace EntityFramework
                 .WriteTo.Console(outputTemplate: template) 
                 .WriteTo.Debug(outputTemplate: template) 
                 .CreateLogger();
+
+            await using (var ctx = new MyModelContext())
+            {
+                var list = await ctx.Posts.ToListAsync();
+                foreach (var post in list)
+                {
+                    Log.Information(post.Blog.Persoon.Name);  
+                }
+            }
+
+            await using(var ctx = new MyModelContext())
+            {
+                await ctx.Database.EnsureCreatedAsync();
+
+                var persoon = new Persoon()
+                {
+                    Age = 38,
+                    Name = "Nelis",
+                    Occupation = "Programmer"
+                };
+                await ctx.AddAsync(persoon);
+                await ctx.SaveChangesAsync();
+
+                var blog = new Blog()
+                {
+                    PersoonId = persoon.Id,
+                    Title = "Mooie post"
+                };
+                await ctx.AddAsync(blog);
+                await ctx.SaveChangesAsync();
+
+                var post = new Post()
+                {
+                    BlogId = blog.Id,
+                    Contents = "Bla die bla"
+                };
+                await ctx.AddAsync(post);
+                await ctx.SaveChangesAsync();
+            }   
             
+            //await awStuff();
+
+            Console.ReadKey();
+        }
+
+        private static async Task awStuff()
+        {
             await using (var ctx = new MyAWContext())
             {
                 var product = await ctx.Products.SingleAsync(p => p.Id == 707);
@@ -32,20 +79,8 @@ namespace EntityFramework
                 ctx.Add(newProduct);
                 await ctx.SaveChangesAsync();
             }
-
-            // Console.WriteLine($"Total products = {products.Count}");
-            // foreach (var product in products)
-            // {
-            //     Console.Out.WriteLine(product.Name);
-            //
-            //     Console.Out.WriteLine(product.ProductSubCategory != null
-            //         ? product.ProductSubCategory.Name
-            //         : "Is er niet");
-            //
-            //     Console.Out.WriteLine(" ");
-            // }
-            Console.ReadKey();
         }
+
         //
         // private static void dev45stuff()
         // {

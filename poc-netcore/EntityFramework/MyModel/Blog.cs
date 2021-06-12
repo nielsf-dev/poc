@@ -11,8 +11,8 @@ namespace EntityFramework.MyModel
 
         public int PersoonId { get; set; }
 
-        public Persoon Persoon { get; set; }
+        public virtual Persoon Persoon { get; set; }
 
-        public List<Post> Posts { get; set; }
+        public virtual List<Post> Posts { get; set; }
     }
 }
