@@ -18,6 +18,10 @@
         public virtual ProductSubCategory SubCategory { get; set; }
         public int? SubCategoryId { get; set; }
 
+        /// <summary>
+        /// Of het product waardig is
+        /// </summary>
+        /// <param name="worthyNumber">Het waarde nummer</param>
         public bool CategoryWorth(int worthyNumber)
         {
             return SubCategory.Id > worthyNumber;

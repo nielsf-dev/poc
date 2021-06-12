@@ -36,11 +36,5 @@ namespace EntityFramework.MyAW
             modelBuilder.Entity<ProductSubCategory>().ToTable("ProductSubCategory", "Production")
                .Property("Id").HasColumnName("ProductSubCategoryId");
         }
-
-        private static void MyLogWriteLine(string toLog)
-        {
-            Console.Out.WriteLine(toLog);
-            Debug.WriteLine(toLog);
-        }
     }
 }

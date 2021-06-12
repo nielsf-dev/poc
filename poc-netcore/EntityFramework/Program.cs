@@ -13,20 +13,22 @@ namespace EntityFramework
         // Scaffold-DbContext "user id=niels;pwd=S08J1298UHJSD1;server=192.168.63.69;port=5432;database=visi4_test_test46a.bakkerspees.nl;timeout=0" Npgsql.EntityFrameworkCore.PostgreSQL
         static async Task Main(string[] args)
         {
+            var template = "{Timestamp:HH:mm:ss} [{Level:u3}] {Message}{Exception} {NewLine}";
             Log.Logger = new LoggerConfiguration()
-                // en dit met die :
                 .MinimumLevel.Verbose()
-                .WriteTo.Console(outputTemplate: "{Timestamp:HH:mm:ss} [{Level:u3}] {Message}{Exception} {NewLine}") 
+                .WriteTo.Console(outputTemplate: template) 
+                .WriteTo.Debug(outputTemplate: template) 
                 .CreateLogger();
             
             await using (var ctx = new MyAWContext())
             {
                 var product = await ctx.Products.SingleAsync(p => p.Id == 707);
                 Log.Information(product.SubCategory == null ? "mislukt" : "Gelukt");
+            }
 
-                var newProduct = new Product();
-                newProduct.Name = "KlaasHarry";
-                if (product.SubCategoryId != null) newProduct.SubCategoryId = product.SubCategoryId.Value;
+            await using (var ctx = new MyAWContext())
+            {
+                var newProduct = new Product {Name = "KlaasHarry"};
                 ctx.Add(newProduct);
                 await ctx.SaveChangesAsync();
             }
