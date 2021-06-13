@@ -9,10 +9,18 @@ namespace EntityFramework.MyModel
 
         public string Title { get; set; }
 
-        public int PersoonId { get; set; }
-
         public virtual Persoon Persoon { get; set; }
 
         public virtual List<Post> Posts { get; set; }
+        
+        protected Blog()
+        {
+        }
+
+        public Blog(string title, Persoon persoon)
+        {
+            Title = title;
+            Persoon = persoon;
+        }
     }
 }

@@ -15,8 +15,7 @@ namespace EntityFramework.MyModel
             var serilogLoggerFactory = new SerilogLoggerFactory(Log.Logger);
             optionsBuilder.UseLoggerFactory(serilogLoggerFactory);
 
-            optionsBuilder
-                .UseLazyLoadingProxies();
+            optionsBuilder.UseLazyLoadingProxies();
 
             optionsBuilder.UseSqlServer(
                 @"Server=localhost;Database=MyModel;Integrated Security=True");

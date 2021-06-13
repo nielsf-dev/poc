@@ -6,6 +6,7 @@ using EntityFramework.MyAW;
 using EntityFramework.MyModel;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using Serilog.Extensions.Logging;
 
 namespace EntityFramework
 {
@@ -16,17 +17,19 @@ namespace EntityFramework
         {
             var template = "{Timestamp:HH:mm:ss} [{Level:u3}] {Message}{Exception} {NewLine}";
             Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Verbose()
+                .MinimumLevel.Information()
                 .WriteTo.Console(outputTemplate: template) 
                 .WriteTo.Debug(outputTemplate: template) 
                 .CreateLogger();
+
+            LoggerFactory.Instance = new SerilogLoggerFactory(Log.Logger);
 
             await using (var ctx = new MyModelContext())
             {
                 var list = await ctx.Posts.ToListAsync();
                 foreach (var post in list)
                 {
-                    Log.Information(post.Blog.Persoon.Name);  
+                    Log.Information(post.IsCoolBlog().ToString());  
                 }
             }
 
@@ -34,30 +37,21 @@ namespace EntityFramework
             {
                 await ctx.Database.EnsureCreatedAsync();
 
-                var persoon = new Persoon()
-                {
-                    Age = 38,
-                    Name = "Nelis",
-                    Occupation = "Programmer"
-                };
-                await ctx.AddAsync(persoon);
-                await ctx.SaveChangesAsync();
+                // var persoon = new Persoon("Niels", 34, "bla");
+                // await ctx.AddAsync(persoon);
+                // await ctx.SaveChangesAsync();
 
-                var blog = new Blog()
-                {
-                    PersoonId = persoon.Id,
-                    Title = "Mooie post"
-                };
+                var persoon = await ctx.Personen.SingleAsync(p => p.Id == 2);
+
+                var blog = new Blog("Cool", persoon);
                 await ctx.AddAsync(blog);
                 await ctx.SaveChangesAsync();
 
-                var post = new Post()
-                {
-                    BlogId = blog.Id,
-                    Contents = "Bla die bla"
-                };
+                var post = new Post("Blabla", blog);
                 await ctx.AddAsync(post);
                 await ctx.SaveChangesAsync();
+                
+                Log.Information(post.IsCoolBlog().ToString());
             }   
             
             //await awStuff();
