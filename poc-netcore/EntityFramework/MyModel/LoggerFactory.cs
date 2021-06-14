@@ -13,7 +13,6 @@ namespace EntityFramework.MyModel
 
         public static ILoggerFactory Instance
         {
-            get => loggerFactory;
             set => loggerFactory = value;
         }
     }

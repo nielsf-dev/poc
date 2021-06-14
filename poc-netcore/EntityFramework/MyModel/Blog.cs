@@ -5,7 +5,7 @@ namespace EntityFramework.MyModel
 {
     public class Blog
     {
-        public int Id { get; set; }
+        public int Id { get; protected set; }
 
         public string Title { get; set; }
 
