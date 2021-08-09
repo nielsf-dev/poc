@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DependencyInjection
@@ -20,19 +23,50 @@ namespace DependencyInjection
 
         static void Main(string[] args)
         {
-            var serviceCollection = new ServiceCollection();
-            serviceCollection.AddSingleton(SpecialList);
-            serviceCollection.AddSingleton<IBarService, BarService>();
-            serviceCollection.AddSingleton<IFooService, FooService>();
+            Replace();
 
-            //setup our DI
-            var serviceProvider = serviceCollection.BuildServiceProvider();
-            
-            //do the actual work here
-            var bar = serviceProvider.GetService<IBarService>();
-            bar.DoSomeRealWork();
+            // var serviceCollection = new ServiceCollection();
+            // serviceCollection.AddSingleton(SpecialList);
+            // serviceCollection.AddSingleton<IBarService, BarService>();
+            // serviceCollection.AddSingleton<IFooService, FooService>();
+            //
+            // //setup our DI
+            // var serviceProvider = serviceCollection.BuildServiceProvider();
+            //
+            // //do the actual work here
+            // var bar = serviceProvider.GetService<IBarService>();
+            // bar.DoSomeRealWork();
 
             Console.WriteLine("Done!");
+        }
+        
+        public static void Replace()
+        {
+            Regex regex = new Regex(@"private\sstatic\sILog\slogger\s=\sLogManager\.GetLogger\(typeof\(([^\s]+)\)\);");
+
+            string newLogger = "private static readonly ILogger<{0}> log = LoggerFactory.CreateLogger<{0}>();";
+
+            var dirInfo = new DirectoryInfo(@"C:\Work\visi-backend\core\Service");
+            foreach (var fileInfo in dirInfo.EnumerateFiles("*.cs", SearchOption.AllDirectories))
+            {
+                var streamReader = fileInfo.OpenText();
+                var content = streamReader.ReadToEnd();
+                streamReader.Dispose();
+
+                var match = regex.Match(content);
+                if (match.Success)
+                {
+                    string className = match.Groups[1].Value;
+                    string newLogString = string.Format(newLogger, className);
+                    string newContent = content.Replace(match.Value, newLogString);
+
+                    FileStream fileStream = fileInfo.OpenWrite();
+                    fileStream.Write(Encoding.UTF8.GetBytes(newContent));
+                    fileStream.Dispose();
+
+                    Console.Out.WriteLine(newContent);
+                }
+            }
         }
     }
 

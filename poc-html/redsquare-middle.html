@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        /* antwoord van deze kill: https://stackoverflow.com/questions/7049875/why-doesnt-height-100-work-to-expand-divs-to-the-screen-height */
+        * { padding: 0; margin: 0; }
+        html, body {
+            /* zonder dit skere shit, width staat kennelijk wel standaard op 100% */
+            min-height: 100% !important;
+            height: 100%;
+        }
+
+        #square{
+            background-color: red;
+            width: 200px;
+            height: 200px;
+
+            /* dit dus gebruiken om hem te centreren, HORIZONTAAL, verticaal willen we ook, hoe? -> de container op flex en align-items: center */
+            /* Wat betekent auto? auto = de browser berekent de ruimte om het element, kennelijk besluit hij dus wel horizontaal centreren maar niet verticaal */
+            margin: auto;
+
+            /* dit op absolute, margin = fucked, niet meer gecentreerd why? hoe? BELANGRIJK */
+            /* absolute gaat met left, right etc, dus 0,0 dus linksboven */
+            /* flex overschrijf em dan kennelijk, dus links ipv linksboven */
+            /* position: absolute; */
+        }
+        .squareHolder{
+            background-color: blue;
+
+            /* werkt niet om hem verticaal scherm vullend te maken, omdattt html en body niet op 100% stonden, dat zijn de containers */
+            /* height: 100%; */
+            height: 80%;
+
+            /* antwoord voor vertical align, wat doet flex precies, waarom doet align-items niet horizantaal centreren en hebben we daarvoor alsnog die margin:auto nodig?
+            https://stackoverflow.com/questions/2743989/how-to-vertically-center-div-inside-the-parent-element-with-css*/
+
+            /* dat is gewoon echt wat het doet kennelijk, verticaal centreren */
+            display: flex;
+            align-items: center;
+        }
+        .header {
+            height: 20%;
+            background-color: #f1f1f1;
+
+            /* dit zorgte voor de scrollbalk ipv de 80/20 verhouding die we wouden */
+            /* padding: 20px; */
+            text-align: center;
+
+            /* display: flex zorgt niet dat die text hier verticaal gecentreerd word, why? Is dat met een block en line element? was dat precies? tekst is ook in een h1*/
+            /* NOPE, zowel div als h1 zijn block-level elements https://www.w3schools.com/css/css_display_visibility.asp */
+
+            /* wat er dus gebeurt als je flex doet maar zonder align-items, maakt hij van h1 een dik vullend vierkant,
+            maar met align-items word hij netjes, dan nog ff margin: auto toevoegen voor de horizontal en de tekst staat mooi gecnetrajhdsfkahsdfasdf */
+
+            /* wel goeie ff te researchen flex nog */
+            display: flex;
+            align-items: center;
+        }
+        h1{
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Header</h1>
+    </div>
+    <div class="squareHolder">
+        <div id="square"></div>
+    </div>
+</body>
+</html>

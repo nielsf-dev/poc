@@ -17,9 +17,6 @@ namespace EntityFramework.models
         }
 
         public int Id { get; set; }
-        public int Messagetypeid { get; set; }
-        public int Transactiontypeid { get; set; }
-        public int Raamwerkid { get; set; }
         public string Groupid { get; set; }
         public string Sid { get; set; }
         public bool Opensecondarytransactionallowed { get; set; }
@@ -28,8 +25,14 @@ namespace EntityFramework.models
         public bool Iseditablebyeveryone { get; set; }
 
         public virtual Messagetype Messagetype { get; set; }
+        public int MessagetypeID { get; set; }
+
         public virtual Raamwerken Raamwerk { get; set; }
+        public int RaamwerkID { get; set; }
+
         public virtual Transactiontype Transactiontype { get; set; }
+        public int TransactiontypeID { get; set; }
+
         public virtual ICollection<Elementcondition> Elementconditions { get; set; }
         public virtual ICollection<Message> Messages { get; set; }
         public virtual ICollection<Mitconditionlink> Mitconditionlinks { get; set; }

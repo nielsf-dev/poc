@@ -8,3 +8,6 @@
 
 	tijdens development doe je ---> 
                 await ctx.Database.EnsureCreatedAsync();
+
+	voor database naar code:
+	dotnet ef dbcontext scaffold --project ..\Service.IntegrationTest.csproj "user id=niels;pwd=S08J1298UHJSD1;server=192.168.63.69;port=5432;database=visi4_test46a.bakkerspees.nl;timeout=0" Npgsql.EntityFrameworkCore.PostgreSQL --output-dir .\EntityFramework

@@ -47,9 +47,15 @@ namespace EntityFramework
                 await ctx.AddAsync(blog);
                 await ctx.SaveChangesAsync();
 
-                var post = new Post("Blabla", blog);
+                var anotherPost = new Post("Nogmeeronzin", blog);
+                await ctx.AddAsync(anotherPost);
+                await ctx.SaveChangesAsync();
+
+                var post = new Post("Blabla", 2);
                 await ctx.AddAsync(post);
                 await ctx.SaveChangesAsync();
+
+                await ctx.Entry(post).Reference(p => p.Blog).LoadAsync();
                 
                 Log.Information(post.IsCoolBlog().ToString());
             }   

@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
 using Microsoft.Extensions.Logging.Debug;
 using Serilog;
+using Serilog.Context;
 using Serilog.Extensions.Logging;
 using Serilog.Filters;
 using ILogger = Serilog.ILogger;
@@ -24,9 +25,10 @@ namespace LoggingWeb
             Log.Logger = new LoggerConfiguration()
 
                     .Enrich.With(new SimpleClassEnricher())
+                    .Enrich.FromLogContext()
 
                     // en dit met die :
-                    .WriteTo.Console(outputTemplate: "{Timestamp:HH:mm:ss} [{Level:u3}] {RequestPath} {Message}{Exception} @ {SourceContext:20}{NewLine}") //[{SourceContext}{Properties:j}]
+                    .WriteTo.Console(outputTemplate: "{Timestamp:HH:mm:ss} [{Level:u3}] {MyCustom} {RequestPath} {Message}{Exception} @ {SourceContext:20}{NewLine}") //[{SourceContext}{Properties:j}]
 
                     //wasdit
                     .WriteTo.Logger(lc => lc
@@ -34,9 +36,12 @@ namespace LoggingWeb
                         .WriteTo.File("data-log.txt"))
                     .CreateLogger();
 
-            Log.Information("Whutever");
+            using (LogContext.PushProperty("MyCustom", "jemoeder"))
+            {
+                Log.Information("Whutever");
+            }
 
-        //   Task<byte[]> readAsync = ReadAsync(new FileInfo(@"C:\Users\Niels\Downloads\adwcleaner_8.0.5.exe"));
+            //   Task<byte[]> readAsync = ReadAsync(new FileInfo(@"C:\Users\Niels\Downloads\adwcleaner_8.0.5.exe"));
         //    readAsync.Wait();
 
             SerilogLoggerFactory factory = new SerilogLoggerFactory(Log.Logger);
