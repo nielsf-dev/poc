@@ -1,14 +1,29 @@
 - node.js downloaden, hier zit npm en npx in.
 	hier zit ook node.exe in, daarmee kan je gewoon doen 'node test.js'
-	
-- npx create-react-app my-app om een app aan te maken
-- vervolgens npm run build om production-ready te compileren
-- krijg je een build directory, die kan gewoon regelrecht naar apache
-- in package.json moet je bij "homepage" de virtual directory neerzetten indien via IIS
 
 - je kan die node_modules weggooien, als je dan npm install runt haal ie ze opnieuw op
 
+ De scripts van een package staan in package.json
+	 "scripts": {
+    "start": "webpack-dev-server --open",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "create": "webpack"
+  },
 
+  npm run create
+
+	De standaard is dus npm run "scriptnaam", maar het is gewoon lelijk npm start koppelen ze aan npm run start
+	maar bv npm build doet dat niet, npm build is weer interne command..
+
+	REACT APP specifiek:
+	- npx create-react-app my-app om een app aan te maken
+	- vervolgens npm run build om production-ready te compileren
+	- krijg je een build directory, die kan gewoon regelrecht naar apache
+	- in package.json moet je bij "homepage" de virtual directory neerzetten indien via IIS
+		je kan er ook "." in doen en dan kan je hem gewoon openen vanuit file
+
+http://heynode.com goeie site
+evenals https://docs.npmjs.com/
 
 Vragen:
 Wat is babel?

@@ -1,28 +1,20 @@
-- hoe zitten die modules inelkaar, hoe werken die bin folders. aka create/ webpack
-	willen we dit echt weten, ze staan in die package.json, en je kan vanuit daar ook aanroepen kennelijk
-	 "scripts": {
-    "start": "webpack-dev-server --open",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "create": "webpack"
-  },
-  
-  npm run create
-  
+
+
 - wat doet een css-loader, waarom heb je die nodig, niet gewoon die css erbij in de map.
 	volgens mij mietert ie em zo in de js die css jonge
-	
+
 - hoe zit het met die import statements in js, is dat echt javascript of des webpacks
   is proberen in nodejs een package aan te roepen in een console applicatie.
-  
+
 - je heb kennelijk require en import?
 	zowel in webassembly als ecmascript niet echt iets vinden
 	toch wel in ecma als je goed die specificatie volgt -> import
-	
+
 	maar wat is require?
 	komt kennelijk uit CommonJS(nog 1 damn son), nodejs implementeert het?
 	https://en.wikipedia.org/wiki/CommonJS ga maar lezen ah sabbie, zie je require dan is het commonjs, dan is het nodejs
-	
+
 	import komt echt uit de ecmascript wereld
-	
-- maar goed iets importeren.. 
+
+- maar goed iets importeren..
 	die require gaat kennelijk los van npm install, zijn dus interne nodejs modules die je daarmee importeert

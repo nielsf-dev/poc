@@ -1,0 +1,10 @@
+{
+    "name": "my-awesome-package",
+    "version": "1.0.0",
+    "scripts": {
+        "jemoeder": "echo yolo"
+    },
+    "dependencies": {
+        "sax": "^1.2.4"
+    }
+}
