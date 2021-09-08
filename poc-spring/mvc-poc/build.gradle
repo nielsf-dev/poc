@@ -8,7 +8,7 @@ plugins {
 
 group = 'org.nelis'
 version = '1.0'
-sourceCompatibility = '15'
+//sourceCompatibility = '15'
 
 repositories {
     mavenCentral()
