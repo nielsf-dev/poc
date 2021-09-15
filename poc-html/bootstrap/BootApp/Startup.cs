@@ -37,6 +37,8 @@ namespace BootApp
                 app.UseExceptionHandler("/Error");
             }
 
+            app.UseDefaultFiles();
+
             app.UseStaticFiles();
 
             app.UseRouting();
