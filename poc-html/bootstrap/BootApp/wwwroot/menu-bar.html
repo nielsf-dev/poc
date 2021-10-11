@@ -7,6 +7,10 @@
         * {
             padding: 0;
             margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Verdana;
         }
         header {
             height: 55px;
@@ -22,11 +26,17 @@
         .menubar {
             margin-left: auto;
             margin-right: 100px;
-            display: flex
+            border-right: 1px solid black;
+            display: flex;
         }
         .menuitem {
-            width: 100px;
-            margin: auto;
+            border-left: 1px solid black;
+            padding: 15px;
+        }
+        .menuitem:hover {
+            cursor: pointer;
+            background-color: deepskyblue;
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -34,10 +44,10 @@
 <header>
     <span class="logo">my company</span>
     <div class="menubar">
-        <div class="menuitem">one</div>
-        <div class="menuitem">two</div>
-        <div class="menuitem">three</div>
-        <div class="menuitem">four</div>
+        <span class="menuitem">dik gaan to the max</span>
+        <span class="menuitem">hoort erbij waarom niet</span>
+        <span class="menuitem">three yolo plakken er nog wat bij</span>
+        <span class="menuitem">niet snuiven jammer zei zo</span>
     </div>
 </header>
 

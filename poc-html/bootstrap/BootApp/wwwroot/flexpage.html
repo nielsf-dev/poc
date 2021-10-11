@@ -7,7 +7,7 @@
     <style>
         .box {
             display: flex;
-            box-sizing: content-box;
+            box-sizing: border-box;
         }
         .boxitem {
             width: 200px;
@@ -30,9 +30,13 @@
         }
 
         .verticaller {
-            height: 400px;
-            width: 900px;
+           /* height: 200px;
+            width: 200px;*/
+            padding: 20px;
             background-color: cornflowerblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .smallone {
@@ -55,8 +59,8 @@
     <div class="spaceitem">Three</div>
 </div>
 
-<div class="verticaller">
-    <div class="smallone">your mother</div>
-</div>
+<span class="verticaller">
+    your mother
+</span>
 </body>
 </html>
