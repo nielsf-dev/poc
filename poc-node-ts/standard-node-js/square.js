@@ -15,6 +15,10 @@ class Square {
 // gebruiken MKKKAAAAYYYYY
 var test = Square;
 var p = new test(5);
-console.log(p.area());
 
-module.exports = test;
+// heb je een object, mag je er op deze manier gewoon een nieuwe functie aanhangen, A-HA, zo werkt dus de exports
+p.somethingelse = (r) => r ** 2 * 23344;
+console.log(p.area());
+console.log(p.somethingelse(187));
+
+module.exports = p;
