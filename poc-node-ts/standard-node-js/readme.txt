@@ -18,3 +18,25 @@ Of miss als ik met die scripts{} wil werken?
 
 https://heynode.com/tutorial/what-packagejson/
 Your project also must include a package.json before any packages can be installed from NPM
+
+** Wat importeer ik precies met require, zowel objecten als functies?
+require komt dus echt uit de commonjs wereld, ES gebruikt import en die mag je kennelijk niet zomaar uitvoeren met node.exe   
+enfin, je het blijft vaag gedoe, je kan op die module.exports meerdere functies toekennen. Maar kennelijk maar 1 class?
+of zo een constructie dus kennelijk:
+https://stackoverflow.com/questions/41228221/can-you-export-multiple-classes-from-a-single-nodejs-module
+
+module.exports = {
+  Jack : Jack,
+  John : John
+}
+
+Wat is dat tussen haakjes voor javascript constructie?
+
+Of je doet met array destruction in modules.exports, dan kan het ook kennelijk:
+const foo = ['one', 'two', 'three'];
+const [red, yellow, green] = foo;
+
+
+** Wat is die @ die voor modules staat in node_modules?
+** Welke ecmascript versie heb ik nu met mijn npm?
+    node is gebaseerd op v8 google javascript engine, die implementeerd wel de laatste stuff..
