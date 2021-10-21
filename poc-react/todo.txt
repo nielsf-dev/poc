@@ -18,3 +18,21 @@
 
 - maar goed iets importeren..
 	die require gaat kennelijk los van npm install, zijn dus interne nodejs modules die je daarmee importeert
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+requirements voor een project'je:
+
+technisch:
+frontend in react (eerst normale javascript daarna vervangen met typescript)
+proberen gebruik te maken van EntityFramework en scaffolding
+proberen gebruik te maken van de react/javascript features in visual studio
+
+functioneel: (misschien maar een beetje stom/niet nuttig)
+? een website waarin we een dagboek kunnen bijhouden ?
+	- connecten met facebook
+	- mooie dagboek control met datum picker waarin we per dag kunnen bijhouden wat we gedaan hebben met tekst
+		* categorieen van dingen die we willen bijhouden per dag		
+	- soort teller dingetje voor het aantal joints
+
+? een spelletje, wat voor ?
