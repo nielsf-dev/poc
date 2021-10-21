@@ -1,6 +1,7 @@
 # Ignore Gradle project-specific cache directory
 .gradle
 **/.idea
+**/.vscode
 **/out
 *.jar
 *.iml
@@ -11,6 +12,8 @@
 **/.vs
 *.swp
 **/Debug
+**/public
+**/node_modules
 *.log
 
 # Ignore Gradle build output directory
