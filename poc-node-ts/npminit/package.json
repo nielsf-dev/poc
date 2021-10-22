@@ -9,6 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^16.11.2"
+    "@types/node": "^16.11.2",
+    "camelcase": "^6.2.0"
+  },
+  "devDependencies": {
+    "pascalcase": "^1.0.0"
   }
 }

@@ -1,0 +1,1 @@
+standaard zit je dus op die dev omgeving. npm install installeert dus gelijk die devdependencies

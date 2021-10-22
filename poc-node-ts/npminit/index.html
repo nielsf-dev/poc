@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Verdana;
+        }
+        header {
+            height: 55px;
+            display: flex;
+            background-color: cornflowerblue;
+            color: white;
+        }
+        .logo {
+            margin-top: auto;
+            margin-left: 50px;
+            margin-bottom: auto;
+        }
+        .menubar {
+            margin-left: auto;
+            margin-right: 100px;
+            border-right: 1px solid black;
+            display: flex;
+        }
+        .menuitem {
+            border-left: 1px solid black;
+            padding: 15px;
+        }
+        .menuitem:hover {
+            cursor: pointer;
+            background-color: deepskyblue;
+            text-decoration: underline;
+        }
+    </style>    
+
+    <script>
+        function myfunction(){
+            document.getElementById('doediv').innerText = 'all good in de hoed'
+        }
+    </script>
+
+</head>
+<body>
+<header>
+    <span class="logo">my company</span>
+    <div class="menubar">
+        <span class="menuitem">dik gaan to the max</span>
+        <span class="menuitem">hoort erbij waarom niet</span>
+        <span class="menuitem">three yolo plakken er nog wat bij</span>
+        <span class="menuitem">niet snuiven jammer zei zo</span>
+    </div>
+</header>
+
+<div id="doediv">
+
+</div>
+
+<script>
+    myfunction()
+</script>
+
+</body>
+</html>
