@@ -38,5 +38,7 @@ const [red, yellow, green] = foo;
 
 
 ** Wat is die @ die voor modules staat in node_modules?
+dat zijn scoped packages kennelijk
+
 ** Welke ecmascript versie heb ik nu met mijn npm?
     node is gebaseerd op v8 google javascript engine, die implementeerd wel de laatste stuff..
