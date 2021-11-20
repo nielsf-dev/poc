@@ -6,8 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\**" />
     <Compile Remove="models\**" />
+    <EmbeddedResource Remove="Migrations\**" />
     <EmbeddedResource Remove="models\**" />
+    <None Remove="Migrations\**" />
     <None Remove="models\**" />
   </ItemGroup>
 

@@ -24,14 +24,14 @@ namespace EntityFramework
 
             LoggerFactory.Instance = new SerilogLoggerFactory(Log.Logger);
 
-            await using (var ctx = new MyModelContext())
-            {
-                var list = await ctx.Posts.ToListAsync();
-                foreach (var post in list)
-                {
-                    Log.Information(post.IsCoolBlog().ToString());  
-                }
-            }
+            // await using (var ctx = new MyModelContext())
+            // {
+            //     var list = await ctx.Posts.ToListAsync();
+            //     foreach (var post in list)
+            //     {
+            //         Log.Information(post.IsCoolBlog().ToString());  
+            //     }
+            // }
 
             await using(var ctx = new MyModelContext())
             {
