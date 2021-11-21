@@ -1,4 +1,8 @@
-﻿namespace BootApp.Code
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+
+namespace BootApp.Code
 {
     public class Person
     {

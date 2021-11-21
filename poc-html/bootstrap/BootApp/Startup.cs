@@ -41,6 +41,9 @@ namespace BootApp
                 }
             }
 
+            services.AddDbContext<BootAppDbContext>(options => options
+                .UseSqlServer("Server=localhost;Database=BootApp;Integrated Security=True")
+                .UseLazyLoadingProxies());
 
             services.AddRazorPages();
         }
@@ -63,13 +66,14 @@ namespace BootApp
                 app.UseExceptionHandler("/Error");
             }
 
-            app.UseDefaultFiles();
+         //   app.UseDefaultFiles();
 
-            app.UseStaticFiles();
+         //   app.UseStaticFiles();
 
             app.UseRouting();
 
             app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {

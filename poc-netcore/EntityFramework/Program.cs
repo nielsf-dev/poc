@@ -30,22 +30,22 @@ namespace EntityFramework
 
             LoggerFactory.Instance = new SerilogLoggerFactory(Log.Logger);
 
-            await using (var ctx = new MyModelContext())
-            {
-                var list = await ctx.Posts.ToListAsync();
-                foreach (var post in list)
-                {
-                    Log.Information(post.IsCoolBlog().ToString());  
-                }
-            }
+            //await using (var ctx = new MyModelContext())
+            //{
+            //    var list = await ctx.Posts.ToListAsync();
+            //    foreach (var post in list)
+            //    {
+            //        Log.Information(post.IsCoolBlog().ToString());  
+            //    }
+            //}
 
             await using(var ctx = new MyModelContext())
             {
                 await ctx.Database.EnsureCreatedAsync();
 
-                // var persoon = new Persoon("Niels", 34, "bla");
-                // await ctx.AddAsync(persoon);
-                // await ctx.SaveChangesAsync();
+                var persoon2 = new Persoon("Niels", 34, "bla");
+                await ctx.AddAsync(persoon2);
+                await ctx.SaveChangesAsync();
 
                 var persoon = await ctx.Personen.SingleAsync(p => p.Id == 2);
 
