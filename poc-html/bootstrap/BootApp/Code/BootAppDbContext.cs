@@ -5,7 +5,7 @@ namespace BootApp.Code;
 
 public class BootAppDbContext : DbContext
 {
-    public DbSet<Person> Persons { get; }
+    public DbSet<Person> Persons { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

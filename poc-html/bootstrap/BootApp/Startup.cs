@@ -28,13 +28,17 @@ namespace BootApp
         {
             using (var ctx = new BootAppDbContext())
             {
-                ctx.Database.EnsureCreated();
+                //ctx.Database.EnsureCreated();
 
-                var persoon = new Person("Nelis", 45);
-                ctx.Add(persoon);
-                ctx.SaveChanges();
+                //var persoon = new Person("Nelis", 45);
+                //ctx.Add(persoon);
+                //ctx.SaveChanges();
 
                 var persons = ctx.Persons.ToList();
+                foreach (var person in persons)
+                {
+                    Debug.WriteLine(person.Name);
+                }
             }
 
 

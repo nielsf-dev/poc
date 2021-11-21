@@ -15,6 +15,12 @@ namespace EntityFramework
         // Scaffold-DbContext "user id=niels;pwd=S08J1298UHJSD1;server=192.168.63.69;port=5432;database=visi4_test_test46a.bakkerspees.nl;timeout=0" Npgsql.EntityFrameworkCore.PostgreSQL
         static async Task Main(string[] args)
         {
+            var pursie = new Persoon("voor de delegate", 187, "cmon baby");
+            pursie.FunctionCallingDelegate(text => Debug.WriteLine(text));
+            pursie.actionFunction(text => Debug.WriteLine(text));
+            pursie.functionFunction(inputText => inputText.ToUpper());
+            pursie.add((i, i1) => i + i1);
+
             var template = "{Timestamp:HH:mm:ss} [{Level:u3}] {Message}{Exception} {NewLine}";
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
@@ -24,14 +30,14 @@ namespace EntityFramework
 
             LoggerFactory.Instance = new SerilogLoggerFactory(Log.Logger);
 
-            // await using (var ctx = new MyModelContext())
-            // {
-            //     var list = await ctx.Posts.ToListAsync();
-            //     foreach (var post in list)
-            //     {
-            //         Log.Information(post.IsCoolBlog().ToString());  
-            //     }
-            // }
+            await using (var ctx = new MyModelContext())
+            {
+                var list = await ctx.Posts.ToListAsync();
+                foreach (var post in list)
+                {
+                    Log.Information(post.IsCoolBlog().ToString());  
+                }
+            }
 
             await using(var ctx = new MyModelContext())
             {
@@ -52,6 +58,7 @@ namespace EntityFramework
                 await ctx.SaveChangesAsync();
 
                 var post = new Post("Blabla", 2);
+
                 await ctx.AddAsync(post);
                 await ctx.SaveChangesAsync();
 
