@@ -8,8 +8,8 @@ namespace BootApp.Code
     {
         public int ID { get; protected set; }
 
-        public string Name { get; set; }
-        public int Age { get; set; }
+        public string Name { get; }
+        public int Age { get; }
 
         protected Person()
         {

@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "..\\poc-react"
+		},
+		{
+			"path": "..\\poc-bootstrap"
 		}
 	]
 }
