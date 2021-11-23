@@ -1,0 +1,31 @@
+﻿@page
+@model BootApp.Pages.ListPersonsModel
+
+<h1>Contacts home page</h1>
+<form method="post">
+	<table class="table">
+		<thead>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th></th>
+		</tr>
+		</thead>
+		<tbody>
+		@foreach (var person in Model.Persons)
+		{
+			<tr>
+				<td> @person.ID  </td>
+				<td> @person.Name </td>
+				<td>
+					<a asp-page="./Edit" asp-route-kaolomang="@person.ID">Edit</a> |
+					<button type="submit" asp-page-handler="delete"
+					        asp-route-id="@person.ID">delete
+					</button>
+				</td>
+			</tr>
+		}
+		</tbody>
+	</table>
+	<a asp-page="CreatePerson">Create New</a>
+</form>

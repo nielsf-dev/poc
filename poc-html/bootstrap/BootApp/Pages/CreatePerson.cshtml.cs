@@ -9,11 +9,11 @@ using BootApp.Code;
 
 namespace BootApp.Pages
 {
-    public class MyRazorPageModel : PageModel
+    public class CreatePersonPageModel : PageModel
     {
         private readonly BootApp.Code.BootAppDbContext _context;
 
-        public MyRazorPageModel(BootApp.Code.BootAppDbContext context)
+        public CreatePersonPageModel(BootApp.Code.BootAppDbContext context)
         {
             _context = context;
         }
