@@ -19,6 +19,7 @@ namespace BootApp.Pages
 
         public IActionResult OnGet()
         {
+            _logger.LogInformation("nu dan");
             return Page();
         }
     }

@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BootApp.Code;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace BootApp
 {
@@ -28,8 +29,10 @@ namespace BootApp
             services.AddRazorPages();
         }
         
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
         {
+            logger.LogDebug("Toch in de debug");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -40,8 +43,8 @@ namespace BootApp
             }
 
          //   app.UseDefaultFiles();
-         //   app.UseStaticFiles();
-
+              app.UseStaticFiles();
+             
             app.UseRouting();
             app.UseAuthorization();
 
