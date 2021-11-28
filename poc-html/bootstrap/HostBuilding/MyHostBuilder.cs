@@ -240,7 +240,7 @@ public class MyHostBuilder : IHostBuilder
         services.AddSingleton<IHostApplicationLifetime, ApplicationLifetime>();
 
         AddLifetime(services);
-        
+
         services.AddSingleton<IHost>(_ =>
         {
             IOptions<HostOptions> requiredService = _appServices.GetRequiredService<IOptions<HostOptions>>();
