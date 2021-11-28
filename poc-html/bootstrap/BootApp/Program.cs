@@ -18,9 +18,8 @@ namespace BootApp
 
         public static IHostBuilder CreateHostBuilder(string[] args)
         {
-            IHostBuilder defaultBuilder = Host.CreateDefaultBuilder(args);
-
-            return defaultBuilder
+            return new HostBuilder()
+                .ConfigureDefaults(args)
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
         }
     }

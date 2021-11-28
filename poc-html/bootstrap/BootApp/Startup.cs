@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using BootApp.Code;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Routing;
 
 namespace BootApp
 {
@@ -46,12 +48,39 @@ namespace BootApp
               app.UseStaticFiles();
              
             app.UseRouting();
-            app.UseAuthorization();
+
+
+            app.Use(async (context, next) =>
+            {
+                var currentEndpoint = context.GetEndpoint();
+
+                if (currentEndpoint is null)
+                {
+                    await next(context);
+                    return;
+                }
+
+                Console.WriteLine($"Endpoint: {currentEndpoint.DisplayName}");
+
+                if (currentEndpoint is RouteEndpoint routeEndpoint)
+                {
+                    Console.WriteLine($"  - Route Pattern: {routeEndpoint.RoutePattern.RawText}");
+                }
+
+                foreach (var endpointMetadata in currentEndpoint.Metadata)
+                {
+                    Console.WriteLine($"  - Metadata: {endpointMetadata}");
+                }
+
+                await next(context);
+            });
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
-            });
+            }); 
+         
+
         }
     }
 }
