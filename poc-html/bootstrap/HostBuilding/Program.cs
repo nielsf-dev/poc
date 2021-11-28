@@ -13,7 +13,7 @@ IHostBuilder builder = new MyHostBuilder();
 builder.MyCreateDefaults(args);
 builder.ConfigureServices(collection =>
 {
-    collection.AddSingleton<MyHostedServiceCollection>();
+    collection.AddHostedService<MyHostedService>();
 });
 
 var host = builder.Build();

@@ -272,7 +272,7 @@ public class MyHostBuilder : IHostBuilder
         }
 
         _appServices = _serviceProviderFactory.CreateServiceProvider(containerBuilder);
-
+        
         if (_appServices == null)
         {
             throw new InvalidOperationException("SR.NullIServiceProvider");
