@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using System.Threading.Channels;
+using Microsoft.Extensions.Hosting;
 
 namespace HostBuilding;
 
@@ -9,16 +10,19 @@ public class MyHostedService : IHostedService
         Console.WriteLine("Start hosted service");
         Thread t = new Thread(mymethod);
         t.Start();
-
+        
         return Task.CompletedTask;
     }
 
     private void mymethod(object? obj)
     {
+        var test = "something else";
+        Console.WriteLine(test);
+
         while (true)
         {
-            Thread.Sleep(TimeSpan.FromSeconds(5));
             Console.WriteLine("Sleeping");
+            Thread.Sleep(TimeSpan.FromSeconds(5));
         }
     }
 
