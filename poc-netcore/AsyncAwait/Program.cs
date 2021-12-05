@@ -8,20 +8,21 @@ namespace AsyncAwaitApp
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            WebClient client = new WebClient();
-            byte[] downloadData = client.DownloadData("https://speed.hetzner.de/100MB.bin");
+            // WebClient client = new WebClient();
+            // byte[] downloadData = client.DownloadData("https://speed.hetzner.de/100MB.bin");
 
-            Task manageCalls = CallManager.ManageCalls();
+            Task t =  CallManager.ManageCalls();
 
-            for (int i = 0; i < 5; i++)
-            {
-                Debug.WriteLine("Blocks thread");
-                Thread.Sleep(TimeSpan.FromSeconds(1));
-            }
+            // for (int i = 0; i < 5; i++)
+            // {
+            //     Debug.WriteLine("Blocks thread");
+            //     Thread.Sleep(TimeSpan.FromSeconds(1));
+            // }
 
-            manageCalls.Wait();
+            //manageCalls.Wait();
+            t.Wait();
             Debug.WriteLine("done");
         }
     }

@@ -9,17 +9,20 @@ namespace AsyncAwaitApp
         public static async Task ManageCalls()
         {
             Debug.WriteLine("Managing calls..");
-            Task<int> thisTakesAWhile = RemoteCalls.ThisTakesAWhile();
+            //   Task<int> thisTakesAWhile = RemoteCalls.ThisTakesAWhile();
+            var remoteCalls = new RemoteCalls();
+            await remoteCalls.ThisTakesAWhile();
+            await remoteCalls.ThisTakesAWhile2();
 
-            for (int i = 0; i < 5; i++)
-            {
-                Debug.WriteLine("Doing DURING the long call!");
-                await Task.Delay(TimeSpan.FromSeconds(1));
-            }
+            // for (int i = 0; i < 5; i++)
+            // {
+            //     Debug.WriteLine("Doing DURING the long call!");
+            //     await Task.Delay(TimeSpan.FromSeconds(1));
+            // }
 
 
-            thisTakesAWhile.Wait();
-            Debug.WriteLine("Done managing calls! The long awaited result is " + thisTakesAWhile.Result);
+            //      thisTakesAWhile.Wait();
+            //Debug.WriteLine("Done managing calls! The long awaited result is " + thisTakesAWhile.Result);
         }
     }
 }

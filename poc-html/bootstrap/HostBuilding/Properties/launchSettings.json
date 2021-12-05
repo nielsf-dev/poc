@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "HostBuilding": {
+      "commandName": "Project",
+      "commandLineArgs": "--environment Debug"
+    }
+  }
+}
