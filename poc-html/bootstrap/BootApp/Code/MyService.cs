@@ -13,11 +13,13 @@ internal class MyService : IHostedService
     private readonly IHostApplicationLifetime appLifetime;
     private Timer timer;
     private Task _loopTask;
+    private bool cancelled;
 
     public MyService(ILogger<MyService> logger, IHostApplicationLifetime appLifetime)
     {
         this.logger = logger;
         this.appLifetime = appLifetime;
+        cancelled = false;
     }
 
     public Task StartAsync(CancellationToken cancellationToken)
@@ -37,7 +39,7 @@ internal class MyService : IHostedService
 
     private async Task loopAwait(CancellationToken token)
     {
-        while (!token.IsCancellationRequested)
+        while (!cancelled)
         {
             //logger.LogInformation("Sleeping in await");
             await expensiveTask(token);
@@ -70,9 +72,19 @@ internal class MyService : IHostedService
     //     }
     // }
 
-    public async Task StopAsync(CancellationToken cancellationToken)
+    public Task StopAsync(CancellationToken cancellationToken)
     {
-        await _loopTask;
+        cancelled = true;
+        try
+        {
+            _loopTask.Wait(cancellationToken);
+        }
+        catch (TaskCanceledException)
+        {
+
+        }
+
+        return Task.CompletedTask;;
     }
 
     private void OnStarted()
