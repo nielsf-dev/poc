@@ -19,7 +19,9 @@ builder.ConfigureServices(collection =>
 var host = builder.Build();
 
 // vraag van de dag, wat is het verschil tussen deze 2
-// kennelijk blokt alleen die laatste wat JIJ dus niet verwacht van deze shit....
+// kennelijk blokt alleen d
+// \
+// ie laatste wat JIJ dus niet verwacht van deze shit....
 host.StartAsync().Wait();
 host.RunAsync().GetAwaiter().GetResult();
 

@@ -4,6 +4,8 @@ using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.Options;
 
 namespace DependencyInjection
 {
@@ -23,19 +25,28 @@ namespace DependencyInjection
 
         static void Main(string[] args)
         {
-            Replace();
+            //Replace();
 
-            // var serviceCollection = new ServiceCollection();
-            // serviceCollection.AddSingleton(SpecialList);
-            // serviceCollection.AddSingleton<IBarService, BarService>();
-            // serviceCollection.AddSingleton<IFooService, FooService>();
-            //
-            // //setup our DI
-            // var serviceProvider = serviceCollection.BuildServiceProvider();
-            //
-            // //do the actual work here
-            // var bar = serviceProvider.GetService<IBarService>();
-            // bar.DoSomeRealWork();
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddSingleton(SpecialList);
+            serviceCollection.AddSingleton<IBarService, BarService>();
+            serviceCollection.AddSingleton<IFooService, FooService>();
+
+            serviceCollection.TryAdd(ServiceDescriptor.Singleton(typeof(IOptions<>), typeof(OptionsManager<>)));
+            serviceCollection.TryAdd(ServiceDescriptor.Scoped(typeof(IOptionsSnapshot<>), typeof(OptionsManager<>)));
+            serviceCollection.TryAdd(ServiceDescriptor.Singleton(typeof(IOptionsMonitor<>), typeof(OptionsMonitor<>)));
+            serviceCollection.TryAdd(ServiceDescriptor.Transient(typeof(IOptionsFactory<>), typeof(OptionsFactory<>)));
+            serviceCollection.TryAdd(ServiceDescriptor.Singleton(typeof(IOptionsMonitorCache<>), typeof(OptionsCache<>)));
+
+            //setup our DI
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+            
+            //do the actual work here
+            var bar = serviceProvider.GetService<IBarService>();
+            var service = serviceProvider.GetService<IOptions<MyOptions>>();
+            var serviceValue = service.Value;
+
+            bar.DoSomeRealWork();
 
             Console.WriteLine("Done!");
         }
@@ -68,6 +79,11 @@ namespace DependencyInjection
                 }
             }
         }
+    }
+
+    public class MyOptions
+    {
+        public string Name { get; set; }
     }
 
     public interface IFooService

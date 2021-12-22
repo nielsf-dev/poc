@@ -12,7 +12,8 @@ namespace AsyncAwaitApp
             //   Task<int> thisTakesAWhile = RemoteCalls.ThisTakesAWhile();
             var remoteCalls = new RemoteCalls();
             await remoteCalls.ThisTakesAWhile();
-            await remoteCalls.ThisTakesAWhile2();
+            await remoteCalls.ThisTakesAWhile();
+            //await remoteCalls.ThisTakesAWhile();
 
             // for (int i = 0; i < 5; i++)
             // {

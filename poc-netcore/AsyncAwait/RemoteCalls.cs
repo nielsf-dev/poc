@@ -21,14 +21,16 @@ namespace AsyncAwaitApp
 
             //return 1;
         }
-        public Task ThisTakesAWhile2()
+        public async Task ThisTakesAWhile2()
         {
-            Debug.WriteLine("before the call2");
-            var task = LongCall();
-            Debug.WriteLine("after the call2");
+            if(DateTime.Now.Year > 2000)
+                throw new ArgumentNullException(nameof(DateTime.Now.Year));
 
-            return task;
+            Debug.WriteLine("before the call2");
+            await LongCall();
+            Debug.WriteLine("after the call2");
         }
+
 
         public async Task LongCall()
         {

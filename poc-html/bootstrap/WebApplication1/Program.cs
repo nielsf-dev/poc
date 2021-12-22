@@ -3,4 +3,6 @@ var app = builder.Build();
 
 app.MapGet("/hello/{name:alpha}", (string name) => $"Hello {name}!");
 
+//app.UseRouting();
+
 app.Run();

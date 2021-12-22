@@ -27,12 +27,7 @@ namespace BootApp.Pages
         {
             Debug.WriteLine(kaolomang);
 
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Person = await _context.Persons.FirstOrDefaultAsync(m => m.ID == id);
+         Person = await _context.Persons.FirstOrDefaultAsync(m => m.ID == kaolomang);
 
             if (Person == null)
             {

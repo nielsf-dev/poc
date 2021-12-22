@@ -36,6 +36,8 @@ namespace BootApp
         {
             logger.LogDebug("Toch in de debug");
 
+            logger.LogInformation("De content root is dus " + env.ContentRootPath);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
