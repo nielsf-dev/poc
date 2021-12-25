@@ -25,7 +25,8 @@ namespace BootApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<BootAppDbContext>(options => options
-                .UseSqlServer("Server=localhost;Database=BootApp;Integrated Security=True")
+                //.UseSqlServer("Server=localhost;Database=BootApp;Integrated Security=True")
+                .UseSqlServer("Server=tcp:nielsdbtest-server.database.windows.net,1433;Initial Catalog=BootApp;Persist Security Info=False;User ID=nielsdbtest-server-admin;Password=BakkerSpeesDev187;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;")
                 .UseLazyLoadingProxies());
 
             services.AddRazorPages();

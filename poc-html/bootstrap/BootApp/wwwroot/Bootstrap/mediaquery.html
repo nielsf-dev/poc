@@ -7,19 +7,32 @@
 
     <title>Hello, nelis!</title>
     <style>
-        @media (max-width: 1200px) {
-            .myheader{
-                background-color: #87ceeb;
+
+        .mycontainer {
+            background-color: orangered;
+            width: 100%;
+        }
+
+        /* zo werken de breakpoints dus, is het scherm groter als 1200px's nu? dan cadetblue en kort! */
+        /* is het scherm kleiner dan 1200px gaat hij niet op deze, dus is de bovenste aan de beurt*/
+        @media (min-width: 1200px) {
+            .mycontainer {
+                background-color: cadetblue;
+                width: 1100px;
             }
         }
-        @media (max-width: 900px) {
-             .myheader{
-                 background-color: red;
-             }
-         }
+
+    /* volgorde maakt uit.. plaats hem hier en 1200px komt nooit aan de beurt*/
+        /*.mycontainer {
+            background-color: orangered;
+            width: 100%;
+        }*/
+       
     </style>
 </head>
 <body>
-    <h1 class="myheader">yolo</h1>
+    <div class="mycontainer">
+        asd
+    </div>
 </body>
 </html>
