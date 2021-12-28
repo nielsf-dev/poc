@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+#main {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  display: flex;
+}
+
+#main div {
+  -ms-flex: 1;  /* IE 10 */  
+
+  /*hier staat dus eigenlijk flex-grow 1;*/
+  flex: 1;
+}
+
+#main .mydiv {
+    flex-grow: 2;
+}
+</style>
+</head>
+<body>
+
+<h1>The flex Property</h1>
+
+<div id="main">
+  <div style="background-color:coral;">RED</div>
+  <div class="mydiv" style="background-color:lightblue;">BLUE</div>  
+  <div style="background-color:lightgreen;">Green div with more content.</div>
+</div>
+
+<p><b>Note:</b> IE11 and newer versions support the flex property. Internet Explorer 10 supports an alternative, the -ms-flex property.</p>
+
+</body>
+</html>

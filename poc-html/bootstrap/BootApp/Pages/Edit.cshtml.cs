@@ -27,7 +27,7 @@ namespace BootApp.Pages
         {
             Debug.WriteLine(kaolomang);
 
-         Person = await _context.Persons.FirstOrDefaultAsync(m => m.ID == kaolomang);
+            Person = await _context.Persons.FirstOrDefaultAsync(m => m.ID == kaolomang);
 
             if (Person == null)
             {

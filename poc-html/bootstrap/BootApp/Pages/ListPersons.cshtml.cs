@@ -9,7 +9,7 @@ namespace BootApp.Pages
 {
     public class ListPersonsModel : PageModel
     {
-        public IList<Person> Persons { get; set; }
+        public IList<Person> Persons { get; private set; }
 
         private readonly BootAppDbContext dbContext;
 
