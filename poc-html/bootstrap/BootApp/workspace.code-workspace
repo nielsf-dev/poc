@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\..\\..\\poc-electron"
+		},
+		{
+			"path": "..\\..\\..\\poc-node-ts"
+		}
+	],
+	"settings": {}
+}
