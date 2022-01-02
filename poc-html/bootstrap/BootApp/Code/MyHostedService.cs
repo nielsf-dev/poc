@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace BootApp.Code;
 
-internal class MyService : IHostedService
+internal class MyHostedService : IHostedService
 {
     private readonly ILogger logger;
     private readonly IHostApplicationLifetime appLifetime;
@@ -17,7 +17,7 @@ internal class MyService : IHostedService
     private bool cancelled;
     private CancellationTokenSource _stoppingCts;
 
-    public MyService(ILogger<MyService> logger, IHostApplicationLifetime appLifetime)
+    public MyHostedService(ILogger<MyHostedService> logger, IHostApplicationLifetime appLifetime)
     {
         this.logger = logger;
         this.appLifetime = appLifetime;

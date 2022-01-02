@@ -32,3 +32,8 @@ app.Use(async (context, next) =>
 });
 
 app.Run();
+
+void sayHello()
+{
+    Console.WriteLine("hello");
+}
