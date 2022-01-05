@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication2", "..\WebAp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HostBuilding", "..\HostBuilding\HostBuilding.csproj", "{10C679A6-7F8A-4AD3-9FE4-73A5D9DE8B91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BootApp.Test", "..\BootApp.Test\BootApp.Test.csproj", "{8DD18030-6BF9-468B-9894-0099D9E07989}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BootApp.Test", "..\BootApp.Test\BootApp.Test.csproj", "{8DD18030-6BF9-468B-9894-0099D9E07989}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -13,7 +13,7 @@ public class MyRestController : Controller
     }
 
     [HttpGet]
-    [Route("/sayhello")]
+    [Route("/sayhelloyoufool")]
     public string SayHello()
     {
         return "Yolo";

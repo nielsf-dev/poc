@@ -6,16 +6,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BootApp.Code;
+using Microsoft.AspNetCore.Routing;
 
 namespace BootApp.Views
 {
     public class PeopleController : Controller
     {
         private readonly BootAppDbContext _context;
+        private LinkGenerator linkGenerator;
 
-        public PeopleController(BootAppDbContext context)
+        public PeopleController(BootAppDbContext context, LinkGenerator linkGenerator)
         {
             _context = context;
+            this.linkGenerator = linkGenerator;
         }
 
         // GET: People

@@ -66,6 +66,7 @@ namespace BootApp
 
                 Console.WriteLine($"Endpoint: {currentEndpoint.DisplayName}");
 
+                //context.Response.BodyWriter.WriteAsync()
                 var attribute = currentEndpoint?.Metadata.OfType<MyAttribute>();
                 if (attribute.ToArray().Length > 0)
                 {
@@ -84,6 +85,7 @@ namespace BootApp
                 }
 
                 await next(context);
+
             };
 
             // Dit gaat dus niet omdat input delegate niet beschikbaar is
