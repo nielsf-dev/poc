@@ -55,7 +55,7 @@ namespace BootApp.Pages
 
             _myTextInputField = DateTime.Now.TimeOfDay.Milliseconds.ToString();
 
-            this.ModelState.Clear();
+          //  this.ModelState.Clear();
          //   var modelStateDictionary = this.ModelState;
         }
 

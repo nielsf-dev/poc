@@ -1,0 +1,29 @@
+- De modelstate die echt gebruikt word zit in ActionContext.cs
+
+- Die word maybe interressant gebruikt in: 
+            PageActionInvokerProvider.cs
+                OnProvidersExecuting()
+            PageRequestDelegateFactory.cs
+                OnProvidersExecuting()
+
+In PageResult word er dus gerendered, een IActionResult, ook uitgevoerd door die PageActionInvoker
+
+WE HEBBEN EEN STACKTRACE, OELALALALALA!!!!!! Door te builden vanuit source en dan dan die dll te references in het project
+
+En ja hoor, knallen.
+
+DE BUSSINESS LOGICA VAN DE EEUW
+
+Zit em in D:\aspnetcore\src\Mvc\Mvc.ViewFeatures\src\DefaultHtmlGenerator.cs regel 1163
+
+Hij probeert daar de waarde uit de ModelState te halen, zoniet pakt hij de property uit de class
+
+Zonder modelstate.clear()
+Bij GET: modelstate bevat hem niet, property uit class
+Bij POST: modelstate bevat hem, die gebruiken (ZODOENDE WERD ONZE SHIT (3 DAGEN BEZIG) NIET GEBRUIKT)
+
+Met modelstate.clear()
+Bij GET: modelstate bevat hem niet, property uit class
+Bij POST: modelstate bevat niet, property uit class
+
+
