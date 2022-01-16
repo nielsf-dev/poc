@@ -14,7 +14,7 @@ public class MyRestController : Controller
 
     [HttpGet]
     [Route("/sayhelloyoufool")]
-    public string SayHello()
+    public string SayHello2()
     {
         return "Yolo";
     }

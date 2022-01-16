@@ -23,11 +23,32 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Http.Abstractions">
+      <HintPath>..\..\..\..\..\aspnetcore\artifacts\bin\Microsoft.AspNetCore.Routing\Debug\net6.0\Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Extensions">
+      <HintPath>..\..\..\..\..\aspnetcore\artifacts\bin\Microsoft.AspNetCore.Routing\Debug\net6.0\Microsoft.AspNetCore.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Http.Features">
+      <HintPath>..\..\..\..\..\aspnetcore\artifacts\bin\Microsoft.AspNetCore.Routing\Debug\net6.0\Microsoft.AspNetCore.Http.Features.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Mvc.Core">
+      <HintPath>..\..\..\..\..\aspnetcore\artifacts\bin\Microsoft.AspNetCore.Mvc.RazorPages\Debug\net6.0\Microsoft.AspNetCore.Mvc.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Mvc.RazorPages">
+      <HintPath>..\..\..\..\..\aspnetcore\artifacts\bin\Microsoft.AspNetCore.Mvc.RazorPages\Debug\net6.0\Microsoft.AspNetCore.Mvc.RazorPages.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNetCore.Mvc.TagHelpers">
       <HintPath>..\..\..\..\..\aspnetcore\artifacts\bin\Microsoft.AspNetCore.Mvc.TagHelpers\Debug\net6.0\Microsoft.AspNetCore.Mvc.TagHelpers.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNetCore.Mvc.ViewFeatures">
       <HintPath>..\..\..\..\..\aspnetcore\artifacts\bin\Microsoft.AspNetCore.Mvc.ViewFeatures\Debug\net6.0\Microsoft.AspNetCore.Mvc.ViewFeatures.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Routing">
+      <HintPath>..\..\..\..\..\aspnetcore\artifacts\bin\Microsoft.AspNetCore.Routing\Debug\net6.0\Microsoft.AspNetCore.Routing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Routing.Abstractions">
+      <HintPath>..\..\..\..\..\aspnetcore\artifacts\bin\Microsoft.AspNetCore.Routing\Debug\net6.0\Microsoft.AspNetCore.Routing.Abstractions.dll</HintPath>
     </Reference>
   </ItemGroup>
 

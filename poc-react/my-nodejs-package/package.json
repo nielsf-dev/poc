@@ -2,7 +2,8 @@
     "name": "my-awesome-package",
     "version": "1.0.0",
     "scripts": {
-        "jemoeder": "echo yolo"
+        "jemoeder": "echo yolo",
+        "nogtest": "consoleapp"
     },
     "dependencies": {
         "sax": "^1.2.4"

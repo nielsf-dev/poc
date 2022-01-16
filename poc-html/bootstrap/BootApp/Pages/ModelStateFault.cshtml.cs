@@ -29,6 +29,14 @@ namespace BootApp.Pages
                 new SelectListItem("tt2", "2"),
                 new SelectListItem("tt3", "3")
             };
+
+            foreach (var selectListItem in TransactionTypes)
+            {
+                if (selectListItem.Selected)
+                {
+                    
+                }
+            }
         }
 
         public void OnPost()

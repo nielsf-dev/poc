@@ -32,23 +32,30 @@ internal class MyHostedService : IHostedService
 
         //_loopTask = loopAwait(cancellationToken);
 
-        _stoppingCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
-        _loopTask = loopAwait(cancellationToken);
+        _stoppingCts = new CancellationTokenSource();
+        _loopTask = loopAwait(_stoppingCts.Token);
 
-       // return Task.CompletedTask;
+        // Thread.Sleep(TimeSpan.FromSeconds(2));
+        // _stoppingCts.Cancel();
+
+        // return Task.CompletedTask;
         // timer = new Timer(loopInBackground, cancellationToken, 0, 5000);
         return Task.CompletedTask;
     }
 
     private async Task loopAwait(CancellationToken token)
     {
-        while (!token.IsCancellationRequested)
+        try
         {
-            //logger.LogInformation("Sleeping in await");
-           // Thread.Sleep(1000);
-            //Console.WriteLine("yolo");
-            await expensiveTask(token);
-            await Task.Delay(5000, token);
+            while (!token.IsCancellationRequested)
+            {
+                await expensiveTask(token);
+                await Task.Delay(5000, token);
+            }
+        }
+        catch (OperationCanceledException)
+        {
+            logger.LogInformation("Loop cancelled.");
         }
 
         logger.LogInformation("Loop cancelled.");
@@ -56,7 +63,7 @@ internal class MyHostedService : IHostedService
 
     private async Task expensiveTask(CancellationToken cancellationToken)
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 10 && !cancellationToken.IsCancellationRequested; i++)
         {
             logger.LogDebug("Computing..{}", i);
             await Task.Delay(1000, cancellationToken);
@@ -79,16 +86,16 @@ internal class MyHostedService : IHostedService
 
     public async Task StopAsync(CancellationToken cancellationToken)
     {
-        try
-        {
-            // Signal cancellation to the executing method
-            _stoppingCts.Cancel();
-        }
-        finally
-        {
-            // Wait until the task completes or the stop token triggers
-            await Task.WhenAny(_loopTask, Task.Delay(Timeout.Infinite, cancellationToken)).ConfigureAwait(false);
-        }
+        _stoppingCts.Cancel();
+        // try
+        // {
+        // Signal cancellation to the executing method
+        // }
+        // finally
+        // {
+        //     // Wait until the task completes or the stop token triggers
+        //     await Task.WhenAny(_loopTask, Task.Delay(Timeout.Infinite, cancellationToken)).ConfigureAwait(false);
+        // }
     }
 
     private void OnStarted()
@@ -100,6 +107,7 @@ internal class MyHostedService : IHostedService
 
     private void OnStopping()
     {
+        _stoppingCts.Cancel();
         logger.LogInformation("OnStopping has been called.");
 
         // cancelled = true;
@@ -117,6 +125,7 @@ internal class MyHostedService : IHostedService
 
     private void OnStopped()
     {
+        _stoppingCts.Cancel();
         logger.LogInformation("OnStopped has been called.");
 
         // Perform post-stopped activities here

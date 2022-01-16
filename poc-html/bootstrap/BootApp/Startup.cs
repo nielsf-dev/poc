@@ -31,7 +31,7 @@ namespace BootApp
                 .UseLazyLoadingProxies());
 
             services.AddRazorPages();
-            //  services.AddHostedService<MyService>();
+            services.AddHostedService<MyHostedService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
@@ -135,6 +135,10 @@ namespace BootApp
                     builder.Metadata.Add(new Person("metadata", 23));
                 });
 
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
                 var pageActionEndpointConventionBuilder = endpoints.MapRazorPages();
                 pageActionEndpointConventionBuilder.Add(builder =>
                 {
@@ -143,6 +147,7 @@ namespace BootApp
                         builder.Metadata.Add(new Person("gaaf hoor werkt", 23));
                     }
                 });
+
             });
 
 
