@@ -1,0 +1,11 @@
+﻿@page
+@model BootApp.Pages.ModelStateFaultModel
+@{
+}
+<form method="post" id="myform">
+    <input type="text" asp-for="MyTextInputField" />
+@*
+    <input type="hidden" asp-for="ChosenTransactionType" value="@Model.ChosenTransactionType"/>*@
+    <select asp-for="TransactionType" onchange="submitForm()" asp-items="Model.TransactionTypes"></select>
+    <input type="submit" name="maakerwatvan"/>
+</form>
