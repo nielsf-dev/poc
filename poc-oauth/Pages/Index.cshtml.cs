@@ -1,10 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace poc_oauth.Pages
 {
@@ -17,9 +12,28 @@ namespace poc_oauth.Pages
             _logger = logger;
         }
 
-        public void OnGet()
-        {
+        [BindProperty]
+        public OAuthModel OAuthModel { get; set; }
 
+        public void OnGet(string? code, string? status, string? token)
+        {
+            _logger.LogInformation("**** WE ZIJN BINNEN *****");
+            OAuthModel = new OAuthModel();
+
+            if (code != null)
+            {
+                OAuthModel.Code = code;
+            }
+
+            if (status != null)
+            {
+                OAuthModel.Status = status;
+            }
+
+            if (token != null)
+            {
+                OAuthModel.Status = token;
+            }
         }
     }
 }

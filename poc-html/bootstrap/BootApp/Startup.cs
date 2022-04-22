@@ -32,12 +32,14 @@ namespace BootApp
             services.AddHostedService<MyService>();
         }
         
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger, EndpointDataSource endpointDatasource, BootAppDbContext dbContext)
         {
             logger.LogDebug("Toch in de debug");
 
             logger.LogInformation("De content root is dus " + env.ContentRootPath);
 
+            dbContext.Database.EnsureCreated();
+       
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -47,8 +49,8 @@ namespace BootApp
                 app.UseExceptionHandler("/Error");
             }
 
-         //   app.UseDefaultFiles();
-              app.UseStaticFiles();
+            //   app.UseDefaultFiles();
+            app.UseStaticFiles();
              
             app.UseRouting();
 
