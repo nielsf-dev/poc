@@ -9,12 +9,12 @@ using Microsoft.AspNetCore.Routing;
 
 namespace BootApp.Pages
 {
-    public class IndexModel : PageModel
+    public class IndexModel2 : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
         private LinkGenerator linkGenerator;
 
-        public IndexModel(ILogger<IndexModel> logger, LinkGenerator linkGenerator)
+        public IndexModel2(ILogger<IndexModel> logger, LinkGenerator linkGenerator)
         {
             _logger = logger;
             this.linkGenerator = linkGenerator;
@@ -24,7 +24,7 @@ namespace BootApp.Pages
         {
             var pathByAction = linkGenerator.GetPathByAction("SayHello", "MyRest");
             pathByAction = linkGenerator.GetPathByAction("SayHello2", "MyRest");
-            pathByAction = linkGenerator.GetPathByAction("SayHello", "MyRes2t");
+          //  pathByAction = linkGenerator.GetPathByAction("SayHello", "MyRes2t");
 
             // Rare hamvraag weer, waarom word hier Home genegeeerd? Daarom..
             // In TemplateBinder.cs regel 560 word bepaald dat mocht hij hetzelfde zijn als DE default

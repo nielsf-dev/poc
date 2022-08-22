@@ -63,7 +63,7 @@ namespace AsyncAwaitApp
         {
             try
             {
-                var configuredTaskAwaitable = CallManager.ManageCalls(); //.ConfigureAwait(false);
+                CallManager.ManageCalls(); //.ConfigureAwait(false);
 
                 // for (int i = 0; i < 10; i++)
                 // {
@@ -76,7 +76,7 @@ namespace AsyncAwaitApp
 
                 //manageCalls.Wait();
                 //  t.Wait();
-                configuredTaskAwaitable.Wait();
+             //   configuredTaskAwaitable.Wait();
                 Debug.WriteLine("done");
             }
             catch (Exception ex)

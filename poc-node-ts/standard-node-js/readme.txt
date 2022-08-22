@@ -4,6 +4,7 @@ const http = require('http');
 
 vandaan?
 
+https://www.mariokandut.com/how-does-the-node-js-module-system-work/
 Built-in modules are distributed with Node.js itself; you don't need to install them from anywhere.
  You load them into your code using require. These built-in modules make up the slim standard library of Node.js -- 
  the minimal core pieces of language functionality that are shipped with Node.js itself and available for use across all projects.
@@ -18,6 +19,16 @@ Of miss als ik met die scripts{} wil werken?
 
 https://heynode.com/tutorial/what-packagejson/
 Your project also must include a package.json before any packages can be installed from NPM
+
+Goeie beginner intro!
+https://nodesource.com/blog/an-absolute-beginners-guide-to-using-npm/
+https://nodesource.com/blog/eleven-npm-tricks-that-will-knock-your-wombat-socks-off
+
+npm install <module> --save # Where <module> is the name of the module you want to install
+Install Modules and Save Them to Your package.json as a Developer dependency
+the --save flag when installing a module: --save-dev
+
+bij npm install doe je --production en dan doet hij alleen de production dependencies
 
 ** Wat importeer ik precies met require, zowel objecten als functies?
 require komt dus echt uit de commonjs wereld, ES gebruikt import en die mag je kennelijk niet zomaar uitvoeren met node.exe   

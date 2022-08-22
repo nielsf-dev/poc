@@ -29,7 +29,7 @@ namespace BootApp
                 .UseLazyLoadingProxies());
 
             services.AddRazorPages();
-            services.AddHostedService<MyService>();
+           // services.AddHostedService<MyService>();
         }
         
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILogger<Startup> logger, EndpointDataSource endpointDatasource, BootAppDbContext dbContext)

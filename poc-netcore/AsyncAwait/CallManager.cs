@@ -6,7 +6,7 @@ namespace AsyncAwaitApp
 {
     public class CallManager
     {
-        public static async Task ManageCalls()
+        public static async void ManageCalls()
         {
             Debug.WriteLine("Managing calls..");
             //   Task<int> thisTakesAWhile = RemoteCalls.ThisTakesAWhile();
