@@ -30,7 +30,6 @@ namespace poc_oauth.Pages
                 OAuthModel.Status = status;
             }
 
-
             if (token != null)
             {
                 OAuthModel.Status = token;

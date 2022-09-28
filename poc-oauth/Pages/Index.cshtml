@@ -6,11 +6,15 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    
+
     <h1>Code = @Html.ValueFor(model => model.OAuthModel.Code)</h1>
     <h1>Status = @Html.ValueFor(model => model.OAuthModel.Status)</h1>
     <p>Inloggen met digital ocean <a href="https://cloud.digitalocean.com/v1/oauth/authorize?client_id=e6416a79961950a29f5922e4ff6a12b09e5d51938397d67ad13b817f613e6b98&redirect_uri=https://poc-oauth.azurewebsites.net/callback&response_type=code">hier</a>.</p>
     <br/>
-    
-    <p>Inloggen met Azure AD <a href="https://cloud.digitalocean.com/v1/oauth/authorize?client_id=e6416a79961950a29f5922e4ff6a12b09e5d51938397d67ad13b817f613e6b98&redirect_uri=https://poc-oauth.azurewebsites.net/callback&response_type=code">hier</a>.</p>
+    <p>Inloggen met jeroen azureAD <a href="https://login.microsoftonline.com/5ddb4ac6-3370-4cd1-8f1a-6935fecdd7b7/oauth2/v2.0/authorize?client_id=1f7f05b6-230c-4b93-a610-d46d2a65501f&response_type=code&redirect_uri=https%3A%2F%2Flocalhost%3A7186%2Fcallback%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.read&state=12345">hier</a>.</p>
+    <br/>
+    <p>Inloggen met jeroen azureAD voorbeeld<a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=64e8340c-3ebb-40a4-9837-a13582a2bce1&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=https%3A%2F%2Fgraph.microsoft.com%2Fcalendars.read%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.send&state=12345">hier</a>.</p>
+    <br/>
+    <p>Inloggen met niels@bakkerspees.nl azureAD voorbeeld<a href="https://login.microsoftonline.com/c1c3fbfc-c286-4822-b45b-a71e4997fd8f/oauth2/v2.0/authorize?client_id=7b36ab55-4236-4ced-ab72-1ca38d17b750&response_type=code&redirect_uri=https%3A%2F%2Flocalhost%3A7186%2Fcallback%2F&response_mode=query&scope=https%3A%2F%2Fgraph.microsoft.com%2Fcalendars.read%20https%3A%2F%2Fgraph.microsoft.com%2Fmail.send&state=12345">hier</a>.</p>
+
 </div>
