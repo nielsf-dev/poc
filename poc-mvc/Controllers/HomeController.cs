@@ -13,9 +13,20 @@ namespace poc_mvc.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+
+        public IActionResult Index(int id, string vallie)
         {
+            Debug.WriteLine(id);
+            Debug.WriteLine(vallie);
             return View();
+        }
+
+        [Route("/poenanimang/{id=187}/conjomang/{vallie=ietsanders}")]
+        public IActionResult Poenani(int id, string vallie)
+        {
+            Debug.WriteLine(id);
+            Debug.WriteLine(vallie);
+            return View("Index");
         }
 
         public IActionResult Privacy()
