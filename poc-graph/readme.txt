@@ -8,3 +8,6 @@ Welke flows zijn er nog meer en hoe gebruiken we die?
 2.
 Hoe werken die permissions. We zitten in het voorbeeld kennelijk nu niet in de app-only(????) modus, alleen de clientid is ingevuld..
 Dus mogen we geen users listen. Dit vereist permissions en kennelijk wel tenantid en clientsecret ingevuld etc.
+
+3.
+Dit heeft te maken met multi-tentant vs single-tenant?
