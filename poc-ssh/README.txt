@@ -1,0 +1,2 @@
+Blijkt dus een conflict tussen git for windows en openssh waardoor onze ssh keys niet werden geaccept door github.com
+https://stackoverflow.com/questions/2643502/git-how-to-solve-permission-denied-publickey-error-when-using-git
